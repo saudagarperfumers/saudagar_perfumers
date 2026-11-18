@@ -123,9 +123,9 @@ export const GUIDE: GuideSection[] = [
       { text: 'Products: tick several, then Make live, Hide, Add to category or collection, Set badge or Archive from the bar at the bottom.', link: { to: '/admin/products', label: 'Products' } },
       { text: 'Orders: tick several, then Mark packed, Ship (one tracking number each), Mark delivered, or print all their invoices and packing slips.', link: { to: '/admin/orders', label: 'Orders' } },
       { text: 'Prices & stock: download the sheet, change prices or stock in Excel or Google Sheets, upload it, check the preview, Apply.', link: { to: '/admin/spreadsheets', label: 'Spreadsheets' } },
-      { text: 'New products: download the template, one row per bottle size, upload it, check the preview, Import. Missing categories and notes are created.', link: { to: '/admin/spreadsheets?tab=import', label: 'Import' } },
+      { text: 'New products: download the Excel template and send it to whoever fills it in (one row per product; only name, main category and one price are required). Upload their photos to the Media library, upload the filled sheet, check the preview, Import. Missing categories, collections, notes and scent choices are created.', link: { to: '/admin/spreadsheets?tab=import', label: 'Import' } },
     ],
-    tip: 'Save the sheet as CSV before uploading (Excel: File → Save as → CSV UTF-8). Nothing changes until you press Apply or Import.',
+    tip: 'Prices & stock: save the sheet as CSV before uploading (Excel: File → Save as → CSV UTF-8). New products: upload the Excel file as it is. Nothing changes until you press Apply or Import.',
   },
   {
     id: 'samples',

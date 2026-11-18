@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { IMPORT_TEMPLATE, diffPriceStock, planImport, priceStockSheet, resolveIds, type VariantRow } from './sheets';
+import { diffPriceStock, priceStockSheet, type VariantRow } from './sheets';
 
 const current: VariantRow[] = [
   { sku: 'OUD-50', product_id: 'p1', product: 'Oud', stock_unit: 'piece', liquid_ml: 0, label: '50 ml', kind: 'retail', base_price: 4900, price: null, compare_at_price: null, stock: 10 },
@@ -35,43 +35,5 @@ describe('diffPriceStock', () => {
   });
   it('asks for a SKU column', () => {
     expect(diffPriceStock('Product,Stock\nOud,1', current).problems[0].message).toMatch(/SKU column/);
-  });
-});
-
-describe('planImport', () => {
-  const ctx = {
-    categories: [{ id: 'c1', name: 'Perfumes', slug: 'perfumes' }],
-    collections: [],
-    notes: [{ id: 'n1', name: 'Rose' }],
-    existingSlugs: new Set<string>(),
-    existingSkus: new Set<string>(),
-  };
-  it('reads the template: a perfume kept in ml and a gift box counted in pieces', () => {
-    const { products, problems } = planImport(IMPORT_TEMPLATE, ctx);
-    expect(problems).toEqual([]);
-    expect(products).toHaveLength(2);
-    const p = products[0];
-    expect(p.errors).toEqual([]);
-    expect(p.sizes).toBe(3);
-    expect(p.form.variants.map((v) => v.sku)).toEqual(['AMBER-NOIR-30', 'AMBER-NOIR-50', 'AMBER-NOIR-100']);
-    expect([p.form.stock_unit, p.form.liquid_amount, p.form.liquid_unit]).toEqual(['ml', '1', 'L']);
-    expect(products[1].form.stock_unit).toBe('piece');
-    expect(products[1].form.variants[0].initial_stock).toBe('25');
-    expect(p.create.categories).toEqual(['Gift sets']);
-    expect(p.create.collections).toEqual(['The Oud Edit']);
-    expect(p.create.notes).toEqual(['Saffron', 'Pink pepper', 'Amber', 'Oud']);
-    const form = resolveIds(p, { ...ctx, categories: [...ctx.categories, { id: 'c2', name: 'Gift sets' }], notes: [...ctx.notes, { id: 'n2', name: 'Oud' }] });
-    expect(form.primary_category_id).toBe('c1');
-    expect(form.category_ids).toEqual(['c2']);
-    expect(form.notes.map((n) => [n.note_id, n.tier])).toEqual([['n1', 'heart'], ['n2', 'base']]);
-  });
-  it('refuses handles and SKUs that already exist', () => {
-    const { products } = planImport(IMPORT_TEMPLATE, { ...ctx, existingSlugs: new Set(['amber-noir']), existingSkus: new Set(['AMBER-NOIR-50']) });
-    expect(products[0].errors.join(' ')).toMatch(/already exists/);
-    expect(products[0].errors.join(' ')).toMatch(/AMBER-NOIR-50 is already used/);
-  });
-  it('needs a main category and a price', () => {
-    const { products } = planImport('handle,name,sku,size_label\nx,X,X-1,50 ml', ctx);
-    expect(products[0].errors).toEqual(expect.arrayContaining(['Add a main_category.', 'Enter the price in rupees.']));
   });
 });

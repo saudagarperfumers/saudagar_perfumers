@@ -19,7 +19,10 @@ export function toCsv(rows: Record<string, unknown>[], columns?: string[]): stri
 }
 
 export function downloadCsv(filename: string, csv: string) {
-  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+  downloadBlob(filename, new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+}
+
+export function downloadBlob(filename: string, blob: Blob) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;

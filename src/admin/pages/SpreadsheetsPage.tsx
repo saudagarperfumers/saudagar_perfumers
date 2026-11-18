@@ -8,13 +8,15 @@ import { toFriendlyError } from '../../lib/errors';
 import { fetchAll } from '../../lib/fetchAll';
 import { PageHeader, Panel } from '../ui/PageHeader';
 import { Button } from '../ui/Button';
-import { downloadCsv } from '../export/csv';
-import { rpc, throwIf, useCategories, useCollectionsAdmin, useInvalidateCatalog, useNotes } from '../catalog/api';
+import { downloadBlob, downloadCsv } from '../export/csv';
+import { rpc, throwIf, useCategories, useCollectionsAdmin, useInvalidateCatalog, useNotes, useOptions, type OptionRow } from '../catalog/api';
 import { slugify, toSavePayload } from '../catalog/productForm';
-import {
-  IMPORT_TEMPLATE, diffPriceStock, planImport, priceStockSheet, resolveIds,
-  type Lookup, type PlannedProduct, type SheetProblem, type SizeChange, type VariantRow,
-} from '../bulk/sheets';
+import { useProductDefaults } from '../catalog/useProductDefaults';
+import { useSetting } from '../../lib/bootstrap';
+import { useBlock } from '../../cms/useSite';
+import { diffPriceStock, priceStockSheet, type Lookup, type SheetProblem, type SizeChange, type VariantRow } from '../bulk/sheets';
+import { OPTION_COLUMNS, planProductSheet, relatedIds, resolveForm, toCreate, type SheetPlan } from '../bulk/productSheet';
+import { buildProductTemplate, readProductSheet, templateChoices } from '../bulk/productSheetXlsx';
 
 const today = () => new Date().toISOString().slice(0, 10);
 
@@ -54,24 +56,22 @@ function useVariantRows() {
   });
 }
 
-function FilePick({ onText, label }: { onText: (text: string, name: string) => void; label: string }) {
+function FilePick({ onFile, label, accept, busy, disabled }: { onFile: (file: File) => void; label: string; accept: string; busy?: boolean; disabled?: boolean }) {
   const ref = useRef<HTMLInputElement>(null);
   return (
     <>
       <input
         ref={ref}
         type="file"
-        accept=".csv,text/csv"
+        accept={accept}
         className="hidden"
-        onChange={async (e) => {
+        onChange={(e) => {
           const f = e.target.files?.[0];
           e.target.value = '';
-          if (!f) return;
-          if (!/\.csv$/i.test(f.name)) return toast.error('Save the sheet as CSV first (Excel: File → Save as → CSV UTF-8; Google Sheets: File → Download → CSV).');
-          onText(await f.text(), f.name);
+          if (f) onFile(f);
         }}
       />
-      <Button onClick={() => ref.current?.click()}>
+      <Button busy={busy} disabled={disabled} onClick={() => ref.current?.click()}>
         <FileUp size={14} /> {label}
       </Button>
     </>
@@ -121,9 +121,11 @@ function PriceStockTab() {
         <div className="flex flex-wrap items-center gap-3">
           <FilePick
             label="Upload edited sheet (CSV)"
-            onText={(text, name) => {
-              setFile(name);
-              setPlan(diffPriceStock(text, rows));
+            accept=".csv,text/csv"
+            onFile={async (f) => {
+              if (!/\.csv$/i.test(f.name)) return void toast.error('Save the sheet as CSV first (Excel: File → Save as → CSV UTF-8; Google Sheets: File → Download → CSV).');
+              setFile(f.name);
+              setPlan(diffPriceStock(await f.text(), rows));
             }}
           />
           {file && <span className="text-[13px] text-[#454545]">{file}</span>}
@@ -211,26 +213,96 @@ function PriceStockTab() {
 }
 
 // ============================================================ import new products
-function ImportTab() {
-  const { data: categories = [], refetch: refetchCategories } = useCategories();
-  const { data: collections = [], refetch: refetchCollections } = useCollectionsAdmin();
-  const { data: notes = [], refetch: refetchNotes } = useNotes();
-  const { data: variants = [] } = useVariantRows();
-  const { data: slugs = [] } = useQuery({
-    queryKey: ['admin', 'catalog', 'all-slugs'],
-    queryFn: async () => ((await throwIf(supabase.from('products').select('slug'))) as { slug: string }[]).map((r) => r.slug),
-  });
-  const invalidate = useInvalidateCatalog();
-  const [plan, setPlan] = useState<{ products: PlannedProduct[]; problems: string[]; file: string } | null>(null);
-  const [progress, setProgress] = useState<string | null>(null);
-  const [results, setResults] = useState<{ handle: string; name: string; id?: string; error?: string }[] | null>(null);
+type StoreProduct = Lookup & { is_gift_pack: boolean; archived_at: string | null };
+type ImportResult = { handle: string; name: string; id?: string; error?: string };
+const KIND_LABEL = Object.fromEntries(OPTION_COLUMNS) as Record<string, string>;
 
-  const ready = plan?.products.filter((p) => !p.errors.length) ?? [];
+function ImportTab() {
+  const { data: categories = [], refetch: refetchCategories, isSuccess: c1 } = useCategories();
+  const { data: collections = [], refetch: refetchCollections, isSuccess: c2 } = useCollectionsAdmin();
+  const { data: notes = [], refetch: refetchNotes, isSuccess: c3 } = useNotes();
+  const { data: options = [], refetch: refetchOptions, isSuccess: c4 } = useOptions();
+  const { data: storeProducts = [], refetch: refetchProducts, isSuccess: c5 } = useQuery({
+    queryKey: ['admin', 'catalog', 'all-product-names'],
+    queryFn: async () => (await throwIf(supabase.from('products').select('id, name, slug, is_gift_pack, archived_at').order('name'))) as StoreProduct[],
+  });
+  const productDefaults = useProductDefaults();
+  const sampleSize = Number(useSetting('samples.sample_size_ml', 5)) || 5;
+  const brand = useBlock<Record<string, string>>('brand')?.name || 'Saudagar Perfumers';
+  const invalidate = useInvalidateCatalog();
+  const [plan, setPlan] = useState<(SheetPlan & { file: string }) | null>(null);
+  const [reading, setReading] = useState(false);
+  const [building, setBuilding] = useState(false);
+  const [progress, setProgress] = useState<string | null>(null);
+  const [results, setResults] = useState<ImportResult[] | null>(null);
+  // The template's dropdowns and the upload check both need the store's lists, so wait for them.
+  const loaded = c1 && c2 && c3 && c4 && c5;
+
+  const optionLookups = (rows: OptionRow[]) => rows.map((o) => ({ id: o.id, name: o.label, slug: o.slug, kind: o.kind }));
+  const ready = useMemo(() => plan?.products.filter((p) => !p.errors.length) ?? [], [plan]);
   const blocked = plan?.products.filter((p) => p.errors.length) ?? [];
-  const toCreate = useMemo(() => {
-    const u = (k: 'categories' | 'collections' | 'notes') => [...new Set(ready.flatMap((p) => p.create[k]))];
-    return { categories: u('categories'), collections: u('collections'), notes: u('notes') };
-  }, [ready]);
+  const create = useMemo(() => toCreate(ready), [ready]);
+  const warnings = ready.flatMap((p) => p.warnings.map((w) => `Row ${p.line} · ${p.form.name}: ${w}`));
+  const liveCount = ready.filter((p) => p.form.is_active).length;
+
+  const downloadTemplate = async () => {
+    setBuilding(true);
+    try {
+      const choices = templateChoices({
+        categories,
+        collections,
+        notes,
+        options,
+        products: storeProducts.filter((p) => !p.is_gift_pack && !p.archived_at),
+      });
+      const buf = await buildProductTemplate(choices, { brand, sampleSize });
+      downloadBlob('product-sheet.xlsx', new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }));
+    } catch (err) {
+      toast.error(toFriendlyError(err));
+    } finally {
+      setBuilding(false);
+    }
+  };
+
+  const readFile = async (file: File) => {
+    if (!/\.(xlsx|csv)$/i.test(file.name)) {
+      toast.error('Upload the Excel file (.xlsx). Google Sheets: File → Download → Microsoft Excel.');
+      return;
+    }
+    setResults(null);
+    setReading(true);
+    try {
+      const sheet = await readProductSheet(await file.arrayBuffer(), file.name);
+      const [media, skus] = await Promise.all([
+        fetchAll<{ url: string; kind: string; original_name: string | null; path: string }>((from, to) =>
+          supabase.from('media_assets').select('url, kind, original_name, path', { count: 'exact' }).order('created_at', { ascending: false }).order('id').range(from, to) as never,
+        ),
+        fetchAll<{ sku: string }>((from, to) => supabase.from('product_variants').select('sku', { count: 'exact' }).order('sku').range(from, to) as never),
+      ]);
+      const r = planProductSheet(
+        { products: sheet.products, sizes: sheet.sizes },
+        {
+          categories,
+          collections,
+          notes,
+          options: optionLookups(options),
+          products: storeProducts,
+          existingSkus: new Set(skus.map((x) => x.sku.toUpperCase())),
+          media: media.flatMap((m) => [
+            ...(m.original_name ? [{ name: m.original_name, url: m.url, kind: m.kind }] : []),
+            { name: m.path, url: m.url, kind: m.kind },
+          ]),
+          defaults: productDefaults,
+          sampleSize,
+        },
+      );
+      setPlan({ ...r, problems: [...sheet.problems, ...r.problems], file: file.name });
+    } catch (err) {
+      toast.error(toFriendlyError(err));
+    } finally {
+      setReading(false);
+    }
+  };
 
   const freeSlug = (name: string, taken: string[]) => {
     const base = slugify(name) || 'item';
@@ -242,33 +314,61 @@ function ImportTab() {
   const runImport = async () => {
     setResults(null);
     try {
-      // 1. Everything the products need: missing categories, collections and notes.
+      // 1. Everything the products need: missing categories, collections, notes and scent choices.
       const cats: Lookup[] = [...categories];
-      for (const name of toCreate.categories) {
+      for (const name of create.categories) {
         setProgress(`Creating category “${name}”…`);
         const leaf = name.split(/>|›/).pop()!.trim();
-        const row = (await throwIf(supabase.from('categories').insert({ name: leaf, slug: freeSlug(leaf, cats.map((c) => c.slug ?? '')) }).select('id, name, slug').single())) as Lookup;
-        cats.push(row);
+        cats.push((await throwIf(supabase.from('categories').insert({ name: leaf, slug: freeSlug(leaf, cats.map((c) => c.slug ?? '')) }).select('id, name, slug').single())) as Lookup);
       }
       const cols: Lookup[] = [...collections];
-      for (const name of toCreate.collections) {
+      for (const name of create.collections) {
         setProgress(`Creating collection “${name}”…`);
         cols.push((await throwIf(supabase.from('collections').insert({ name, slug: freeSlug(name, cols.map((c) => c.slug ?? '')) }).select('id, name, slug').single())) as Lookup);
       }
       const nts: Lookup[] = [...notes];
-      for (const name of toCreate.notes) {
+      for (const name of create.notes) {
         setProgress(`Adding note “${name}”…`);
         nts.push((await throwIf(supabase.from('notes').insert({ name, slug: freeSlug(name, nts.map((n) => n.slug ?? '')) }).select('id, name, slug').single())) as Lookup);
       }
+      const opts = optionLookups(options);
+      for (const o of create.options) {
+        setProgress(`Adding ${KIND_LABEL[o.kind]?.toLowerCase() ?? 'choice'} “${o.label}”…`);
+        const taken = opts.filter((x) => x.kind === o.kind).map((x) => x.slug ?? '');
+        const row = (await throwIf(
+          supabase.from('attribute_options').insert({ kind: o.kind, label: o.label, slug: freeSlug(o.label, taken) }).select('id, label, slug, kind').single(),
+        )) as OptionRow;
+        opts.push({ id: row.id, name: row.label, slug: row.slug, kind: row.kind });
+      }
+
       // 2. The products, one by one, so one problem doesn't stop the rest.
-      const out: { handle: string; name: string; id?: string; error?: string }[] = [];
+      const out: ImportResult[] = [];
       for (const [i, p] of ready.entries()) {
         setProgress(`Importing ${i + 1} of ${ready.length}: ${p.form.name}`);
         try {
-          const id = await rpc<string>('save_product', { payload: toSavePayload(resolveIds(p, { categories: cats, collections: cols, notes: nts })) });
+          const form = resolveForm(p, { categories: cats, collections: cols, notes: nts, options: opts });
+          const id = await rpc<string>('save_product', { payload: toSavePayload(form) });
+          if (form.page_sections.length || !form.use_default_sections) {
+            await throwIf(supabase.from('products').update({ page_sections: form.page_sections as never, use_default_sections: form.use_default_sections }).eq('id', id));
+          }
           out.push({ handle: p.handle, name: p.form.name, id });
         } catch (err) {
           out.push({ handle: p.handle, name: p.form.name, error: toFriendlyError(err) });
+        }
+      }
+
+      // 3. "You may also appreciate", now that every product in the sheet exists.
+      const known: Lookup[] = [...storeProducts, ...out.filter((r) => r.id).map((r) => ({ id: r.id!, name: r.name, slug: r.handle }))];
+      for (const r of out) {
+        const p = ready.find((x) => x.handle === r.handle);
+        if (!r.id || !p?.related.length) continue;
+        const ids = relatedIds(p.related, known, r.id);
+        if (!ids.length) continue;
+        setProgress(`Linking “You may also appreciate” for ${r.name}…`);
+        try {
+          await throwIf(supabase.from('products').update({ related_product_ids: ids }).eq('id', r.id));
+        } catch (err) {
+          r.error = `Imported, but “You may also appreciate” wasn't saved: ${toFriendlyError(err)}`;
         }
       }
       setResults(out);
@@ -279,70 +379,96 @@ function ImportTab() {
       toast.error(toFriendlyError(err));
     } finally {
       setProgress(null);
-      await Promise.all([invalidate(), refetchCategories(), refetchCollections(), refetchNotes()]);
+      await Promise.all([invalidate(), refetchCategories(), refetchCollections(), refetchNotes(), refetchOptions(), refetchProducts()]);
     }
   };
 
   return (
     <div className="space-y-5">
-      <Panel title="1 · Download the template" description="One row per bottle size. Product details go on the first row of each product; the next rows with the same handle add more sizes.">
-        <Button variant="secondary" onClick={() => downloadCsv('product-import-template.csv', IMPORT_TEMPLATE)}>
-          <Download size={14} /> Download template
+      <Panel
+        title="1 · Download the template"
+        description="An Excel file ready to send to whoever fills in your products. It has a How to fill tab, a filled-in example, and dropdowns with your current categories, scent choices and notes."
+      >
+        <Button variant="secondary" busy={building} disabled={!loaded} onClick={downloadTemplate}>
+          <Download size={14} /> {loaded ? 'Download template (.xlsx)' : 'Loading your store…'}
         </Button>
         <ul className="mt-3 text-[13px] text-[#454545] list-disc pl-5 space-y-1">
-          <li><strong>handle</strong> becomes the web address (amber-noir → /product/amber-noir). Rows with the same handle are one product.</li>
-          <li><strong>main_category</strong> is required. Separate several categories, collections or notes with a | bar, e.g. <em>Saffron | Rose</em>.</li>
-          <li>Categories, collections and notes that don't exist yet are created for you.</li>
-          <li><strong>kept_as</strong>: ml for perfumes (then <strong>liquid_in_stock</strong> with <strong>liquid_unit</strong> ml, L or tola), or pieces for sets and accessories (then a <strong>stock</strong> count on each size row).</li>
-          <li><strong>size_price</strong> empty = the base price. <strong>live</strong> = yes to sell straight away; otherwise the product is saved as a draft.</li>
-          <li>Add photos, the scent profile and the story afterwards on each product's page.</li>
+          <li>One row per product. Only <strong>Product name</strong>, <strong>Main category</strong> and one <strong>price</strong> are required; every other column is optional.</li>
+          <li>30, 50 and 100 ml each have a price column. Other sizes (attar 6 ml, gift box) go on the <strong>Other sizes</strong> tab.</li>
+          <li>Everything on the product page can be filled in: scent type, accords, notes, story, extra sections, label details, parcel sizes, Google text.</li>
+          <li>Categories, collections, notes and scent choices that don't exist yet are created for you.</li>
         </ul>
       </Panel>
 
       <Panel title="2 · Upload the filled sheet and check it" description="Nothing is saved until you press Import.">
-        <FilePick
-          label="Upload product sheet (CSV)"
-          onText={(text, file) => {
-            setResults(null);
-            const r = planImport(text, {
-              categories,
-              collections,
-              notes,
-              existingSlugs: new Set(slugs),
-              existingSkus: new Set(variants.map((v) => v.sku.toUpperCase())),
-            });
-            setPlan({ ...r, file });
-          }}
-        />
+        <p className="text-[13px] text-[#454545] mb-3">
+          Photos: upload the photo files to the <Link to="/admin/media" className="underline underline-offset-4">Media library</Link> first (you can pick them all at once). The sheet finds them by file name.
+        </p>
+        <FilePick label="Upload filled sheet (.xlsx)" accept=".xlsx,.csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv" busy={reading} disabled={!loaded} onFile={readFile} />
 
         {plan && (
           <div className="mt-5 space-y-4">
             <p className="text-[14px]">
               <strong>{plan.file}</strong>: {ready.length} product{ready.length === 1 ? '' : 's'} ready to import
-              {blocked.length > 0 && `, ${blocked.length} with problems (skipped)`}.
+              {ready.length > 0 && ` (${liveCount} live, ${ready.length - liveCount} draft)`}
+              {blocked.length > 0 && `, ${blocked.length} with problems (skipped)`}
+              {plan.existing.length > 0 && `, ${plan.existing.length} already in the store (left alone)`}.
             </p>
             <Problems items={[...plan.problems, ...blocked.flatMap((p) => p.errors.map((e) => `Row ${p.line} · ${p.form.name || p.handle}: ${e}`))]} />
-            {(toCreate.categories.length > 0 || toCreate.collections.length > 0 || toCreate.notes.length > 0) && (
+            {warnings.length > 0 && (
+              <div className="border border-amber-200 bg-amber-50 px-4 py-3">
+                <p className="text-[14px] font-medium text-amber-900 mb-1">Worth a look (these still import)</p>
+                <ul className="text-[13px] text-amber-900 list-disc pl-5 space-y-0.5 max-h-40 overflow-y-auto">
+                  {warnings.map((w, i) => <li key={i}>{w}</li>)}
+                </ul>
+              </div>
+            )}
+            {plan.existing.length > 0 && (
+              <div className="border border-[#E2E0DB] bg-[#F8F7F5] px-4 py-3 text-[13px] text-[#3F3F3F]">
+                <p className="font-medium mb-1">Already in the store, left alone</p>
+                <p>{plan.existing.map((e) => e.name).join(', ')}</p>
+                <p className="mt-1 text-[#4F4F4F]">Change these on their product page, or their prices and stock in the Update prices &amp; stock tab.</p>
+              </div>
+            )}
+            {(create.categories.length > 0 || create.collections.length > 0 || create.notes.length > 0 || create.options.length > 0) && (
               <div className="border border-sky-200 bg-sky-50 px-4 py-3 text-[13px] text-sky-900 space-y-1">
                 <p className="font-medium">These will be created:</p>
-                {toCreate.categories.length > 0 && <p>Categories: {toCreate.categories.join(', ')}</p>}
-                {toCreate.collections.length > 0 && <p>Collections: {toCreate.collections.join(', ')}</p>}
-                {toCreate.notes.length > 0 && <p>Notes: {toCreate.notes.join(', ')}</p>}
+                {create.categories.length > 0 && <p>Categories: {create.categories.join(', ')}</p>}
+                {create.collections.length > 0 && <p>Collections: {create.collections.join(', ')}</p>}
+                {create.notes.length > 0 && <p>Notes: {create.notes.join(', ')}</p>}
+                {create.options.length > 0 && <p>Scent choices: {create.options.map((o) => `${o.label} (${KIND_LABEL[o.kind]?.toLowerCase() ?? o.kind})`).join(', ')}</p>}
               </div>
             )}
             {ready.length > 0 && (
-              <ul className="border border-[#E2E0DB] divide-y divide-[#E9E7E2] max-h-[360px] overflow-y-auto">
-                {ready.map((p) => (
-                  <li key={p.handle} className="px-3 py-2 flex flex-wrap gap-x-4 gap-y-1 text-[13.5px]">
-                    <span className="font-medium">{p.form.name}</span>
-                    <span className="text-[#4A4A4A]">/{p.handle}</span>
-                    <span className="text-[#454545]">{p.mainCategory}</span>
-                    <span className="text-[#454545]">{p.sizes} size{p.sizes === 1 ? '' : 's'}</span>
-                    <span className="text-[#454545]">{p.noteNames.length} notes</span>
-                    <span className={p.form.is_active ? 'text-emerald-700' : 'text-amber-700'}>{p.form.is_active ? 'live' : 'draft'}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="border border-[#E2E0DB] overflow-x-auto max-h-[420px]">
+                <table className="w-full text-[13.5px] min-w-[640px]">
+                  <thead className="sticky top-0 bg-[#F8F7F5]">
+                    <tr className="text-left text-[12px] border-b border-[#E2E0DB]">
+                      <th className="px-3 py-2 font-medium">Product</th>
+                      <th className="px-3 py-2 font-medium">Category</th>
+                      <th className="px-3 py-2 font-medium">Sizes</th>
+                      <th className="px-3 py-2 font-medium">Photos</th>
+                      <th className="px-3 py-2 font-medium">Notes</th>
+                      <th className="px-3 py-2 font-medium">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-[#E9E7E2]">
+                    {ready.map((p) => (
+                      <tr key={p.handle}>
+                        <td className="px-3 py-2">
+                          <span className="font-medium">{p.form.name}</span>
+                          <span className="block text-[12px] text-[#4A4A4A]">/product/{p.handle}</span>
+                        </td>
+                        <td className="px-3 py-2">{p.mainCategory}</td>
+                        <td className="px-3 py-2">{p.form.variants.filter((v) => v.kind === 'retail').map((v) => v.label).join(', ')}</td>
+                        <td className="px-3 py-2 tabular-nums">{p.form.media.length}</td>
+                        <td className="px-3 py-2 tabular-nums">{p.noteNames.length}</td>
+                        <td className={`px-3 py-2 ${p.form.is_active ? 'text-emerald-700' : 'text-amber-700'}`}>{p.form.is_active ? 'Live' : 'Draft'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             )}
             <div className="flex flex-wrap items-center gap-3">
               <Button busy={!!progress} disabled={!ready.length} onClick={runImport}>
@@ -361,10 +487,9 @@ function ImportTab() {
               {results.map((r) => (
                 <li key={r.handle} className="px-3 py-2 text-[13.5px] flex flex-wrap gap-3 justify-between">
                   <span>{r.name}</span>
-                  {r.id ? (
-                    <Link to={`/admin/products/${r.id}`} className="underline underline-offset-4">Open to add photos →</Link>
-                  ) : (
-                    <span className="text-rose-700">{r.error}</span>
+                  {r.error && <span className="text-rose-700">{r.error}</span>}
+                  {r.id && (
+                    <Link to={`/admin/products/${r.id}`} className="underline underline-offset-4">Open product →</Link>
                   )}
                 </li>
               ))}

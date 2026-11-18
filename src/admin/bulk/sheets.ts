@@ -1,8 +1,8 @@
-// Spreadsheet round-trips: prices and stock for every size, and new products from a sheet. Pure functions so the
-// preview the admin sees is exactly what gets saved.
+// Spreadsheet round-trip for prices and stock of every size. Pure functions so the preview the admin sees is exactly
+// what gets saved. New products come in through the Excel product sheet (productSheet.ts).
 import { csvObjects } from '../../lib/csvParse';
 import { toCsv } from '../export/csv';
-import { emptyProductForm, emptyVariant, slugify, validateProductForm, type NoteLink, type ProductForm } from '../catalog/productForm';
+import { slugify } from '../catalog/productForm';
 
 // ============================================================ prices and stock
 export interface VariantRow {
@@ -142,171 +142,18 @@ export function diffPriceStock(text: string, current: VariantRow[]): { changes: 
   return { changes, problems, rows: rows.length };
 }
 
-// ============================================================ new products
-export const IMPORT_COLUMNS = [
-  'handle', 'name', 'main_category', 'also_list_under', 'collections', 'top_notes', 'heart_notes', 'base_notes',
-  'short_description', 'description', 'base_price', 'gst_rate', 'hsn_code', 'kept_as', 'liquid_in_stock', 'liquid_unit',
-  'size_label', 'size_ml', 'sku', 'size_price', 'stock', 'live',
-];
-
-export const IMPORT_TEMPLATE = toCsv(
-  [
-    {
-      handle: 'amber-noir', name: 'Amber Noir', main_category: 'Perfumes', also_list_under: 'Gift sets', collections: 'The Oud Edit',
-      top_notes: 'Saffron | Pink pepper', heart_notes: 'Rose', base_notes: 'Amber | Oud', short_description: 'A warm amber for evenings.',
-      description: 'Long description shown on the product page.', base_price: '2900', gst_rate: '18', hsn_code: '3303',
-      kept_as: 'ml', liquid_in_stock: '1', liquid_unit: 'L',
-      size_label: '30 ml', size_ml: '30', sku: 'AMBER-NOIR-30', size_price: '', stock: '', live: 'no',
-    },
-    { handle: 'amber-noir', size_label: '50 ml', size_ml: '50', sku: 'AMBER-NOIR-50', size_price: '4900' },
-    { handle: 'amber-noir', size_label: '100 ml', size_ml: '100', sku: 'AMBER-NOIR-100', size_price: '7900' },
-    {
-      handle: 'oud-gift-box', name: 'Oud Gift Box', main_category: 'Gift sets', base_price: '3500', kept_as: 'pieces',
-      size_label: 'Box', size_ml: '', sku: 'OUD-GIFT-BOX', stock: '25', live: 'no',
-    },
-  ],
-  IMPORT_COLUMNS,
-);
-
+// ============================================================ lookups shared with the product sheet
 export interface Lookup {
   id: string;
   name: string;
   slug?: string;
 }
 
-export interface ImportContext {
-  categories: Lookup[];
-  collections: Lookup[];
-  notes: Lookup[];
-  existingSlugs: Set<string>;
-  existingSkus: Set<string>;
-}
-
-export interface PlannedProduct {
-  handle: string;
-  line: number;
-  form: ProductForm;
-  sizes: number;
-  /** Names that don't exist yet and will be created on import. */
-  create: { categories: string[]; collections: string[]; notes: string[] };
-  /** Notes by tier as typed, resolved to ids at import time. */
-  noteNames: { tier: NoteLink['tier']; name: string }[];
-  mainCategory: string;
-  extraCategories: string[];
-  collectionNames: string[];
-  errors: string[];
-}
-
-const list = (v: string | undefined) =>
-  (v ?? '')
-    .split(/[|;]/)
-    .map((x) => x.trim())
-    .filter(Boolean);
 const norm = (s: string) => s.trim().toLowerCase().replace(/\s+/g, ' ');
-const yes = (v: string | undefined) => /^(y|yes|true|1|live|on)$/i.test((v ?? '').trim());
 
-/** Finds a category by name, slug or "Parent > Child" path. */
-function findByName(items: Lookup[], name: string): Lookup | undefined {
+/** Finds a category, collection or note by name, slug or "Parent > Child" path. */
+export function findByName(items: Lookup[], name: string): Lookup | undefined {
   const last = name.split(/>|›/).pop()!.trim();
   const n = norm(last);
   return items.find((c) => norm(c.name) === n || (c.slug && c.slug === slugify(last)));
 }
-
-/** Groups sheet rows into products (one row per size; product details on the first row of each handle). */
-export function planImport(text: string, ctx: ImportContext): { products: PlannedProduct[]; problems: string[] } {
-  const { headers, rows } = csvObjects(text);
-  const problems: string[] = [];
-  if (!headers.includes('name') && !headers.includes('handle')) {
-    return { products: [], problems: ['The sheet needs at least the handle and name columns. Start from “Download the template”.'] };
-  }
-  const byHandle = new Map<string, { line: number; rows: Record<string, string>[] }>();
-  rows.forEach((r, i) => {
-    const handle = slugify(r.handle || r.name || '');
-    if (!handle) return void problems.push(`Row ${i + 2}: no handle or name, so it was skipped.`);
-    const g = byHandle.get(handle) ?? { line: i + 2, rows: [] };
-    g.rows.push(r);
-    byHandle.set(handle, g);
-  });
-
-  const sheetSkus = new Set<string>();
-  const products: PlannedProduct[] = [];
-  for (const [handle, g] of byHandle) {
-    const first = g.rows[0];
-    const errors: string[] = [];
-    const form = emptyProductForm({ gst_rate: first.gst_rate || '18', hsn_code: first.hsn_code || '3303' });
-    form.slug = handle;
-    form.name = first.name ?? '';
-    form.short_description = first.short_description ?? '';
-    form.description = first.description ? `<p>${escapeHtml(first.description)}</p>` : '';
-    form.base_price = (first.base_price ?? '').replace(/[₹,\s]/g, '');
-    form.is_active = yes(first.live);
-    form.stock_unit = /^(piece|pieces|pcs|count)$/i.test((first.kept_as ?? '').trim()) ? 'piece' : 'ml';
-    form.liquid_amount = (first.liquid_in_stock ?? '').replace(/[,\s]/g, '');
-    const unit = (first.liquid_unit ?? 'ml').trim().toLowerCase();
-    form.liquid_unit = unit === 'l' || unit === 'litre' || unit === 'liter' ? 'L' : unit === 'tola' ? 'tola' : 'ml';
-    if (ctx.existingSlugs.has(handle)) errors.push(`A product with the handle “${handle}” already exists. Update it from its product page or the prices & stock tab.`);
-
-    const mainCategory = (first.main_category ?? '').trim();
-    const extraCategories = list(first.also_list_under);
-    const collectionNames = list(first.collections);
-    const noteNames = (['top', 'heart', 'base'] as const).flatMap((tier) => list(first[`${tier}_notes`]).map((name) => ({ tier, name })));
-    if (!mainCategory) errors.push('Add a main_category.');
-    // Placeholder id so validation passes; the real id is filled in at import time.
-    form.primary_category_id = mainCategory ? 'pending' : '';
-
-    form.variants = g.rows.map((r) => {
-      const v = emptyVariant();
-      v.label = r.size_label || (r.size_ml ? `${r.size_ml} ml` : '');
-      v.size_ml = r.size_ml ?? '';
-      v.sku = (r.sku ?? '').trim().toUpperCase();
-      v.price = (r.size_price ?? '').replace(/[₹,\s]/g, '');
-      v.initial_stock = (r.stock ?? '').replace(/[,\s]/g, '');
-      return v;
-    });
-    for (const v of form.variants) {
-      if (!v.sku) continue;
-      if (ctx.existingSkus.has(v.sku)) errors.push(`SKU ${v.sku} is already used by another size.`);
-      if (sheetSkus.has(v.sku)) errors.push(`SKU ${v.sku} appears twice in the sheet.`);
-      sheetSkus.add(v.sku);
-    }
-    errors.push(...Object.values(validateProductForm(form)).filter((m) => m !== 'Choose a category first.'));
-
-    const missing = (items: Lookup[], names: string[]) => names.filter((n) => !findByName(items, n));
-    products.push({
-      handle,
-      line: g.line,
-      form,
-      sizes: form.variants.length,
-      create: {
-        categories: missing(ctx.categories, [mainCategory, ...extraCategories].filter(Boolean)),
-        collections: missing(ctx.collections, collectionNames),
-        notes: [...new Set(missing(ctx.notes, noteNames.map((n) => n.name)))],
-      },
-      noteNames,
-      mainCategory,
-      extraCategories,
-      collectionNames,
-      errors: [...new Set(errors)],
-    });
-  }
-  return { products, problems };
-}
-
-/** Fills in the category, collection and note ids once they all exist. */
-export function resolveIds(p: PlannedProduct, ctx: Pick<ImportContext, 'categories' | 'collections' | 'notes'>): ProductForm {
-  const id = (items: Lookup[], name: string) => findByName(items, name)?.id;
-  const form = { ...p.form };
-  form.primary_category_id = id(ctx.categories, p.mainCategory) ?? '';
-  form.category_ids = p.extraCategories.map((n) => id(ctx.categories, n)).filter((x): x is string => !!x && x !== form.primary_category_id);
-  form.collection_ids = p.collectionNames.map((n) => id(ctx.collections, n)).filter((x): x is string => !!x);
-  form.notes = p.noteNames
-    .map((n, i) => ({ note_id: id(ctx.notes, n.name) ?? '', tier: n.tier, position: i }))
-    .filter((n) => n.note_id);
-  return form;
-}
-
-function escapeHtml(s: string): string {
-  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n+/g, '</p><p>');
-}
-
-export { findByName };
