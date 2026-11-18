@@ -316,6 +316,15 @@
 - [x] The database audit script no longer prints the JWT secret; test clean-up also removes test coupons and sign-ups
 - [x] Every admin page and part opens without errors; the live site has no console errors or failed requests
 
+## Phase 27: Excel product sheet ✅
+- [x] Spreadsheets → Import new products now downloads a real Excel file (.xlsx) to send to whoever fills in the products: a How to fill tab, the Products tab, an Other sizes tab, a Choices tab and a filled-in Example
+- [x] One row per product; 30 / 50 / 100 ml each have a price and MRP column; any other size (attar 3 / 6 / 12 ml, gift box) goes on the Other sizes tab with its own price, SKU, stock and parcel size
+- [x] Every field of the product editor is in the sheet: description, badge, concentration line, stock, free sample, extra categories, collections, You may also appreciate, photos, the whole scent type (family, accords with strength, concentration, intensity, longevity, sillage, seasons, day / night, occasions, wear it as), notes, story, three extra page sections, vegan / cruelty free, all label details, visibility switches, parcel weight and box, Google text, internal note
+- [x] Only Product name, Main category and one price are required; required columns are yellow, every column has a grey hint, dropdowns show the store's current categories, scent choices, notes and products
+- [x] Photos by file name: upload them to the Media library first, the sheet finds them (full links also work)
+- [x] Upload the filled .xlsx straight back (no "save as CSV"); the preview lists problems in plain words, things worth a look, products already in the store (left alone) and everything that will be created; nothing is saved until Import
+- [x] Missing categories, collections, notes and scent choices are created on import
+
 ## Owner to-do before going live (see docs/SETUP.md and docs/SUPABASE.md)
 - [ ] Run `npm run hook:secret` (automatic refunds); delete the unused Singapore Supabase project
 - [ ] Supabase Pro, SMTP, domain
