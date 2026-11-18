@@ -209,7 +209,7 @@ export async function buildProductTemplate(choices: TemplateChoices, opts: { bra
     });
   });
 
-  wb.views = [{ x: 0, y: 0, width: 20000, height: 12000, firstSheet: 0, activeTab: 1, visibility: 'visible' }];
+  wb.views = [{ x: 0, y: 0, width: 20000, height: 12000, firstSheet: 0, activeTab: 0, visibility: 'visible' }];
   return (await wb.xlsx.writeBuffer()) as ArrayBuffer;
 }
 
