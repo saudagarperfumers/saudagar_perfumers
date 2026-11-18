@@ -105,7 +105,8 @@ export default function BluorngHero({ config = {} }) {
     <section
       ref={sectionRef}
       id="hero-section"
-      className="relative w-full h-screen min-h-[100dvh] overflow-hidden bg-[#0A0A0C] -mt-[60px] sm:-mt-[68px] select-none"
+      // Slides up under the see-through header only when it is the first section; lower down it starts where it is.
+      className="relative w-full h-screen min-h-[100dvh] overflow-hidden bg-[#0A0A0C] first:-mt-[60px] sm:first:-mt-[68px] select-none"
     >
       {/* Fallback Static Backdrop during initial load */}
       {(config.fallback_image || config.fallback_image_mobile) && (

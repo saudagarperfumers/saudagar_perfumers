@@ -43,13 +43,21 @@ export default function BluorngHeader({
       return;
     }
 
+    // See-through (white text) only while the big film is right under the header. If another section comes first
+    // in Site content, or the film hasn't loaded yet, the header stays solid so it can always be read.
     const handleScroll = () => {
       const y = window.scrollY || (lenis ? lenis.scroll : 0) || document.documentElement.scrollTop || 0;
-      setIsScrolled(y > 35);
+      const hero = document.getElementById('hero-section');
+      const overHero = !!hero && hero.getBoundingClientRect().top <= 1;
+      setIsScrolled(y > 35 || !overHero);
     };
 
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll);
+    // The home page's sections load after the header: check again when the page changes.
+    const observer = typeof MutationObserver !== 'undefined' ? new MutationObserver(handleScroll) : null;
+    observer?.observe(document.getElementById('root') || document.body, { childList: true, subtree: true });
 
     if (lenis) {
       lenis.on('scroll', handleScroll);
@@ -57,6 +65,8 @@ export default function BluorngHeader({
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+      observer?.disconnect();
       if (lenis) {
         lenis.off('scroll', handleScroll);
       }
