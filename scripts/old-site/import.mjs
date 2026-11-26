@@ -15,6 +15,8 @@ import { emptyProductForm, emptyVariant, toSavePayload, slugify } from '../../sr
 
 const ARGS = process.argv.slice(2);
 const DRY = ARGS.includes('--dry');
+// --only site: photos, categories, pages, home sections and site text only (no product saves, nothing removed).
+const SITE_ONLY = ARGS.includes('--only') && ARGS[ARGS.indexOf('--only') + 1] === 'site';
 const DRIVE_DIR = ARGS[ARGS.indexOf('--drive') + 1];
 if (!ARGS.includes('--drive') || !DRIVE_DIR || !existsSync(DRIVE_DIR)) throw new Error('Pass --drive <folder with the Drive photos>.');
 
@@ -34,13 +36,13 @@ const COMBOS = {
 };
 const SLUG_OVERRIDE = { 'saudagar-premium-perfume-gift-set-5-x-20-ml-100-ml': 'saudagar-premium-perfume-gift-set' };
 const CATEGORIES = [
-  { slug: 'men', name: 'Men', from: 'mens', image: 'saudagar_perfumers_100ml.png' },
+  { slug: 'men', name: 'Men', from: 'mens', image: 'black_code.png' },
   { slug: 'women', name: 'Women', from: 'womens', image: 'white_code.png' },
-  { slug: 'unisex', name: 'Unisex', from: 'unisex', image: 'ocean_blue.png' },
-  { slug: 'inspired-perfumes', name: 'Inspired Perfumes', from: 'inspired-perfumes', image: 'saudagar_perfumers_50ml.png' },
-  { slug: 'floral-perfumes', name: 'Floral Perfumes', from: 'floral-perfumes', image: 'saudagar_perfumers_30ml.png' },
+  { slug: 'unisex', name: 'Unisex', from: 'unisex', image: 'ocean_blue_3.png' },
+  { slug: 'inspired-perfumes', name: 'Inspired Perfumes', from: 'inspired-perfumes', image: 'ocean_blue_2.png' },
+  { slug: 'floral-perfumes', name: 'Floral Perfumes', from: 'floral-perfumes', image: 'white_code_3.png' },
   { slug: 'new-perfumes', name: 'New Perfumes', from: 'new-perfumes', image: 'combo_pack.png' },
-  { slug: 'signature-fragrances', name: 'Signature Fragrances', image: 'black_code.png', products: ['ocean-blue-perfume', 'white-code-perfume', 'black-code-perfume', 'ice-land'] },
+  { slug: 'signature-fragrances', name: 'Signature Fragrances', image: 'ocean_blue.png', products: ['ocean-blue-perfume', 'white-code-perfume', 'black-code-perfume', 'ice-land'] },
   { slug: 'new-collections', name: 'New Collections', image: 'combo_pack.png', products: Object.keys(COMBOS) },
 ];
 const PRIMARY_ORDER = ['signature-fragrances', 'new-collections', 'inspired-perfumes', 'floral-perfumes', 'new-perfumes', 'men', 'women', 'unisex'];
@@ -306,14 +308,99 @@ function homeSections(img) {
     return { numeral: String(i + 1).padStart(2, '0'), title: def.name, count_label: plural(count(slug), 'product'), image: img(def.image), link: catLink(slug) };
   });
   const byOld = (old) => plans.find((x) => x.old === old).slug;
+  const search = (label) => ({ label, query: label });
   return [
     { section_type: 'hero_video_carousel', label: 'Hero', config: { slides: [], fallback_image: img('combo_pack.png'), fallback_image_mobile: img('saudagar_perfumers_50ml.png'), fallback_alt: 'Saudagar Perfumers', cta_label: 'Shop now', cta_link: { type: 'path', value: '/shop' } } },
     { section_type: 'kinetic_marquee', label: 'Saudagar Perfumers ribbon', config: { items: ['SAUDAGAR PERFUMERS'], speed: 40, reverse: false } },
     { section_type: 'product_carousel', label: 'Our Signature Fragrance', config: { heading: 'Our Signature Fragrance', cta_label: 'View all', cta_link: catLink('signature-fragrances'), source: { mode: 'manual', products: ['ocean-blue-perfume', 'white-code-perfume', 'black-code-perfume', 'ice-land'].map(byOld), limit: 4 } } },
-    { section_type: 'product_showcase', label: 'New Collections', config: { heading: 'New Collections', cta_label: 'View all', cta_link: catLink('new-collections'), source: { mode: 'manual', products: ['saudagar-20ml-x-4-piece-perfume-collection', '3-piece-perfume-combo', 'raksha-bandhan-special-fragrance-combo', 'saudagar-premium-perfume-gift-set-5-x-20-ml-100-ml'].map(byOld), limit: 4 } } },
+    {
+      section_type: 'campaign_banner_animated',
+      label: 'Ocean Blue banner',
+      config: {
+        kicker: 'Saudagar signature',
+        headline: 'Ocean Blue',
+        italic_word: '',
+        subheading: 'Fresh, cool and versatile',
+        text: 'A bright splash of cool mint, crisp green apple and Sicilian bergamot over tonka bean and ambroxan, drying down to vanilla, vetiver and cedar. Made for the office, college, the outdoors and every day.',
+        notes: ['Mint', 'Green Apple', 'Sicilian Bergamot', 'Tonka Bean', 'Ambroxan', 'Vanilla', 'Cedar'],
+        video: '',
+        image: img('ocean_blue_2.png'),
+        primary_cta: { label: 'Shop Ocean Blue', link: { type: 'product', value: byOld('ocean-blue-perfume') } },
+        secondary_cta: { label: 'Signature Fragrances', link: catLink('signature-fragrances') },
+        badge: 'Extrait de Parfum',
+      },
+    },
+    { section_type: 'product_showcase', label: 'New Collections', config: { heading: 'New Collections', text: 'Gift sets and combos of Saudagar perfumes, boxed and ready to give.', cta_label: 'View all', cta_link: catLink('new-collections'), source: { mode: 'manual', products: ['saudagar-20ml-x-4-piece-perfume-collection', '3-piece-perfume-combo', 'raksha-bandhan-special-fragrance-combo', 'saudagar-premium-perfume-gift-set-5-x-20-ml-100-ml'].map(byOld), limit: 4 } } },
     { section_type: 'category_tiles', label: 'Categories', config: { heading: 'Shop by category', view_all_label: 'Shop all', view_all_link: { type: 'path', value: '/shop' }, cta_label: 'Shop now', items: tiles } },
-    { section_type: 'product_carousel', label: 'Floral Perfumes', config: { heading: 'Floral Perfumes', cta_label: 'View all', cta_link: catLink('floral-perfumes'), source: { mode: 'category', category: 'floral-perfumes', limit: 12 } } },
-    { section_type: 'product_carousel', label: 'Inspired Perfumes', config: { heading: 'Inspired Perfumes', cta_label: 'View all', cta_link: catLink('inspired-perfumes'), source: { mode: 'category', category: 'inspired-perfumes', limit: 48 } } },
+    {
+      section_type: 'product_grid_tabs',
+      label: 'For him, for her, unisex',
+      config: {
+        heading: 'Find your perfume',
+        text: 'Every perfume in 30, 50 and 100 ml, sorted by who it suits.',
+        tabs: [
+          { label: 'For him', source: { mode: 'filter', attrs: { gender: ['masculine'] }, limit: 48 } },
+          { label: 'For her', source: { mode: 'filter', attrs: { gender: ['feminine'] }, limit: 48 } },
+          { label: 'Unisex', source: { mode: 'filter', attrs: { gender: ['unisex'] }, limit: 72 } },
+        ],
+      },
+    },
+    { section_type: 'product_carousel', label: 'Floral Perfumes', config: { heading: 'Floral Perfumes', text: 'Traditional Indian flowers: jasmine, champa, kewda, paarijatham, rajanigandha and rose.', cta_label: 'View all', cta_link: catLink('floral-perfumes'), source: { mode: 'category', category: 'floral-perfumes', limit: 12 } } },
+    {
+      section_type: 'gallery_tiles',
+      label: 'Three picture tiles',
+      config: {
+        heading: 'Explore Saudagar',
+        tiles: [
+          { kicker: plural(count('inspired-perfumes'), 'perfume'), title: 'Inspired Perfumes', subtitle: 'Our take on the world’s best-known fragrances', image: img('saudagar_perfumers_50ml.png'), link: catLink('inspired-perfumes') },
+          { kicker: plural(count('floral-perfumes'), 'perfume'), title: 'Floral Perfumes', subtitle: 'Jasmine, champa, kewda and more', image: img('saudagar_perfumers_30ml_2.png'), link: catLink('floral-perfumes') },
+          { kicker: plural(count('new-collections'), 'set'), title: 'Gift Sets & Combos', subtitle: 'Boxed sets of Saudagar perfumes', image: img('combo_pack.png'), link: catLink('new-collections') },
+        ],
+      },
+    },
+    { section_type: 'product_carousel', label: 'Inspired Perfumes', config: { heading: 'Inspired Perfumes', cta_label: 'View all', cta_link: catLink('inspired-perfumes'), source: { mode: 'category', category: 'inspired-perfumes', limit: 120 } } },
+    { section_type: 'kinetic_marquee', label: 'Categories ribbon', config: { items: ['INSPIRED PERFUMES', 'FLORAL PERFUMES', 'SIGNATURE FRAGRANCES', 'GIFT SETS AND COMBOS', 'EXTRAIT DE PARFUM'], speed: 36, reverse: true } },
+    {
+      section_type: 'editorial_story',
+      label: 'About Saudagar',
+      config: {
+        statement: 'Inspired perfumes, Indian florals and our own signatures, made in Anakapalle.',
+        intro: 'Saudagar Perfumers makes long-lasting perfumes in 30, 50 and 100 ml: perfumes inspired by the world’s best-known fragrances, traditional Indian florals, and Saudagar originals like Ocean Blue, White Code and Black Code.',
+        atelier: { kicker: 'Signature', title: 'Ocean Blue, White Code, Black Code', image: img('ocean_blue_3.png'), link: catLink('signature-fragrances') },
+        stat: { kicker: 'The range', number: `${Math.floor(plans.length / 10) * 10}+`, caption: 'perfumes, sets and combos' },
+        sourcing: { kicker: 'Floral perfumes', title: 'Jasmine, champa, kewda and rajanigandha', image: img('saudagar_perfumers_30ml_2.png') },
+        craft: { kicker: 'Free samples', text: 'Every 50 ml of perfume in your order earns a free 5 ml sample of your choice.' },
+        entries_heading: 'Shop by category',
+        view_all_label: 'Shop all',
+        view_all_link: { type: 'path', value: '/shop' },
+        entries: ['men', 'women', 'unisex'].map((slug) => ({ title: CATEGORIES.find((d) => d.slug === slug).name, note: plural(count(slug), 'perfume'), image: img(CATEGORIES.find((d) => d.slug === slug).image), link: catLink(slug) })),
+      },
+    },
+    // Switched off until there are real reviews and real videos (Content → Testimonials / Reels).
+    { section_type: 'testimonials', label: 'Testimonials', visible: false, config: {} },
+    { section_type: 'instagram_reels', label: 'Instagram reels', visible: false, config: { heading: 'Saudagar on Instagram', follow_label: 'Follow us' } },
+    {
+      section_type: 'seo_accordion',
+      label: 'About & popular searches',
+      config: {
+        heading: 'Saudagar Perfumers',
+        intro: '<p>Saudagar Perfumers is a perfume house in Anakapalle, Andhra Pradesh. Every perfume comes in 30, 50 and 100 ml, and every 50 ml in your order earns a free 5 ml sample.</p>',
+        more: [
+          '<h3>Inspired perfumes</h3><p>Our inspired perfumes are our own takes on famous fragrances such as Sauvage, Aventus, Baccarat Rouge 540, Khamrah and Oud Wood. Each product page lists the perfume it is inspired by and its top, heart and base notes.</p>',
+          '<h3>Floral perfumes</h3><p>Traditional Indian flowers in perfume form: forest jasmine, javadhu, kewda, paarijatham, champa, rose and rajanigandha.</p>',
+          '<h3>Gift sets and combos</h3><p>Boxed sets of Saudagar perfumes, including the Premium Perfume Gift Set of five 20 ml bottles.</p>',
+          '<h3>Delivery</h3><p>Orders are processed within 1–2 business days and delivered within 2–7 business days across India.</p>',
+        ].join(''),
+        read_more_label: 'Read more',
+        read_less_label: 'Read less',
+        searches_heading: 'Popular searches',
+        search_tabs: [
+          { label: 'Inspired by', terms: ['Sauvage', 'Creed Aventus', 'BR540', 'Khamarah', 'Oud Wood', 'Good Girl', 'Jadore', 'Eros'].map(search) },
+          { label: 'Florals', terms: ['Jasmine', 'Rose', 'Champa', 'Kewda', 'Tuberose', 'Paarijatham'].map(search) },
+          { label: 'Notes', terms: ['Oud', 'Musk', 'Vanilla', 'Saffron', 'Sandalwood', 'Bergamot', 'Amber', 'Leather'].map(search) },
+        ],
+      },
+    },
   ];
 }
 
@@ -324,12 +411,14 @@ function siteBlocks(current, img) {
   return {
     brand: { ...current.brand, name: 'Saudagar Perfumers', legal_name: 'Saudagar Perfumers', address: SITE.address, support_email: SITE.email, support_hours: '', instagram: '', youtube: '', boutiques_message: '' },
     announcement_bar: { ...current.announcement_bar, tags: [], bulletins: [], bulletins_heading: '' },
+    // Gift sets and combos have no bottle size: the premium 100 ml bottle flies into the bag for them (owner, 26 Nov).
+    product_page: { ...current.product_page, set_fly_image: img('saudagar_perfumers_100ml.png') },
     seo: { ...current.seo, default_title: 'Saudagar Perfumers', default_description: 'Saudagar Perfumers, Anakapalle: inspired perfumes, Indian floral perfumes, Saudagar signature fragrances and gift sets in 30, 50 and 100 ml.', og_image: img('combo_pack.png') },
     search: { ...current.search, popular: ['Gift Set', 'Kasturi', 'Sabaya', 'Oud Sheikha', 'The Moon'], popular_heading: 'Popular products' },
     mega_nav: {
       ...current.mega_nav,
       items: [
-        { numeral: '01', title: 'Shop all', subtitle: 'Every Saudagar perfume', count_label: plural(plans.length, 'product'), concentration: '', image: img('saudagar_perfumers_50ml.png'), video: '', link: { type: 'path', value: '/shop' } },
+        { numeral: '01', title: 'All perfumes', subtitle: 'Every Saudagar perfume, set and combo', count_label: plural(plans.length, 'product'), concentration: '', image: img('combo_pack.png'), video: '', link: { type: 'path', value: '/shop' } },
         ...navCats.map((slug, i) => {
           const def = CATEGORIES.find((d) => d.slug === slug);
           return { numeral: String(i + 2).padStart(2, '0'), title: def.name, subtitle: '', count_label: plural(count(slug), 'product'), concentration: '', image: img(def.image), video: '', link: catLink(slug) };
@@ -339,7 +428,7 @@ function siteBlocks(current, img) {
       accords_heading: '',
       quick_cards: [],
       side_cells: [
-        { link: catLink('signature-fragrances'), badge: '', image: img('ocean_blue.png'), video: '', title: 'Our Signature Fragrance', subtitle: 'Ocean Blue, White Code, Black Code', cta_label: 'Explore →' },
+        { link: catLink('signature-fragrances'), badge: '', image: img('ocean_blue.png'), video: '', title: 'Signature', subtitle: 'Ocean Blue, White Code, Black Code', cta_label: 'Explore →' },
         { link: catLink('new-collections'), badge: '', image: img('combo_pack.png'), video: '', title: 'New Collections', subtitle: 'Gift sets and combos', cta_label: 'Explore →' },
       ],
       secondary_links: [
@@ -351,7 +440,7 @@ function siteBlocks(current, img) {
       feature_badge_image: 'Saudagar Perfumers',
       feature_badge_video: 'Saudagar Perfumers',
       feature_cta_prefix: 'Shop',
-      feature_secondary_cta: { link: { type: 'path', value: '/shop' }, label: 'Shop all' },
+      feature_secondary_cta: { link: catLink('new-collections'), label: 'Gift sets' },
     },
     mobile_drawer: {
       ...current.mobile_drawer,
@@ -401,27 +490,64 @@ function siteBlocks(current, img) {
 }
 
 // ------------------------------------------------------------------ photos: WebP like an admin upload (long edge ≤ 2400 px, quality 0.82)
+// fit: the plain bottle photos have a transparent background and a lot of empty space (the 100 ml one is wide), so they
+// are trimmed to the bottle and set in the same 4:5 frame. Every size then shows at the same scale on cards and pages.
 async function convertAll(files) {
   const browser = await chromium.launch();
   const page = await browser.newPage();
   const out = new Map();
   for (const f of files) {
     const b64 = f.bytes.toString('base64');
-    const r = await page.evaluate(async ({ b64, mime }) => {
+    const r = await page.evaluate(async ({ b64, mime, fit }) => {
       const bin = Uint8Array.from(atob(b64), (ch) => ch.charCodeAt(0));
       const bmp = await createImageBitmap(new Blob([bin], { type: mime }));
-      const long = Math.max(bmp.width, bmp.height);
-      const scale = long > 2400 ? 2400 / long : 1;
+      let source = bmp;
+      let sx = 0, sy = 0, sw = bmp.width, sh = bmp.height;
+      if (fit) {
+        const probe = document.createElement('canvas');
+        probe.width = bmp.width;
+        probe.height = bmp.height;
+        const pctx = probe.getContext('2d');
+        pctx.drawImage(bmp, 0, 0);
+        const { data } = pctx.getImageData(0, 0, bmp.width, bmp.height);
+        let minX = bmp.width, minY = bmp.height, maxX = -1, maxY = -1;
+        for (let y = 0; y < bmp.height; y++) {
+          for (let x = 0; x < bmp.width; x++) {
+            if (data[(y * bmp.width + x) * 4 + 3] > 12) {
+              if (x < minX) minX = x;
+              if (x > maxX) maxX = x;
+              if (y < minY) minY = y;
+              if (y > maxY) maxY = y;
+            }
+          }
+        }
+        if (maxX > minX && maxY > minY) {
+          sx = minX; sy = minY; sw = maxX - minX + 1; sh = maxY - minY + 1;
+          source = probe;
+        }
+      }
       const canvas = document.createElement('canvas');
-      canvas.width = Math.round(bmp.width * scale);
-      canvas.height = Math.round(bmp.height * scale);
-      canvas.getContext('2d').drawImage(bmp, 0, 0, canvas.width, canvas.height);
+      if (fit) {
+        // Bottle fills 86% of a 4:5 frame, centred.
+        const frameH = Math.max(sh / 0.86, (sw / 0.86) * 1.25);
+        const scale = Math.min(1, 1600 / frameH);
+        canvas.height = Math.round(frameH * scale);
+        canvas.width = Math.round(canvas.height * 0.8);
+        const dw = sw * scale, dh = sh * scale;
+        canvas.getContext('2d').drawImage(source, sx, sy, sw, sh, (canvas.width - dw) / 2, (canvas.height - dh) / 2, dw, dh);
+      } else {
+        const long = Math.max(bmp.width, bmp.height);
+        const scale = long > 2400 ? 2400 / long : 1;
+        canvas.width = Math.round(bmp.width * scale);
+        canvas.height = Math.round(bmp.height * scale);
+        canvas.getContext('2d').drawImage(bmp, 0, 0, canvas.width, canvas.height);
+      }
       const blob = await new Promise((res) => canvas.toBlob(res, 'image/webp', 0.82));
       const buf = new Uint8Array(await blob.arrayBuffer());
       let s = '';
       for (let i = 0; i < buf.length; i += 0x8000) s += String.fromCharCode(...buf.subarray(i, i + 0x8000));
       return { b64: btoa(s), width: canvas.width, height: canvas.height };
-    }, { b64, mime: f.mime });
+    }, { b64, mime: f.mime, fit: !!f.fit });
     out.set(f.key, { ...f, webp: Buffer.from(r.b64, 'base64'), width: r.width, height: r.height });
   }
   await browser.close();
@@ -438,7 +564,9 @@ for (const need of ['combo_pack.png', 'black_code.png', ...Object.values(DRIVE_B
 const oldUrls = [...new Set(snap.products.flatMap((p) => [...p.images, ...p.sizes.map((s) => s.image).filter(Boolean)]))];
 
 const storagePath = (key) => `images/2026/11/${key}.webp`;
-const keyDrive = (f) => `drive-${slugify(f.replace(/\.[^.]+$/, ''))}`;
+// Plain bottle photos are trimmed to the bottle (see convertAll); their originals stay in the library too.
+const FIT = (f) => /^saudagar_perfumers_/.test(f);
+const keyDrive = (f, original = false) => `drive-${slugify(f.replace(/\.[^.]+$/, ''))}${FIT(f) && !original ? '-fit' : ''}`;
 const plainOldKey = (u) => `old-site-${slugify(u.split('/uploads/')[1].replace(/\.[^.]+$/, ''))}`;
 // Two files that differ only by type (50ml.png and 50ml.webp) keep the type in their name so neither replaces the other.
 const clashing = new Set(oldUrls.map(plainOldKey).filter((k, i, all) => all.indexOf(k) !== i));
@@ -453,7 +581,7 @@ const preview = {
   products: plans.map((x) => ({ ...x, c: undefined, media: x.media.map((m) => ({ ...m, url: urlOf(m) })) })),
   pages: PAGES,
   home: homeSections(img),
-  blocks: siteBlocks({ brand: {}, announcement_bar: {}, seo: {}, search: {}, mega_nav: {}, mobile_drawer: {}, footer: {}, ...current }, img),
+  blocks: siteBlocks({ brand: {}, announcement_bar: {}, seo: {}, search: {}, mega_nav: {}, mobile_drawer: {}, footer: {}, product_page: {}, ...current }, img),
   redirects,
   library: { drive: driveFiles.length, old: oldUrls.length },
 };
@@ -482,7 +610,12 @@ if (!admin) throw new Error('No admin user found.');
 const existing = new Set((await runSql(`select path from public.media_assets where bucket = 'media'`)).map((r) => r.path));
 
 const toFetch = [];
-for (const f of driveFiles) if (!existing.has(storagePath(keyDrive(f)))) toFetch.push({ key: keyDrive(f), name: f, mime: mimeOf(f), bytes: readFileSync(join(DRIVE_DIR, f)), alt: f.replace(/\.[^.]+$/, '').replace(/_/g, ' ') });
+for (const f of driveFiles) {
+  const alt = f.replace(/\.[^.]+$/, '').replace(/_/g, ' ');
+  const bytes = readFileSync(join(DRIVE_DIR, f));
+  if (!existing.has(storagePath(keyDrive(f, true)))) toFetch.push({ key: keyDrive(f, true), name: f, mime: mimeOf(f), bytes, alt });
+  if (FIT(f) && !existing.has(storagePath(keyDrive(f)))) toFetch.push({ key: keyDrive(f), name: f.replace(/\.[^.]+$/, '-fitted.png'), mime: mimeOf(f), bytes, alt: `${alt} (trimmed for product photos)`, fit: true });
+}
 for (const u of oldUrls) {
   if (existing.has(storagePath(keyOld(u)))) continue;
   const res = await fetch(u, { headers: { 'User-Agent': 'Mozilla/5.0 (store content import)' } });
@@ -543,6 +676,14 @@ for (const name of [...new Set(plans.flatMap((x) => x.notes.map((n) => n.name)))
 }
 console.log(`Notes library: ${notes.length} notes.`);
 
+// Inspired perfumes read "Inspired by Sauvage by Dior."; general descriptions start lower-case after "Inspired by".
+function inspirationLine(x) {
+  if (!x.categories.includes('inspired-perfumes')) return x.c.insp;
+  // "Classic Middle Eastern artisanal oud." is a description; "The Moon by Frédéric Malle." is a perfume name.
+  const general = /^(Classic|Modern|Traditional|The|Rich|Luxury|Heritage|Sweet) /.test(x.c.insp) && !x.c.insp.includes(" by ");
+  return `Inspired by ${general ? x.c.insp[0].toLowerCase() + x.c.insp.slice(1) : x.c.insp}`;
+}
+
 // 4. products, through save_product as the admin
 const settings = Object.fromEntries((await runSql(`select key, value from public.settings where key like 'product_defaults.%' or key = 'samples.sample_size_ml'`)).map((r) => [r.key, r.value]));
 const defaults = Object.fromEntries(Object.entries(settings).filter(([k, v]) => k.startsWith('product_defaults.') && v !== null && v !== '').map(([k, v]) => [k.replace('product_defaults.', ''), String(v)]));
@@ -550,7 +691,7 @@ const sampleMl = Number(settings['samples.sample_size_ml'] ?? 5);
 const claims = `select set_config('request.jwt.claims', ${sql(JSON.stringify({ sub: admin, role: 'authenticated' }))}, false);`;
 
 // The product is looked up again on every attempt, so a save whose answer was lost is updated, never duplicated.
-for (const x of plans) await withRetry(() => saveProduct(x));
+if (!SITE_ONLY) for (const x of plans) await withRetry(() => saveProduct(x));
 
 async function saveProduct(x) {
   const found = (await runSql(`select id from public.products where slug = ${sql(x.slug)}`))[0];
@@ -568,7 +709,7 @@ async function saveProduct(x) {
     badge: x.categories.includes('new-perfumes') ? 'NEW' : '',
     perfumer: PERFUMER,
     launch_year: String(LAUNCH_YEAR),
-    inspiration: `<p>${esc(x.c.insp)}</p>`,
+    inspiration: `<p>${esc(inspirationLine(x))}</p>`,
     how_to_wear: `<p>${esc(x.c.wear)}</p>`,
     seo_title: `${x.name} | Saudagar Perfumers`,
     seo_description: x.c.short.slice(0, 160),
@@ -605,6 +746,7 @@ async function saveProduct(x) {
 }
 
 // 5. remove our old content
+if (!SITE_ONLY) {
 const keepSlugs = `array[${plans.map((x) => sql(x.slug)).join(',')}]::text[]`;
 await runSql(`
   update public.product_variants set in_sample_pool = false
@@ -627,14 +769,16 @@ await runSql(`
   delete from public.website_sections where page_id in (select id from public.pages where slug in ('home', 'story', 'boutiques'));
   update public.pages set is_published = false where slug = 'story';`);
 console.log('Old content removed.');
+}
 
 // 6. pages, home page, site text, settings
 for (const [slug, p] of Object.entries(PAGES)) {
   await runSql(`update public.pages set title = ${sql(p.title)}, body = ${sql(p.body)}, layout = 'rich_text', is_published = true, seo_title = null, seo_description = null where slug = ${sql(slug)}`);
 }
 const home = (await runSql(`select id from public.pages where slug = 'home'`))[0].id;
+await runSql(`delete from public.website_sections where page_id = ${sql(home)}`);
 for (const [i, s] of homeSections(img).entries()) {
-  await runSql(`insert into public.website_sections (page_id, section_type, label, position, is_visible, config) values (${sql(home)}, ${sql(s.section_type)}, ${sql(s.label)}, ${i}, true, ${json(s.config)})`);
+  await runSql(`insert into public.website_sections (page_id, section_type, label, position, is_visible, config) values (${sql(home)}, ${sql(s.section_type)}, ${sql(s.label)}, ${i}, ${s.visible === false ? 'false' : 'true'}, ${json(s.config)})`);
 }
 for (const [key, value] of Object.entries(siteBlocks(current, img))) {
   await runSql(`update public.site_blocks set value = ${json(value)}, updated_at = now() where key = ${sql(key)}`);
