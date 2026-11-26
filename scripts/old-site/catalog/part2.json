@@ -1,0 +1,319 @@
+{
+  "ssrk": {
+    "name": "SSRK",
+    "short": "A signature woody layering: woody-spicy freshness over creamy sandalwood and clean florals, on cedar and soft musk.",
+    "insp": "The famous layering of Diptyque Tam Dao and Dunhill Icon.",
+    "wear": "Versatile for daily wear, work and evenings. Spray on the neck and wrists.",
+    "n": [["Woody Spices", "Aromatic Notes"], ["Sandalwood", "Clean Florals"], ["Cedarwood", "Musk", "Warm Woods"]],
+    "fam": "woody", "acc": {"woody": 90, "spicy": 40, "floral": 30},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "daily,evening"
+  },
+  "khamrah-qahwa": {
+    "name": "Khamrah Qahwa",
+    "short": "A cozy coffee gourmand: cinnamon, cardamom and ginger over praline and candied fruits, on coffee and vanilla.",
+    "insp": "Khamrah Qahwa by Lattafa Perfumes.",
+    "wear": "For coffee lovers: cold weather, evening gatherings and cozy nights out.",
+    "n": [["Cinnamon", "Cardamom", "Ginger"], ["Praline", "Candied Fruits", "White Flowers"], ["Coffee", "Vanilla", "Tonka Bean", "Benzoin", "Musk"]],
+    "fam": "amber", "acc": {"amber": 90, "spicy": 70},
+    "p": "beastmode/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night"
+  },
+  "vanity-femme": {
+    "name": "Vanity Femme",
+    "short": "A graceful floral fruity: bitter orange and peach, rose, magnolia and jasmine, on vanilla, musk and amber.",
+    "insp": "Vanity Femme Essence by Armaf.",
+    "wear": "Fresh and feminine. For daytime, the office and spring or summer outings.",
+    "n": [["Bitter Orange", "Peach", "Orange Blossom", "Freesia"], ["Rose", "Magnolia", "Jasmine"], ["Vanilla", "Musk", "Amber"]],
+    "fam": "floral", "acc": {"floral": 90, "citrus": 50, "amber": 40},
+    "p": "moderate/long/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,summer"
+  },
+  "good-girl": {
+    "name": "Good Girl",
+    "short": "A daring amber floral: almond, coffee and bergamot, tuberose and jasmine sambac, on tonka, cocoa and vanilla.",
+    "insp": "Good Girl by Carolina Herrera.",
+    "wear": "Striking and magnetic. For evenings, date nights and special occasions.",
+    "n": [["Almond", "Coffee", "Bergamot", "Lemon"], ["Tuberose", "Jasmine Sambac", "Orange Blossom", "Orris", "Bulgarian Rose"], ["Tonka Bean", "Cocoa", "Vanilla", "Praline", "Sandalwood", "Amber", "Musk", "Patchouli"]],
+    "fam": "amber", "acc": {"amber": 80, "floral": 80, "woody": 30},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night"
+  },
+  "a-blue": {
+    "name": "Ajmal Blue",
+    "short": "A fresh aquatic-woody: watermelon, lavender and bergamot, lotus and jasmine, on musk, sandalwood and amber.",
+    "insp": "Blu by Ajmal.",
+    "wear": "Clean and invigorating. For daily wear, the office and warm summer days.",
+    "n": [["Watermelon", "Lavender", "Bergamot"], ["Lotus", "Jasmine"], ["Musk", "Sandalwood", "Amber"]],
+    "fam": "aquatic", "acc": {"aquatic": 80, "citrus": 50, "woody": 50, "floral": 30},
+    "p": "moderate/moderate/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,summer"
+  },
+  "rose-oud": {
+    "name": "Rose Oud",
+    "short": "A dramatic floral oud: labdanum, crimson rose, saffron and patchouli on agarwood, sandalwood and cedar.",
+    "insp": "Rose Oud by Maison Alhambra.",
+    "wear": "Luxurious and captivating. For evenings, formal gatherings and special occasions.",
+    "n": [["Labdanum"], ["Rose", "Saffron", "Patchouli"], ["Oud", "Sandalwood", "Cedarwood"]],
+    "fam": "oud", "acc": {"oud": 90, "floral": 70, "spicy": 50, "amber": 40},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,festival"
+  },
+  "wisal-dahab": {
+    "name": "Wisal Dahab",
+    "short": "A golden floral-woody musk: pear, apple and peach, rose, orchid and jasmine, on sandalwood, musk and cedar.",
+    "insp": "Wisal Dhahab by Ajmal.",
+    "wear": "Made to make a grand impression. For celebrations and evenings.",
+    "n": [["Pear", "Apple", "Peach", "Grapefruit", "Mandarin Orange"], ["Rose", "Orchid", "Jasmine", "Geranium"], ["Sandalwood", "Musk", "Cedarwood", "Patchouli"]],
+    "fam": "floral", "acc": {"floral": 80, "woody": 60, "citrus": 40},
+    "p": "intense/long/strong", "sea": "all", "tod": "day,night", "occ": "festival,evening"
+  },
+  "jaguar-black": {
+    "name": "Jaguar Black",
+    "short": "A sleek aromatic-fruity: green apple and mandarin, sea spray, nutmeg and black tea, on white musk and sandalwood.",
+    "insp": "Classic Black by Jaguar.",
+    "wear": "Energetic yet polished. For daily wear, the office and evening outings.",
+    "n": [["Green Apple", "Mandarin Orange", "Bitter Orange"], ["Sea Spray", "Nutmeg", "Cardamom", "Orange Blossom", "Black Tea"], ["White Musk", "Sandalwood", "Cedarwood", "Vetiver", "Tonka Bean"]],
+    "fam": "woody", "acc": {"woody": 70, "aquatic": 50, "spicy": 50, "citrus": 50},
+    "p": "moderate/long/moderate", "sea": "spring,summer,autumn", "tod": "day,night", "occ": "daily,evening"
+  },
+  "bomb-shell": {
+    "name": "Bombshell",
+    "short": "A glamorous fruity floral: passionfruit, grapefruit and pineapple, peony and vanilla orchid, on white musk.",
+    "insp": "Bombshell by Victoria’s Secret.",
+    "wear": "Playful and radiant. A signature for daytime, casual hangouts and warm sunny days.",
+    "n": [["Passionfruit", "Grapefruit", "Pineapple", "Strawberry", "Tangerine"], ["Peony", "Vanilla Orchid", "Red Berries", "Jasmine", "Lily of the Valley"], ["White Musk", "Woody Notes", "Oakmoss"]],
+    "fam": "floral", "acc": {"floral": 80, "citrus": 60, "woody": 30},
+    "p": "moderate/long/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,summer"
+  },
+  "ameer-al-oud-al-oud": {
+    "name": "Ameer Al Oud",
+    "short": "A comforting woody gourmand: agarwood and herbs over vanilla, sugar and dark chocolate, on amber and labdanum.",
+    "insp": "Ameer Al Oudh Intense Oud by Lattafa Perfumes.",
+    "wear": "Rich and enveloping. For cold weather, evening occasions and intimate gatherings.",
+    "n": [["Oud", "Woody Notes", "Herbal Notes"], ["Vanilla", "Sugar", "Dark Chocolate"], ["Oud", "Amber", "Labdanum", "Smoky Notes"]],
+    "fam": "oud", "acc": {"oud": 80, "amber": 80, "woody": 60},
+    "p": "beastmode/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night"
+  },
+  "eros": {
+    "name": "Eros",
+    "short": "A passionate aromatic fougère: mint, green apple and lemon, tonka and ambroxan, on vanilla, cedar and vetiver.",
+    "insp": "Eros by Versace.",
+    "wear": "Magnetic and vibrant. The ultimate fragrance for parties, nights out and dates.",
+    "n": [["Mint", "Green Apple", "Italian Lemon"], ["Tonka Bean", "Ambroxan", "Geranium"], ["Madagascar Vanilla", "Virginian Cedar", "Atlas Cedar", "Vetiver", "Oakmoss"]],
+    "fam": "fougere", "acc": {"amber": 70, "citrus": 60, "woody": 50},
+    "p": "intense/very-long/strong", "sea": "autumn,winter,spring", "tod": "night", "occ": "evening,date-night"
+  },
+  "out-lander": {
+    "name": "Out Lander",
+    "short": "A magnetic amber woody: frankincense, cardamom and citrus, a spicy patchouli-saffron heart, on oud, benzoin and amber.",
+    "insp": "Outlands by Amouage.",
+    "wear": "Mysterious and authoritative. For formal evenings, cold weather and special events.",
+    "n": [["Frankincense", "Cardamom", "Elemi", "Lemon", "Bergamot", "Sichuan Pepper"], ["Patchouli", "Anise", "Coriander", "Cumin", "Saffron", "Rose", "Orange Blossom"], ["Oud", "Benzoin", "Amber", "Vanilla", "Opoponax", "Birch", "Labdanum", "Musk"]],
+    "fam": "amber", "acc": {"amber": 80, "spicy": 70, "oud": 60, "woody": 60},
+    "p": "beastmode/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,meditative"
+  },
+  "soul-of-bali": {
+    "name": "Soul of Bali",
+    "short": "An exotic woody-spicy: mango, pineapple and ginger, an aquatic spice heart, on sandalwood, ambergris and cypriol.",
+    "insp": "Soul of Bali by Swiss Arabian.",
+    "wear": "Adventurous and lingering. For warm weather, holidays and whenever you want a bold signature.",
+    "n": [["Mango", "Pineapple", "Rhubarb", "Bergamot", "Ginger", "Pink Pepper"], ["Aquatic Notes", "Saffron", "Cardamom", "Nutmeg", "Frankincense", "Rosewood"], ["Sandalwood", "Ambergris", "Musk", "Cypriol"]],
+    "fam": "spicy", "acc": {"spicy": 80, "woody": 60, "citrus": 50, "aquatic": 40},
+    "p": "intense/long/strong", "sea": "spring,summer", "tod": "day,night", "occ": "summer,daily"
+  },
+  "hibiscus-mahajad": {
+    "name": "Hibiscus Mahajad",
+    "short": "An opulent floral oriental: hibiscus tea, spearmint and cinnamon, Damask rose and leather, on vanilla and amber.",
+    "insp": "Hibiscus Mahajád by Maison Crivelli.",
+    "wear": "Extravagant and long lasting. For formal events, evenings and cold weather.",
+    "n": [["Hibiscus Tea", "Spearmint", "Cassis", "Cinnamon"], ["Damask Rose", "Leather", "Floral Notes"], ["Vanilla", "Amber", "Cedarwood", "Musk"]],
+    "fam": "floral", "acc": {"floral": 80, "amber": 70, "leather": 40, "spicy": 40},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening"
+  },
+  "auram": {
+    "name": "Auram",
+    "short": "A radiant floral fruity: raspberry and lemon, gardenia, orange blossom and jasmine, on powdery vanilla and musk.",
+    "insp": "Aurum by Ajmal.",
+    "wear": "Highly adaptable: daily wear, spring and summer days, and romantic evenings.",
+    "n": [["Raspberry", "Lemon"], ["Fruity Notes", "Gardenia", "Orange Blossom", "Jasmine", "Spices"], ["Powdery Notes", "Vanilla", "Musk", "Amber", "Woody Notes"]],
+    "fam": "floral", "acc": {"floral": 80, "amber": 50, "citrus": 40},
+    "p": "moderate/long/moderate", "sea": "spring,summer", "tod": "day,night", "occ": "daily,date-night"
+  },
+  "freeze": {
+    "name": "Freeze",
+    "short": "An icy citrus-mint: spearmint, lemon zest and grapefruit with a frosted snow accord, tea and ginger, on amber and cedar.",
+    "insp": "Freeze by Riiff’s Perfumes.",
+    "wear": "Intensely refreshing. For hot summer days, the gym, sports and energetic daytime wear.",
+    "n": [["Spearmint", "Lemon Zest", "Calabrian Bergamot", "Grapefruit", "Snow Accord"], ["Ice Accord", "Tea", "Ginger", "Sage"], ["Amber", "Peony", "Cedarwood"]],
+    "fam": "citrus", "acc": {"citrus": 80, "aquatic": 70, "woody": 30},
+    "p": "moderate/moderate/moderate", "sea": "summer,spring", "tod": "day", "occ": "summer,daily"
+  },
+  "lattafa-musamam": {
+    "name": "Lattafa Musamam",
+    "short": "A dark oriental woody: saffron, mandarin and lavender, amber wood and cedar, on akigalawood, incense and labdanum.",
+    "insp": "Musamam by Lattafa Perfumes.",
+    "wear": "Dark and sophisticated. For evenings, formal gatherings and cold weather.",
+    "n": [["Saffron", "Italian Mandarin", "Lavender"], ["Amber Wood", "Virginia Cedar", "Geranium"], ["Akigalawood", "Incense", "Labdanum"]],
+    "fam": "woody", "acc": {"woody": 80, "spicy": 60, "amber": 60},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening"
+  },
+  "oud-maracuja-xl": {
+    "name": "Oud Maracuja XL",
+    "short": "A fruity leather oud: passion fruit, saffron and Turkish rose over agarwood and patchouli, on leather and amber.",
+    "insp": "Oud Maracujá by Maison Crivelli.",
+    "wear": "Built for projection. For high-end events, cold weather and evening wear.",
+    "n": [["Passion Fruit", "Fruity Notes", "Saffron", "Turkish Rose"], ["Oud", "Benzoin", "Patchouli Leaf"], ["Leather", "Akigalawood", "Amber", "Vanilla", "Labdanum"]],
+    "fam": "leather", "acc": {"leather": 80, "oud": 70, "amber": 50, "citrus": 40},
+    "p": "beastmode/very-long/enormous", "sea": "autumn,winter", "tod": "night", "occ": "evening,festival"
+  },
+  "terre-de-hermes": {
+    "name": "Terre de Hermes",
+    "short": "An earthy woody citrus: orange and grapefruit, pepper and mineral flint, on vetiver, cedar and patchouli.",
+    "insp": "Terre d’Hermès by Hermès.",
+    "wear": "Refined and timeless. For business, formal occasions and everyday signature wear.",
+    "n": [["Orange", "Grapefruit"], ["Pepper", "Pelargonium", "Flint"], ["Vetiver", "Cedarwood", "Patchouli", "Benzoin"]],
+    "fam": "woody", "acc": {"woody": 80, "citrus": 70, "spicy": 50},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day", "occ": "daily"
+  },
+  "creed-y-king": {
+    "name": "Creed Y King",
+    "short": "A fiery fresh spicy: pink pepper, peppermint and citrus, lavender and rose, on vetiver, cedar and tonka.",
+    "insp": "Viking by Creed.",
+    "wear": "Bold and confident. For daytime, business settings and cool-weather outings.",
+    "n": [["Pink Pepper", "Peppermint", "Citrus"], ["Lavender", "Rose"], ["Vetiver", "Cedarwood", "Tonka Bean"]],
+    "fam": "woody", "acc": {"spicy": 80, "woody": 70, "citrus": 50},
+    "p": "intense/long/strong", "sea": "autumn,winter,spring", "tod": "day", "occ": "daily,evening"
+  },
+  "gucci-guilty-black": {
+    "name": "Gucci Guilty Black",
+    "short": "A dark aromatic fougère: lavender and coriander, green notes, orange blossom and neroli, on patchouli and cedar.",
+    "insp": "Gucci Guilty Black Pour Homme by Gucci.",
+    "wear": "Versatile and magnetic. For nightlife, evening dates and stylish daily wear.",
+    "n": [["Lavender", "Coriander"], ["Green Notes", "Orange Blossom", "Neroli"], ["Patchouli", "Cedarwood"]],
+    "fam": "fougere", "acc": {"woody": 60, "floral": 50, "spicy": 40},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "night", "occ": "evening,date-night,daily"
+  },
+  "creed-aventus": {
+    "name": "Creed Aventus",
+    "short": "A legendary fruity chypre: bergamot, blackcurrant and apple, pineapple and jasmine, on smoky birch, musk and oakmoss.",
+    "insp": "Aventus by Creed.",
+    "wear": "Commanding and long lasting. For daily signature wear, business and formal celebrations.",
+    "n": [["Bergamot", "Blackcurrant", "Apple", "Lemon", "Pink Pepper"], ["Pineapple", "Patchouli", "Moroccan Jasmine"], ["Birch", "Musk", "Oakmoss", "Cedarwood", "Ambroxan"]],
+    "fam": "woody", "acc": {"woody": 80, "citrus": 70, "leather": 30},
+    "p": "intense/very-long/strong", "sea": "all", "tod": "day,night", "occ": "daily,evening"
+  },
+  "strong-with-you": {
+    "name": "Strong With You",
+    "short": "A warm, addictive fougère: chestnut and sugar over sage and lavender, on creamy vanilla and smoky accords.",
+    "insp": "Emporio Armani Stronger With You by Giorgio Armani.",
+    "wear": "Seductive and comforting. For date nights, evenings out and autumn or winter.",
+    "n": [["Chestnut", "Sugar"], ["Clary Sage", "Lavender"], ["Vanilla", "Smoky Notes"]],
+    "fam": "fougere", "acc": {"amber": 80, "spicy": 40, "woody": 40},
+    "p": "intense/long/strong", "sea": "autumn,winter", "tod": "night", "occ": "date-night,evening"
+  },
+  "nagham": {
+    "name": "Nagham",
+    "short": "A melodic oriental vanilla: pink pepper, mandarin and ginger, praline and cacao, on vanilla, amber and musk.",
+    "insp": "Angham by Lattafa Perfumes.",
+    "wear": "Modern and appealing. For evenings, romantic dates and cooler weather.",
+    "n": [["Pink Pepper", "Mandarin Orange", "Ginger"], ["Praline", "Lavender", "Cacao"], ["Vanilla", "Amber", "Musk"]],
+    "fam": "amber", "acc": {"amber": 90, "spicy": 50},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night"
+  },
+  "intrude-men": {
+    "name": "Interludee Men",
+    "short": "A smoky resinous oriental: oregano, pepper and bergamot, incense and opoponax, on oud, leather and sandalwood.",
+    "insp": "Interlude Man by Amouage.",
+    "wear": "Exceptional performance. For cold weather, formal evenings and special occasions; one spray is plenty.",
+    "n": [["Oregano", "Pepper", "Bergamot"], ["Incense", "Opoponax", "Amber", "Labdanum"], ["Oud", "Leather", "Sandalwood", "Patchouli"]],
+    "fam": "amber", "acc": {"amber": 80, "spicy": 70, "oud": 60, "leather": 50},
+    "p": "beastmode/very-long/enormous", "sea": "autumn,winter", "tod": "night", "occ": "evening,meditative"
+  },
+  "rise-again": {
+    "name": "Rise Again",
+    "short": "A rich fruity leather: warm leather, wild raspberry and sandalwood over jasmine and bay rose.",
+    "insp": "Luxury leather-fruity compositions in the style of Tuscan Leather.",
+    "wear": "Bold and high performing. For evening events, parties, date nights and cooler weather.",
+    "n": [["Leather", "Raspberry", "Sandalwood"], ["Petalia", "Green Jasmine", "Bay Rose"], ["Suede", "Amber", "Musk"]],
+    "fam": "leather", "acc": {"leather": 80, "floral": 50, "woody": 50},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night",
+    "x": "base notes"
+  },
+  "mysore-sandal": {
+    "name": "Mysore Sandal",
+    "short": "A pure, creamy sandalwood with soft balsamic woods and a grounding, earthy finish.",
+    "insp": "Traditional Mysore sandalwood.",
+    "wear": "Calming and elegant. For daily wear, meditation and traditional gatherings.",
+    "n": [["Mysore Sandalwood"], ["Woody Notes", "Balsamic Notes"], ["Resinous Woods", "Earthy Notes"]],
+    "fam": "woody", "acc": {"woody": 100, "amber": 40},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "meditative,daily,festival"
+  },
+  "blue-oud": {
+    "name": "Blue Oud",
+    "short": "A fresh modern oud: citrus and clean aquatic notes over agarwood and spice, on dark woods, amber and musk.",
+    "insp": "Modern luxury oud creations that pair freshness with smoky woods.",
+    "wear": "Versatile for casual daytime wear and elegant evening gatherings.",
+    "n": [["Citrus", "Aquatic Notes"], ["Oud", "Spices", "Floral Notes"], ["Dark Woods", "Amber", "Musk"]],
+    "fam": "oud", "acc": {"oud": 70, "aquatic": 60, "woody": 60, "citrus": 40},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "daily,evening"
+  },
+  "roja-elysium": {
+    "name": "Roja Elysium",
+    "short": "A luxurious citrus aromatic: lemon, bergamot and lime with herbs, a floral-woody heart, on ambergris and leather.",
+    "insp": "Elysium Pour Homme by Roja Parfums.",
+    "wear": "One of the finest summer and daily signatures. Spray on the neck and chest.",
+    "n": [["Lemon", "Bergamot", "Grapefruit", "Lime", "Thyme", "Artemisia", "Galbanum"], ["Lily of the Valley", "Rose", "Jasmine", "Apple", "Blackcurrant", "Cedarwood", "Vetiver", "Pink Pepper", "Cypriol"], ["Ambergris", "Leather", "Musk", "Benzoin", "Labdanum"]],
+    "fam": "citrus", "acc": {"citrus": 90, "woody": 50, "leather": 30, "amber": 30},
+    "p": "intense/long/strong", "sea": "spring,summer", "tod": "day", "occ": "daily,summer"
+  },
+  "megamare": {
+    "name": "Megamare",
+    "short": "An immense marine scent: bergamot and lemon, seaweed and calone, on ambergris, cedar and musk.",
+    "insp": "Megamare by Orto Parisi.",
+    "wear": "Colossal projection; one spray is enough. For statement wear and outdoor adventures, all year.",
+    "n": [["Bergamot", "Lemon"], ["Seaweed", "Calone", "Aquatic Florals"], ["Ambergris", "Cedarwood", "Musk"]],
+    "fam": "aquatic", "acc": {"aquatic": 100, "citrus": 40, "amber": 40},
+    "p": "beastmode/very-long/enormous", "sea": "all", "tod": "day,night", "occ": "summer,daily"
+  },
+  "coffee": {
+    "name": "Coffee",
+    "short": "A cozy coffee gourmand: dark roasted coffee and spices, creamy milk, hazelnut and cocoa, on vanilla and amber.",
+    "insp": "Rich, coffee-centred artisanal fragrances.",
+    "wear": "Inviting and energising. For cooler weather, autumn and winter.",
+    "n": [["Roasted Coffee", "Warm Spices"], ["Milk", "Hazelnut", "Cocoa"], ["Vanilla", "Amber", "Musk"]],
+    "fam": "amber", "acc": {"amber": 90, "spicy": 50},
+    "p": "moderate/long/moderate", "sea": "autumn,winter", "tod": "day,night", "occ": "daily,date-night", "g": "unisex",
+    "x": "gender"
+  },
+  "jadore": {
+    "name": "Jadore",
+    "short": "A legendary radiant floral: pear, melon and peach, jasmine, tuberose and rose, on musk, vanilla and cedar.",
+    "insp": "J’adore by Dior.",
+    "wear": "Timeless and elegant. For weddings, formal events, romantic evenings and daily wear.",
+    "n": [["Pear", "Melon", "Magnolia", "Peach", "Mandarin Orange", "Bergamot"], ["Jasmine", "Lily of the Valley", "Tuberose", "Freesia", "Rose", "Orchid", "Violet", "Plum"], ["Musk", "Vanilla", "Cedarwood", "Blackberry"]],
+    "fam": "floral", "acc": {"floral": 100, "citrus": 40, "amber": 30},
+    "p": "moderate/long/moderate", "sea": "spring,summer", "tod": "day,night", "occ": "daily,festival,evening"
+  },
+  "burberry-hero": {
+    "name": "Burberry Hero",
+    "short": "A clean woody spicy: bergamot, black pepper and juniper over three cedarwoods.",
+    "insp": "Hero by Burberry.",
+    "wear": "Refined and understated. For daily wear, the office and casual outings.",
+    "n": [["Bergamot"], ["Black Pepper", "Juniper Berries"], ["Atlas Cedar", "Virginian Cedar", "Himalayan Cedar"]],
+    "fam": "woody", "acc": {"woody": 90, "spicy": 50, "citrus": 40},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day", "occ": "daily"
+  },
+  "white-oud": {
+    "name": "White Oud",
+    "short": "A soft, clean oud: bright citrus and herbs, white florals and gentle oud wood, on white musk, amber and vanilla.",
+    "insp": "Soothing white oud traditions: a softer, cleaner take on agarwood.",
+    "wear": "Smooth and unobtrusive. Ideal for daily wear, the office and all year.",
+    "n": [["Citrus", "Herbal Notes"], ["White Florals", "Oud"], ["White Musk", "Amber", "Vanilla"]],
+    "fam": "oud", "acc": {"oud": 60, "floral": 50, "amber": 50},
+    "p": "soft/long/intimate", "sea": "all", "tod": "day", "occ": "daily"
+  },
+  "arabian-toka": {
+    "name": "Arabian Tonka",
+    "short": "A spicy gourmand oriental: saffron and bergamot, tonka bean, Bulgarian rose and oud, on amber, musk and sugarcane.",
+    "insp": "Arabians Tonka by Montale.",
+    "wear": "Intensely powerful. For high-profile evenings, formal occasions and cold weather.",
+    "n": [["Saffron", "Bergamot"], ["Tonka Bean", "Bulgarian Rose", "Oud"], ["Amber", "White Musk", "Oakmoss", "Sugarcane"]],
+    "fam": "amber", "acc": {"amber": 90, "spicy": 60, "oud": 50, "floral": 30},
+    "p": "beastmode/very-long/enormous", "sea": "autumn,winter", "tod": "night", "occ": "evening"
+  }
+}
