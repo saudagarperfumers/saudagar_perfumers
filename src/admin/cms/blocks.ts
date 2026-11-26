@@ -159,6 +159,7 @@ export const BLOCK_SCHEMAS: Record<string, BlockDef> = {
       t('compliance_title', 'Details section title', 'e.g. Details & Compliance'),
       t('delivery_title', 'Delivery section title', 'e.g. Delivery & Free Samples'),
       t('surface_note', 'Note for surface-only products', 'Shown in the delivery section for flammable perfume.'),
+      media('set_fly_image', 'Picture that flies into the bag for sets and combos', 'image', 'When a perfume size is added, that size’s bottle photo flies into the bag. Gift sets and combos have no bottle size, so this picture flies instead.'),
       {
         key: 'default_sections',
         label: 'Sections on every product',

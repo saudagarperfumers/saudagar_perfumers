@@ -158,6 +158,26 @@ export function flyToCart({ src, onLand } = {}) {
     return;
   }
 
+  // A picture that is still downloading would fly invisibly: wait for it, but never more than half a second.
+  const picture = new Image();
+  picture.src = src;
+  if (picture.complete && picture.naturalWidth > 0) {
+    startFlight(src, target, land);
+    return;
+  }
+  let started = false;
+  const go = () => {
+    if (started) return;
+    started = true;
+    startFlight(src, findCartTarget() || target, land);
+  };
+  picture.onload = go;
+  picture.onerror = go;
+  setTimeout(go, 500);
+}
+
+function startFlight(src, target, land) {
+
   const vw = window.innerWidth;
   const vh = window.innerHeight;
   const size = vw < 640 ? 120 : 150;

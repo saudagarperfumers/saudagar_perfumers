@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router';
 import { suggestListing } from '../lib/searchListing';
+import { galleryFrom, imageIndexFor, flyImageFor } from '../storefront/product/sizeImages';
 import { useShopWords } from '../cms/shopWords';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { formatINR as formatPrice } from '../lib/money';
@@ -100,7 +102,18 @@ function PDPView({
   onQuickBuy
 }) {
   const isCurrentWishlisted = wishlist.includes(product.id);
-  const images = product.images;
+  // Photos with the size each belongs to: picking a size shows its bottle, and that bottle flies into the bag.
+  const gallery = useMemo(() => galleryFrom(detail.media, product.images), [detail.media, product.images]);
+  const images = gallery.map((g) => g.url);
+  const productPageBlock = useBlock('product_page') || {};
+  const navigate = useNavigate();
+  // The main category (the card's category name), else any category the product is in.
+  const primaryCategory = detail.categories?.find((c) => c.name === product.category) ?? detail.categories?.[0] ?? null;
+  const goBack = () => {
+    // Back to where the visitor came from inside the shop; a direct visit goes to the product's category.
+    if ((window.history.state?.idx ?? 0) > 0) navigate(-1);
+    else navigate(primaryCategory ? `/categories/${primaryCategory.slug}` : '/shop');
+  };
 
   const [activeImgIdx, setActiveImgIdx] = useState(0);
   const words = useShopWords();
@@ -126,61 +139,52 @@ function PDPView({
     offset: ['start start', 'end end']
   });
 
+  // Each photo holds still around its own stop (stop i at i / (n - 1) of the scroll), then slides to the next.
   const numImgs = images.length;
-  const keyframesInput = numImgs === 3
-    ? [0, 0.24, 0.40, 0.64, 0.76, 1]
-    : numImgs === 2
-    ? [0, 0.35, 0.65, 1]
-    : [0, 1];
-
-  const keyframesOutput = numImgs === 3
-    ? ['0%', '0%', '-100%', '-100%', '-200%', '-200%']
-    : numImgs === 2
-    ? ['0%', '0%', '-100%', '-100%']
-    : ['0%', '0%'];
+  const { keyframesInput, keyframesOutput } = useMemo(() => {
+    if (numImgs <= 1) return { keyframesInput: [0, 1], keyframesOutput: ['0%', '0%'] };
+    const hold = 0.2 / (numImgs - 1);
+    const input = [];
+    const output = [];
+    for (let i = 0; i < numImgs; i++) {
+      const stop = i / (numImgs - 1);
+      input.push(Math.max(0, stop - hold), Math.min(1, stop + hold));
+      output.push(`${-100 * i}%`, `${-100 * i}%`);
+    }
+    return { keyframesInput: input, keyframesOutput: output };
+  }, [numImgs]);
 
   const yTransform = useTransform(scrollYProgress, keyframesInput, keyframesOutput);
 
   // Sync the desktop active indicator dot based on scroll progress
   useEffect(() => {
     const unsubscribe = scrollYProgress.on('change', (latest) => {
-      let newIdx = 0;
-      if (numImgs >= 3) {
-        if (latest < 0.32) newIdx = 0;
-        else if (latest < 0.70) newIdx = 1;
-        else newIdx = 2;
-      } else if (numImgs === 2) {
-        newIdx = latest < 0.5 ? 0 : 1;
-      } else {
-        newIdx = 0;
-      }
-      setActiveImgIdx(newIdx);
+      setActiveImgIdx(numImgs > 1 ? Math.round(latest * (numImgs - 1)) : 0);
     });
     return () => unsubscribe();
   }, [scrollYProgress, numImgs]);
 
-  // Desktop dot click handler
+  // Desktop: scroll the page to photo n (the buy box stays pinned beside it)
   const handleDotClick = (targetIdx) => {
     if (!trackRef.current) return;
     const rect = trackRef.current.getBoundingClientRect();
     const trackTop = window.scrollY + rect.top;
     const totalScrollable = trackRef.current.offsetHeight - window.innerHeight;
-
-    let targetRatio = 0;
-    if (numImgs >= 3) {
-      if (targetIdx === 0) targetRatio = 0.12;
-      else if (targetIdx === 1) targetRatio = 0.52;
-      else targetRatio = 0.88;
-    } else if (numImgs === 2) {
-      targetRatio = targetIdx === 0 ? 0.15 : 0.85;
-    }
-
+    const targetRatio = numImgs > 1 ? targetIdx / (numImgs - 1) : 0;
     const targetScrollY = trackTop + targetRatio * totalScrollable;
     if (scrollTo) {
       scrollTo(targetScrollY, { duration: 0.8 });
     } else {
       window.scrollTo({ top: targetScrollY, behavior: 'smooth' });
     }
+  };
+
+  // Picking a size shows that size's bottle: the desktop gallery scrolls to it, the phone gallery switches to it.
+  const showSizeImage = (sz) => {
+    const idx = imageIndexFor(gallery, sz?.variantId);
+    if (idx < 0) return;
+    if (window.matchMedia('(min-width: 1024px)').matches) handleDotClick(idx);
+    else setMobileImgIdx(idx);
   };
 
   // Mobile horizontal swipe handler (Left & Right swipe)
@@ -243,7 +247,7 @@ function PDPView({
       variantId: selectedSize.variantId,
       size: selectedSize.label,
       name: product.name,
-      image: images[0],
+      image: flyImageFor(gallery, selectedSize, productPageBlock.set_fly_image),
       price: currentPrice,
       quantity: Math.min(quantity, maxQty)
     });
@@ -254,8 +258,30 @@ function PDPView({
     .toUpperCase();
 
   const categoryPrefix = (product.category || product.concentration || 'Parfum').split(' ')[0].toUpperCase();
-  const familyLine = product.family || product.collection || '';
   const accords = detail.attributes?.accord ?? [];
+  // Buy box details, all from the product's own data.
+  const plainText = (html) => String(html ?? '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const inspiredLine = (() => {
+    const t = plainText(detail.inspiration);
+    return t && t.length <= 90 ? t : '';
+  })();
+  const attr = (kind) => detail.attributes?.[kind]?.[0]?.label ?? null;
+  const keyFacts = [
+    ['Concentration', attr('concentration')],
+    ['Lasts', attr('longevity')],
+    ['Projection', attr('sillage')],
+    ['Gender', attr('gender')],
+  ].filter(([, v]) => v);
+  const noteRows = [['Top', detail.notes?.top], ['Heart', detail.notes?.heart], ['Base', detail.notes?.base]]
+    .map(([label, list]) => [label, (list ?? []).slice(0, 4).map((n) => n.name).join(', ')])
+    .filter(([, v]) => v);
+  const perMl = Number(selectedSize?.ml) > 0 ? currentPrice / Number(selectedSize.ml) : null;
+  const stockTone = !selectedSize || selectedSize.stock <= 0
+    ? { dot: 'bg-[#B42318] dark:bg-red-400', text: 'text-[#8A1C12] dark:text-red-300' }
+    : selectedSize.stock <= 5
+      ? { dot: 'bg-[#B7791F] dark:bg-amber-400', text: 'text-[#7A4E0E] dark:text-amber-300' }
+      : { dot: 'bg-[#2E7D4F] dark:bg-emerald-400', text: 'text-[#1F6B3A] dark:text-emerald-300' };
+
   // What the product page's CMS sections need (src/storefront/sections/PageSections.jsx).
   const sectionCtx = {
     product: {
@@ -322,17 +348,43 @@ function PDPView({
       animate="visible"
       className={`${isMobile ? 'w-full py-4' : 'py-6 max-w-[480px] w-full mx-auto'}`}
     >
-      {/* 1. Sub-label with Pill Badge & Reviews Anchor */}
-      <motion.div variants={monographItemVariants} className="flex items-center justify-between gap-2 mb-2.5">
-        <div className="flex items-center gap-2">
-          <span className="inline-flex items-center px-2.5 py-0.5 rounded-[2px] bg-[#FFF7ED] dark:bg-tk-gold/15 text-tk-accent-ink dark:text-tk-accent-night text-[12px] font-medium tracking-wider uppercase border border-tk-accent/20 dark:border-tk-gold/30">
-            {categoryPrefix}
-          </span>
-          {familyLine && (
-            <span className="text-[12.5px] sm:text-[13px] text-[#5F5F5F] dark:text-[#999999] font-normal tracking-[0.02em]">
-              {familyLine}
+      {/* 0. Back and where this product sits in the shop */}
+      <motion.nav variants={monographItemVariants} aria-label="Breadcrumb" className="flex items-center gap-3 mb-6 text-[12.5px] min-w-0">
+        <button
+          type="button"
+          onClick={goBack}
+          className="hidden lg:inline-flex shrink-0 items-center gap-1.5 h-8 pl-2 pr-3 -ml-2 rounded-[2px] text-tk-ink dark:text-white hover:bg-black/[0.05] dark:hover:bg-white/10 transition-colors cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-tk-accent"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden><path d="M15 18l-6-6 6-6" /></svg>
+          <span>Back</span>
+        </button>
+        <span className="hidden lg:block h-4 w-px shrink-0 bg-[#DDD6CE] dark:bg-white/15" aria-hidden />
+        <ol className="flex items-center gap-1.5 min-w-0 text-[#5C5C5C] dark:text-white/65">
+          <li className="shrink-0">
+            <a href="/" onClick={(e) => { e.preventDefault(); navigate('/'); }} className="hover:text-tk-ink dark:hover:text-white hover:underline underline-offset-2">Home</a>
+          </li>
+          {primaryCategory && (
+            <>
+              <li aria-hidden className="shrink-0 text-[#A8A29C] dark:text-white/30">/</li>
+              <li className="truncate">
+                <a href={`/categories/${primaryCategory.slug}`} onClick={(e) => { e.preventDefault(); navigate(`/categories/${primaryCategory.slug}`); }} className="hover:text-tk-ink dark:hover:text-white hover:underline underline-offset-2">
+                  {primaryCategory.name}
+                </a>
+              </li>
+            </>
+          )}
+        </ol>
+      </motion.nav>
+
+      {/* 1. Scent family and gender, reviews on the right */}
+      <motion.div variants={monographItemVariants} className="flex items-center justify-between gap-2 mb-3">
+        <div className="flex items-center gap-2 min-w-0">
+          {(attr('family') || categoryPrefix) && (
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-[2px] bg-[#FBF3E4] dark:bg-tk-gold/15 text-tk-accent-ink dark:text-tk-accent-night text-[12px] font-medium tracking-wide border border-tk-accent/25 dark:border-tk-gold/30">
+              {attr('family') || categoryPrefix}
             </span>
           )}
+          {attr('gender') && <span className="text-[12.5px] text-[#4F4F4F] dark:text-white/70 truncate">{attr('gender')}</span>}
         </div>
 
         <button
@@ -347,77 +399,102 @@ function PDPView({
               }
             }
           }}
-          className="inline-flex items-center gap-1.5 text-[12px] text-tk-accent-ink dark:text-tk-accent-night hover:underline cursor-pointer select-none"
-          title="Jump to Client Reviews"
+          className="inline-flex shrink-0 items-center gap-1.5 text-[12px] text-tk-accent-ink dark:text-tk-accent-night hover:underline cursor-pointer select-none"
         >
           {product.reviewsCount > 0 ? (
             <>
               <span className="tracking-tight text-[12px]">★★★★★</span>
               <span className="font-semibold text-tk-ink dark:text-white">{product.rating.toFixed(1)}</span>
-              <span className="text-[#666666] dark:text-white/60">({product.reviewsCount})</span>
+              <span className="text-[#5C5C5C] dark:text-white/60">({product.reviewsCount})</span>
             </>
           ) : (
-            <span className="text-[#666666] dark:text-white/50">No reviews yet</span>
+            <span className="text-[#5C5C5C] dark:text-white/60">No reviews yet</span>
           )}
         </button>
       </motion.div>
 
-      {/* 2. Product Title */}
+      {/* 2. Name, what it is inspired by, and the one-line summary */}
       <motion.h1
         variants={monographItemVariants}
-        className="font-sans font-normal text-[28px] sm:text-[36px] lg:text-[42px] tracking-[-0.015em] text-tk-ink dark:text-white leading-[1.14] mb-3"
+        className="font-sans font-normal text-[28px] sm:text-[36px] lg:text-[40px] tracking-[-0.015em] text-tk-ink dark:text-white leading-[1.12]"
       >
         {cleanTitle}
       </motion.h1>
-
-      {/* 3. Description Paragraph */}
+      {inspiredLine && (
+        <motion.p variants={monographItemVariants} className="mt-2 text-[13.5px] text-[#4A4A4A] dark:text-white/75">
+          {inspiredLine}
+        </motion.p>
+      )}
       <motion.p
         variants={monographItemVariants}
-        className="font-sans font-normal text-[14px] leading-[1.7] text-[#3F3F3F] dark:text-[#CCCCCC] mb-6"
+        className="mt-4 font-sans font-normal text-[14px] leading-[1.7] text-[#333333] dark:text-[#D0D0D0] mb-6"
       >
         {product.description}
       </motion.p>
 
-      {/* 4. Size / Volume Selectors */}
+      {/* 3. Key facts from the scent profile */}
+      {keyFacts.length > 0 && (
+        <motion.dl variants={monographItemVariants} className="grid grid-cols-2 gap-px mb-6 bg-[#E8E2DA] dark:bg-white/10 border border-[#E8E2DA] dark:border-white/10 rounded-[2px] overflow-hidden">
+          {keyFacts.map(([label, value]) => (
+            <div key={label} className="bg-white dark:bg-tk-night px-3.5 py-2.5">
+              <dt className="text-[11.5px] text-[#666666] dark:text-white/55">{label}</dt>
+              <dd className="mt-0.5 text-[13px] text-tk-ink dark:text-white leading-snug">{value}</dd>
+            </div>
+          ))}
+        </motion.dl>
+      )}
+
+      {/* 4. Sizes, each with its price */}
       {sizes.length > 0 ? (
-        <motion.div variants={monographItemVariants} className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-4">
-          {sizes.map((sz) => {
-            const isSelected = selectedSize?.variantId === sz.variantId;
-            const soldOut = sz.stock <= 0;
-            return (
-              <button
-                key={sz.variantId}
-                onClick={() => {
-                  setSelectedSize(sz);
-                  setQuantity(1);
-                }}
-                aria-pressed={isSelected}
-                title={soldOut ? 'Sold out' : undefined}
-                className={`min-w-[78px] sm:min-w-[84px] h-[38px] px-4 rounded-[2px] text-[12.5px] font-normal transition-all flex items-center justify-center cursor-pointer ${
-                  soldOut ? 'line-through opacity-50 ' : ''
-                }${
-                  isSelected
-                    ? 'bg-tk-ink text-white border border-tk-ink dark:bg-tk-gold dark:text-tk-night dark:border-tk-gold shadow-[0_3px_12px_rgba(212,175,55,0.25)] font-medium'
-                    : 'bg-white text-tk-ink border border-[#E0D4D6] hover:border-tk-accent hover:text-tk-accent dark:bg-transparent dark:text-white dark:border-white/20 dark:hover:border-tk-accent-night dark:hover:text-tk-accent-night'
-                }`}
-              >
-                {sz.label}
-              </button>
-            );
-          })}
+        <motion.div variants={monographItemVariants} className="mb-5">
+          <p className="text-[12.5px] text-[#4F4F4F] dark:text-white/70 mb-2.5">
+            Size: <span className="text-tk-ink dark:text-white font-medium">{selectedSize?.label}</span>
+          </p>
+          <div className="flex flex-wrap items-stretch gap-2.5">
+            {sizes.map((sz) => {
+              const isSelected = selectedSize?.variantId === sz.variantId;
+              const soldOut = sz.stock <= 0;
+              return (
+                <button
+                  key={sz.variantId}
+                  onClick={() => {
+                    setSelectedSize(sz);
+                    setQuantity(1);
+                    showSizeImage(sz);
+                  }}
+                  aria-pressed={isSelected}
+                  aria-label={`${sz.label}, ${formatPrice(sz.price)}${soldOut ? ', sold out' : ''}`}
+                  className={`min-w-[96px] px-3.5 py-2 rounded-[2px] text-left transition-all flex flex-col cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tk-accent ${
+                    isSelected
+                      ? 'bg-tk-ink text-white border border-tk-ink dark:bg-tk-gold dark:text-tk-night dark:border-tk-gold'
+                      : 'bg-white text-tk-ink border border-[#D9D1C7] hover:border-tk-ink dark:bg-transparent dark:text-white dark:border-white/25 dark:hover:border-white/70'
+                  }`}
+                >
+                  <span className={`text-[13px] font-medium ${soldOut ? 'line-through opacity-60' : ''}`}>{sz.label}</span>
+                  <span className={`text-[12px] ${isSelected ? 'opacity-85' : 'text-[#5C5C5C] dark:text-white/65'}`}>{soldOut ? words.sold_out : formatPrice(sz.price)}</span>
+                </button>
+              );
+            })}
+          </div>
         </motion.div>
       ) : null}
 
-      {/* 4b. Price with MRP strike-through and stock state */}
-      <motion.div variants={monographItemVariants} className="flex items-baseline flex-wrap gap-x-3 gap-y-1 mb-5 text-[13px]">
-        <span className="text-[22px] font-medium tracking-[-0.01em] text-tk-ink dark:text-white">{formatPrice(currentPrice)}</span>
-        {currentCompare && currentCompare > currentPrice && (
-          <>
-            <span className="text-[14px] line-through text-[#6B6B6B] dark:text-white/60">{formatPrice(currentCompare)}</span>
-            <span className="text-[12.5px] text-tk-accent-ink dark:text-tk-accent-night font-semibold">{Math.round((1 - currentPrice / currentCompare) * 100)}% off</span>
-          </>
-        )}
-        <span className="ml-auto text-[12.5px] text-[#5F5F5F] dark:text-[#999999]">
+      {/* 4b. Price with MRP, price per ml and stock */}
+      <motion.div variants={monographItemVariants} className="flex items-end justify-between gap-3 mb-5">
+        <div className="flex items-baseline flex-wrap gap-x-3 gap-y-1">
+          <span className="text-[26px] font-medium tracking-[-0.01em] text-tk-ink dark:text-white">{formatPrice(currentPrice)}</span>
+          {currentCompare && currentCompare > currentPrice && (
+            <>
+              <span className="text-[14px] line-through text-[#666666] dark:text-white/60">{formatPrice(currentCompare)}</span>
+              <span className="px-1.5 py-0.5 rounded-[2px] text-[12px] font-semibold bg-[#E9F5EC] text-[#1F6B3A] dark:bg-emerald-400/15 dark:text-emerald-300">
+                {Math.round((1 - currentPrice / currentCompare) * 100)}% off
+              </span>
+            </>
+          )}
+          {perMl && <span className="basis-full text-[12px] text-[#5C5C5C] dark:text-white/60">{formatPrice(perMl)} per ml</span>}
+        </div>
+        <span className={`inline-flex shrink-0 items-center gap-1.5 text-[12.5px] ${stockTone.text}`}>
+          <span className={`w-1.5 h-1.5 rounded-full ${stockTone.dot}`} aria-hidden />
           {!selectedSize ? 'Currently unavailable' : selectedSize.stock <= 0 ? words.sold_out : selectedSize.stock <= 5 ? `Only ${selectedSize.stock} left` : words.in_stock}
         </span>
       </motion.div>
@@ -501,6 +578,18 @@ function PDPView({
         </button>
       </motion.div>
 
+      {/* 6b. The notes at a glance (the full pyramid is further down) */}
+      {noteRows.length > 0 && (
+        <motion.dl variants={monographItemVariants} className="mt-6 space-y-1.5 text-[12.5px]">
+          {noteRows.map(([label, value]) => (
+            <div key={label} className="grid grid-cols-[52px_1fr] gap-2">
+              <dt className="text-[#666666] dark:text-white/55">{label}</dt>
+              <dd className="text-[#2B2B2B] dark:text-white/85">{value}</dd>
+            </div>
+          ))}
+        </motion.dl>
+      )}
+
       {/* 7. Delivery & Trust Micro-lines */}
       <motion.div
         variants={monographItemVariants}
@@ -558,7 +647,7 @@ function PDPView({
                 {images.map((img, idx) => (
                   <div
                     key={idx}
-                    className="w-full h-screen shrink-0 flex items-center justify-center p-8 sm:p-14 relative"
+                    className="w-full h-full shrink-0 flex items-center justify-center px-8 sm:px-14 pt-8 pb-16 relative"
                   >
                     <motion.div
                       key={`${product.id}-${idx}`}
@@ -567,14 +656,13 @@ function PDPView({
                       animate={idx === 0 ? "visible" : undefined}
                       className="relative w-full max-w-[380px] aspect-[4/5] flex items-center justify-center"
                     >
-                      {idx === 0 && (
-                        <motion.div
-                          variants={auraVariants}
-                          initial="hidden"
-                          animate="visible"
-                          className="absolute w-64 h-64 rounded-full bg-amber-400/15 dark:bg-tk-accent-night/12 blur-3xl pointer-events-none"
-                        />
-                      )}
+                      {/* Warm glow behind every bottle (it fades in with the first one) */}
+                      <motion.div
+                        variants={auraVariants}
+                        initial={idx === 0 ? 'hidden' : false}
+                        animate="visible"
+                        className="absolute w-64 h-64 rounded-full bg-amber-400/15 dark:bg-tk-accent-night/12 blur-3xl pointer-events-none"
+                      />
                       <img
                         src={img}
                         alt={`${product.name} perspective ${idx + 1}`}
@@ -637,6 +725,16 @@ function PDPView({
         <div className="relative w-full h-[46vh] min-h-[350px] max-h-[440px] bg-[#F8F8F8] dark:bg-[#141318] flex items-center justify-center overflow-hidden border-b border-[#EEEEEE] dark:border-white/10 select-none">
           {/* Ambient Warm Studio Aura */}
           <div className="absolute w-56 h-56 rounded-full bg-amber-400/15 dark:bg-tk-accent-night/12 blur-3xl pointer-events-none" />
+
+          {/* Back, on phones (desktop has it beside the breadcrumb) */}
+          <button
+            type="button"
+            onClick={goBack}
+            className="absolute top-3 left-3 z-30 h-9 pl-2 pr-3 inline-flex items-center gap-1 rounded-[2px] bg-white/90 dark:bg-black/60 text-tk-ink dark:text-white text-[12.5px] shadow-xs backdrop-blur-xs cursor-pointer"
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden><path d="M15 18l-6-6 6-6" /></svg>
+            <span>Back</span>
+          </button>
 
           {/* Swipeable Flacon Image Container with Horizontal Left/Right Drag */}
           <div className="relative w-full h-full flex items-center justify-center p-6 touch-pan-y">

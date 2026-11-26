@@ -17,6 +17,12 @@ export default function BluorngProductCard({
 
   const hasDiscount = product.compareAtPrice && product.compareAtPrice > product.price;
   const discountPct = hasDiscount ? Math.round((1 - product.price / product.compareAtPrice) * 100) : 0;
+  // "30 / 50 / 100 ml" for perfumes; sets and combos have no ml sizes.
+  const mlSizes = [...new Set((product.sizes || []).map((s) => Number(s.ml)).filter((n) => n > 0))].sort((a, b) => a - b);
+  const sizeLine = mlSizes.length ? `${mlSizes.join(' / ')} ml` : '';
+  const prices = (product.sizes || []).map((s) => Number(s.price)).filter((n) => n > 0);
+  const fromPrice = prices.length > 1 && Math.max(...prices) > Math.min(...prices);
+  const soldOut = product.sizes?.length > 0 && product.sizes.every((s) => s.stock <= 0);
 
   const handleNextImage = (e) => {
     e.stopPropagation();
@@ -127,37 +133,68 @@ export default function BluorngProductCard({
           </>
         )}
 
-        {/* Quick add, shown on hover */}
-        <div className="absolute bottom-2.5 left-2.5 right-2.5 z-20 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-          <button
-            type="button"
-            onClick={(e) => {
-              e.stopPropagation();
-              onQuickBuy && onQuickBuy(product);
-            }}
-            className="w-full py-2.5 text-[12px] uppercase tracking-[0.14em] font-medium rounded-[2px] shadow-md transition-colors cursor-pointer bg-tk-ink text-white hover:bg-tk-accent dark:bg-tk-gold dark:text-tk-night dark:hover:bg-tk-accent-night"
-          >
-            + Quick Add
-          </button>
-        </div>
+        {/* Discount, top-left under the badge */}
+        {hasDiscount && (
+          <span className={`absolute left-2.5 z-20 px-1.5 py-0.5 text-[11.5px] font-semibold rounded-[2px] bg-[#1F6B3A] text-white dark:bg-emerald-400 dark:text-[#062814] ${product.badge ? 'top-9' : 'top-2.5'}`}>
+            {discountPct}% off
+          </span>
+        )}
+
+        {soldOut && (
+          <span className="absolute inset-x-2.5 bottom-2.5 z-20 py-1.5 text-center text-[12px] rounded-[2px] bg-white/90 text-[#5C5C5C] dark:bg-black/70 dark:text-white/80">
+            Sold out
+          </span>
+        )}
+
+        {/* Quick add: a full button on hover (desktop), a small always-visible button on touch screens */}
+        {!soldOut && (
+          <>
+            <div className="hidden lg:block absolute bottom-2.5 left-2.5 right-2.5 z-20 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:translate-y-0 transition-all duration-300">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onQuickBuy && onQuickBuy(product);
+                }}
+                className="w-full py-2.5 text-[12.5px] font-medium rounded-[2px] shadow-md transition-colors cursor-pointer bg-tk-ink text-white hover:bg-tk-accent dark:bg-tk-gold dark:text-tk-night dark:hover:bg-tk-accent-night"
+              >
+                Add to bag
+              </button>
+            </div>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                onQuickBuy && onQuickBuy(product);
+              }}
+              className="lg:hidden absolute bottom-2 right-2 z-20 w-9 h-9 rounded-[2px] flex items-center justify-center shadow-sm cursor-pointer bg-tk-ink text-white dark:bg-tk-gold dark:text-tk-night"
+              aria-label={`Add ${product.name} to bag`}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
+                <path d="M6 7h12l-1 13H7L6 7z" />
+                <path d="M9 7a3 3 0 0 1 6 0" />
+                <path d="M12 11v5M9.5 13.5h5" />
+              </svg>
+            </button>
+          </>
+        )}
       </div>
 
-      {/* Name on up to two lines (never cut short on one line), the kind of perfume, then the price */}
+      {/* Category, name, sizes, then price */}
       <div className="pt-3 pb-1 flex flex-col">
-        <h3 className="text-[13px] sm:text-[13.5px] leading-[1.4] min-h-[2.8em] font-normal uppercase tracking-[0.04em] line-clamp-2 transition-colors text-tk-ink dark:text-white group-hover:text-tk-accent dark:group-hover:text-tk-accent-night">
+        {product.category && (
+          <p className="text-[12px] tracking-wide truncate text-[#666666] dark:text-white/60">{product.category}</p>
+        )}
+        <h3 className="mt-0.5 text-[14px] sm:text-[14.5px] leading-[1.35] min-h-[2.7em] font-medium line-clamp-2 transition-colors text-tk-ink dark:text-white group-hover:text-tk-accent-ink dark:group-hover:text-tk-accent-night">
           {product.name}
         </h3>
-        <p className="mt-1 text-[12px] sm:text-[12px] font-normal tracking-wide truncate text-[#666666] dark:text-white/55">
-          {product.category || 'Extrait de Parfum'}
-        </p>
-        <div className="mt-1.5 flex items-baseline flex-wrap gap-x-2 gap-y-0.5">
-          <span className="text-[13px] sm:text-[13.5px] font-medium text-tk-ink dark:text-white">{formatPrice(product.price)}</span>
-          {hasDiscount && (
-            <>
-              <span className="text-[12px] line-through text-[#707070] dark:text-white/60">{formatPrice(product.compareAtPrice)}</span>
-              <span className="text-[12px] font-medium text-tk-accent-ink dark:text-tk-accent-night">{discountPct}% off</span>
-            </>
-          )}
+        {sizeLine && <p className="mt-0.5 text-[12px] text-[#5C5C5C] dark:text-white/60">{sizeLine}</p>}
+        <div className="mt-2 flex items-baseline flex-wrap gap-x-2 gap-y-0.5">
+          <span className="text-[14px] sm:text-[15px] font-semibold text-tk-ink dark:text-white">
+            {fromPrice && <span className="text-[12px] font-normal text-[#5C5C5C] dark:text-white/60 mr-1">From</span>}
+            {formatPrice(product.price)}
+          </span>
+          {hasDiscount && <span className="text-[12px] line-through text-[#6B6B6B] dark:text-white/55">{formatPrice(product.compareAtPrice)}</span>}
         </div>
       </div>
     </div>

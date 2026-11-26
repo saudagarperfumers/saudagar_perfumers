@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BluorngProductCard from './BluorngProductCard.jsx';
-import { useSourceProducts } from '../cms/useSourceProducts';
+import { usePagedSourceProducts } from '../cms/useSourceProducts';
+import PageNav from '../storefront/PageNav.jsx';
 import ScrollReveal, { StaggerContainer, StaggerItem } from './motion/ScrollReveal.jsx';
 
 export default function BluorngSignatureCollection({
@@ -15,10 +16,17 @@ export default function BluorngSignatureCollection({
   // Section "product_grid_tabs": each tab is a label plus a product source, all edited in the CMS.
   const filters = (config.tabs || []).map((t, i) => ({ label: t.label, value: String(i), source: t.source }));
   const activeTab = filters.find((f) => f.value === selectedFilter) || filters[0];
-  const { products: signatureProducts } = useSourceProducts(activeTab?.source);
+  // Twelve products a page, with page numbers under the row.
+  const { products: signatureProducts, page, pageCount, setPage } = usePagedSourceProducts(activeTab?.source);
+  const rowRef = React.useRef(null);
+  const goToPage = (p) => {
+    setPage(p);
+    const top = rowRef.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) rowRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
-    <section className="relative w-full bg-[#FFFFFF] dark:bg-tk-night py-12 sm:py-16 overflow-hidden select-none transition-colors duration-300">
+    <section ref={rowRef} className="relative w-full bg-[#FFFFFF] dark:bg-tk-night py-12 sm:py-16 overflow-hidden select-none transition-colors duration-300">
       <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         
         {/* ================= EDITORIAL SECTION HEADER (Borderless, Minimal) ================= */}
@@ -70,6 +78,7 @@ export default function BluorngSignatureCollection({
             </StaggerItem>
           ))}
         </StaggerContainer>
+        <PageNav page={page} pageCount={pageCount} onPage={goToPage} label={`${config.heading || 'Product'} pages`} />
       </div>
     </section>
   );

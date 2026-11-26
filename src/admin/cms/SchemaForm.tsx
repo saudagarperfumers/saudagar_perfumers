@@ -570,14 +570,14 @@ export function SourceInput({ label, help, value, onChange }: { label: string; h
         </div>
       )}
       {src.mode !== 'manual' && (
-        <FieldShell label="How many" htmlFor={`${id}-n`}>
+        <FieldShell label="How many (shown 12 per page)" htmlFor={`${id}-n`}>
           <TextInput
             id={`${id}-n`}
             type="number"
             min={1}
-            max={48}
+            max={120}
             value={src.limit ?? 8}
-            onChange={(e) => set({ limit: Math.min(48, Math.max(1, Number(e.target.value) || 8)) })}
+            onChange={(e) => set({ limit: Math.min(120, Math.max(1, Number(e.target.value) || 8)) })}
             className="max-w-[120px]"
           />
         </FieldShell>

@@ -1,6 +1,7 @@
 import React from 'react';
 import BluorngProductCard from './BluorngProductCard.jsx';
-import { useSourceProducts } from '../cms/useSourceProducts';
+import { usePagedSourceProducts } from '../cms/useSourceProducts';
+import PageNav from '../storefront/PageNav.jsx';
 import { useGo } from '../cms/useSite';
 import ScrollReveal, { StaggerContainer, StaggerItem } from './motion/ScrollReveal.jsx';
 
@@ -15,10 +16,17 @@ export default function BluorngFeaturedCollection({
   const onDiscoverMore = () => go(config.cta_link);
   // The "Latest Drop" collection, in the order set in the admin
   // Section "product_carousel": copy and product source come from the CMS.
-  const { products: latestProducts } = useSourceProducts(config.source);
+  // Twelve products a page, with page numbers under the row.
+  const { products: latestProducts, page, pageCount, setPage } = usePagedSourceProducts(config.source);
+  const rowRef = React.useRef(null);
+  const goToPage = (p) => {
+    setPage(p);
+    const top = rowRef.current?.getBoundingClientRect().top ?? 0;
+    if (top < 0) rowRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
-    <section className="relative w-full bg-[#FFFFFF] dark:bg-tk-night py-12 sm:py-16 overflow-hidden select-none transition-colors duration-300">
+    <section ref={rowRef} className="relative w-full bg-[#FFFFFF] dark:bg-tk-night py-12 sm:py-16 overflow-hidden select-none transition-colors duration-300">
       <div className="relative z-10 w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
         
         {/* ================= EDITORIAL SECTION HEADER (Borderless, Minimal) ================= */}
@@ -63,6 +71,7 @@ export default function BluorngFeaturedCollection({
             </StaggerItem>
           ))}
         </StaggerContainer>
+        <PageNav page={page} pageCount={pageCount} onPage={goToPage} label={`${config.heading || 'Product'} pages`} />
       </div>
     </section>
   );

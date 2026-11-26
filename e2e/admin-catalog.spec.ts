@@ -54,7 +54,7 @@ test('admin creates a product with two sizes and a note, it goes live, archiving
   await page.goto(`/product/${slug}`);
   await expect(page.getByRole('heading', { level: 1 }).first()).toContainText('E2E TEST OUD');
   await expect(page.getByRole('link', { name: 'Wild Bergamot' })).toBeVisible();
-  await expect(page.getByRole('button', { name: '100 ml', exact: true }).first()).toBeVisible();
+  await expect(page.getByRole('button', { name: /^100 ml/ }).first()).toBeVisible();
 
   await page.goto('/admin/products');
   const row = page.locator('div', { has: page.getByRole('link', { name: new RegExp(name) }) }).last();

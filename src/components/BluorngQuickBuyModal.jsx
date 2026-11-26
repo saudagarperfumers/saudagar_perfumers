@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import { formatINR as formatPrice } from '../lib/money';
+import { useProductDetail } from '../storefront/catalog/hooks';
+import { useBlock } from '../cms/useSite';
+import { galleryFrom, imageIndexFor, flyImageFor } from '../storefront/product/sizeImages';
 
 export default function BluorngQuickBuyModal(props) {
   // Hooks must not run after an early return, so the null guard lives in this wrapper.
@@ -25,7 +28,13 @@ function QuickBuyModalContent({
   const currentPrice = selectedSize?.price ?? product.price;
   const maxQty = Math.max(1, Math.min(99, selectedSize?.stock ?? 0));
   const canBuy = !!selectedSize && selectedSize.stock > 0;
-  const image = product.images?.[0] || product.image || '/images/crystal_square_flacon.png';
+  // The photos with their sizes (from the product page data): the picked size's bottle shows and flies into the bag.
+  const { data: detail } = useProductDetail(product.slug || product.id);
+  const setImage = useBlock('product_page')?.set_fly_image;
+  const gallery = useMemo(() => galleryFrom(detail?.media, product.images || [product.image]), [detail?.media, product.images, product.image]);
+  const sizeIdx = imageIndexFor(gallery, selectedSize?.variantId);
+  const image = (sizeIdx >= 0 ? gallery[sizeIdx].url : gallery[0]?.url) || product.image || '/images/crystal_square_flacon.png';
+  const flyImage = flyImageFor(gallery, selectedSize, setImage) || image;
 
   // Extract key notes chord for olfactive preview
   const notesChord = product.notes
@@ -48,7 +57,7 @@ function QuickBuyModalContent({
       variantId: selectedSize.variantId,
       size: selectedSize.label,
       name: product.name,
-      image,
+      image: flyImage,
       price: currentPrice,
       quantity: Math.min(quantity, maxQty)
     });
