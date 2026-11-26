@@ -7,7 +7,7 @@ test('database unreachable: clear message with a way to try again, never a fake 
   let blocked = true;
   await page.route(/supabase\.co/, (r) => (blocked ? r.abort('connectionfailed') : r.continue()));
 
-  await page.goto('/product/saudagar-deep-canopy');
+  await page.goto('/product/kasturi');
   await expect(page.getByRole('heading', { name: /can.t reach the shop/i })).toBeVisible({ timeout: 30_000 });
   await expect(page.getByText(/This page has evaporated/i)).toHaveCount(0);
 

@@ -12,8 +12,8 @@ test('home has no sideways scroll at 360px', async ({ page }) => {
 });
 
 test('legacy ?id= links land on the product page', async ({ page }) => {
-  await page.goto('/?id=saudagar-amber-bark');
-  await expect(page).toHaveURL(/\/product\/saudagar-amber-bark$/);
+  await page.goto('/?id=kasturi');
+  await expect(page).toHaveURL(/\/product\/kasturi$/);
 });
 
 test('unknown pages show the 404', async ({ page }) => {

@@ -1,0 +1,356 @@
+{
+  "afternoon-swim": {
+    "name": "Afternoon Swim",
+    "short": "A sun-drenched citrus aquatic: Sicilian orange, bergamot and mandarin with ginger and sea salt, on white musk.",
+    "insp": "Afternoon Swim by Louis Vuitton.",
+    "wear": "The ultimate hot-weather scent: summer days, beach trips and casual daytime wear. Spray generously.",
+    "n": [["Sicilian Orange", "Bergamot", "Mandarin Orange"], ["Ginger", "Sea Salt"], ["White Musk", "Ambergris"]],
+    "fam": "citrus", "acc": {"citrus": 90, "aquatic": 70},
+    "p": "moderate/moderate/moderate", "sea": "summer,spring", "tod": "day", "occ": "summer,daily"
+  },
+  "pacific-chill": {
+    "name": "Pacific Chill",
+    "short": "A serene fruity aromatic: blackcurrant, citrus and mint, apricot, basil and May rose, on figs, dates and ambrette.",
+    "insp": "Pacific Chill by Louis Vuitton.",
+    "wear": "Clean and energising, like a morning wellness retreat. For spring and summer days.",
+    "n": [["Blackcurrant", "Orange", "Citron", "Lemon", "Mint", "Coriander"], ["Apricot", "Basil", "Carrot Seed", "May Rose"], ["Fig", "Dates", "Ambrette Seed"]],
+    "fam": "citrus", "acc": {"citrus": 80, "floral": 40, "aquatic": 40},
+    "p": "moderate/moderate/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,summer"
+  },
+  "hudson-valley": {
+    "name": "Hudson Valley",
+    "short": "A crisp woody aromatic: green leaves, bergamot and mountain air, pine and sage, on cedarwood, vetiver and musk.",
+    "insp": "The natural beauty and lush landscapes of the Hudson Valley.",
+    "wear": "Calming and versatile. For daily wear, outdoor excursions and lovers of green scents.",
+    "n": [["Green Leaves", "Bergamot", "Mountain Air"], ["Pine Needles", "Sage", "Floral Notes"], ["Cedarwood", "Vetiver", "Clean Musk"]],
+    "fam": "woody", "acc": {"woody": 80, "citrus": 50, "aquatic": 30},
+    "p": "moderate/long/moderate", "sea": "spring,autumn", "tod": "day", "occ": "daily"
+  },
+  "khamrah-dukhan": {
+    "name": "Khamrah Dukhan",
+    "short": "A smoky spiced gourmand: cinnamon and nutmeg, dates, praline and tuberose, on amber, vanilla and smoky dukhan.",
+    "insp": "The Khamrah line by Lattafa, with an added smoky, resinous twist.",
+    "wear": "The ultimate cozy statement for cold weather, evenings and special gatherings.",
+    "n": [["Cinnamon", "Nutmeg", "Bergamot"], ["Dates", "Praline", "Tuberose", "Mahogany"], ["Amber", "Vanilla", "Tonka Bean", "Benzoin", "Smoky Notes"]],
+    "fam": "amber", "acc": {"amber": 90, "spicy": 70, "woody": 50},
+    "p": "beastmode/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,festival"
+  },
+  "vintage-charlie": {
+    "name": "Vintage Charlie",
+    "short": "A nostalgic floral aldehyde: green notes, aldehydes and hyacinth, jasmine and orris, on oakmoss, sandalwood and musk.",
+    "insp": "Charlie by Revlon.",
+    "wear": "Clean and spirited with a classic charm. Wear it every day.",
+    "n": [["Green Notes", "Aldehydes", "Lemon", "Hyacinth"], ["Jasmine", "Geranium", "Lily of the Valley", "Violet", "Orris"], ["Oakmoss", "Sandalwood", "Musk", "Cedarwood", "Vetiver"]],
+    "fam": "floral", "acc": {"floral": 80, "woody": 50, "citrus": 30},
+    "p": "moderate/long/moderate", "sea": "spring,autumn", "tod": "day", "occ": "daily"
+  },
+  "ombre-nomade": {
+    "name": "Ombre Nomade",
+    "short": "A dark desert oud: benzoin and raspberry, agarwood, incense and saffron, on woody amber, leather and rose.",
+    "insp": "Ombre Nomade by Louis Vuitton.",
+    "wear": "Formidable yet wearable. For formal events, evenings and cold weather; one spray goes far.",
+    "n": [["Benzoin", "Raspberry"], ["Oud", "Incense", "Saffron"], ["Amber Wood", "Leather", "Rose"]],
+    "fam": "oud", "acc": {"oud": 90, "amber": 70, "leather": 50, "floral": 30},
+    "p": "beastmode/very-long/enormous", "sea": "autumn,winter", "tod": "night", "occ": "evening"
+  },
+  "tuscan-leather": {
+    "name": "Tuscan Leather",
+    "short": "A raw, refined leather: raspberry, saffron and thyme, olibanum and jasmine, on leather, suede and amber.",
+    "insp": "Tuscan Leather by Tom Ford.",
+    "wear": "Commanding. A signature for evenings, formal events and statement style.",
+    "n": [["Raspberry", "Saffron", "Thyme"], ["Frankincense", "Jasmine"], ["Leather", "Suede", "Amber", "Woody Notes"]],
+    "fam": "leather", "acc": {"leather": 100, "spicy": 50, "amber": 50},
+    "p": "beastmode/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening"
+  },
+  "men-in-black": {
+    "name": "Men in Black",
+    "short": "A seductive spicy amber: fiery spices, tobacco and rum, leather, iris and tuberose, on tonka, guaiac and benzoin.",
+    "insp": "Man In Black by Bvlgari.",
+    "wear": "Magnetic and mysterious. For evenings, romantic dates and cold weather.",
+    "n": [["Spices", "Tobacco", "Rum"], ["Leather", "Iris", "Tuberose"], ["Tonka Bean", "Guaiac Wood", "Benzoin"]],
+    "fam": "amber", "acc": {"amber": 80, "spicy": 70, "leather": 60},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night"
+  },
+  "boss-bottled-elixir": {
+    "name": "Boss Bottled Elixir",
+    "short": "An intense woody amber: frankincense and cardamom, vetiver and patchouli, on labdanum and cedarwood.",
+    "insp": "BOSS Bottled Elixir by Hugo Boss.",
+    "wear": "Strength with subtlety. For work, evening engagements and refined everyday wear.",
+    "n": [["Frankincense", "Cardamom"], ["Vetiver", "Patchouli"], ["Labdanum", "Cedarwood"]],
+    "fam": "woody", "acc": {"woody": 80, "amber": 70, "spicy": 50},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "day,night", "occ": "daily,evening"
+  },
+  "royal-miraj-vintage": {
+    "name": "Royal Miraj Vintage",
+    "short": "A classic spicy woody oriental: bergamot and lavender, clove, cinnamon and rose, on sandalwood, amber and musk.",
+    "insp": "Heritage Royal Miraj formulations.",
+    "wear": "Old-world and dignified. For formal gatherings, evenings and traditional occasions.",
+    "n": [["Bergamot", "Lavender", "Aromatic Herbs"], ["Clove", "Cinnamon", "Geranium", "Rose"], ["Sandalwood", "Amber", "Patchouli", "Musk"]],
+    "fam": "woody", "acc": {"woody": 70, "spicy": 70, "amber": 50},
+    "p": "moderate/long/moderate", "sea": "autumn,winter", "tod": "night", "occ": "festival,evening"
+  },
+  "pasha": {
+    "name": "Pasha",
+    "short": "A classic aromatic fougère: lavender, mandarin, mint and caraway, coriander and rosewood, on oakmoss and sandalwood.",
+    "insp": "Pasha de Cartier.",
+    "wear": "Polished and professional. A signature for the office and formal occasions.",
+    "n": [["Lavender", "Mandarin Orange", "Mint", "Caraway"], ["Coriander", "Rosewood"], ["Oakmoss", "Sandalwood", "Patchouli", "Labdanum"]],
+    "fam": "fougere", "acc": {"woody": 60, "citrus": 50, "spicy": 50},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day", "occ": "daily"
+  },
+  "black-opium-red": {
+    "name": "Black Opium Red",
+    "short": "A daring fruity gourmand: red mandarin, cherry and bergamot, white flowers and black coffee, on vanilla and cedar.",
+    "insp": "The Red editions of Black Opium by Yves Saint Laurent.",
+    "wear": "Bold and glamorous. For evenings, parties and special events.",
+    "n": [["Red Mandarin", "Cherry", "Bergamot"], ["Jasmine", "Orange Blossom", "Black Coffee"], ["Vanilla", "Cedarwood", "Patchouli"]],
+    "fam": "amber", "acc": {"amber": 80, "floral": 60, "citrus": 40},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night"
+  },
+  "issey-miyake-m": {
+    "name": "Issey Miyake M",
+    "short": "A clean aquatic woody: yuzu, bergamot and tarragon, water lily and nutmeg, on sandalwood, vetiver and tobacco.",
+    "insp": "L’Eau d’Issey Pour Homme by Issey Miyake.",
+    "wear": "A gold standard of freshness. For daytime, work and hot summer weather.",
+    "n": [["Yuzu", "Bergamot", "Lemon", "Tarragon"], ["Water Lily", "Nutmeg", "Lotus"], ["Sandalwood", "Vetiver", "Cedarwood", "Tobacco"]],
+    "fam": "aquatic", "acc": {"aquatic": 80, "citrus": 60, "woody": 50},
+    "p": "moderate/moderate/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,summer"
+  },
+  "aqua-kiss": {
+    "name": "Aqua Kiss",
+    "desc": "<p>Aqua Kiss is a mild, fresh fragrance for women. Sea notes, freesia and aloe vera open with a cool splash, soft daisy and chamomile follow, and a sweet heart of plum blossom leaves a light, clean trail.</p>",
+    "short": "A mild, fresh scent for women: sea notes, freesia and aloe vera with a sweet heart of plum blossom.",
+    "insp": "Aqua Kiss by Victoria’s Secret.",
+    "wear": "Light and easy. Spray freely for daytime, college and warm days; reapply in the afternoon.",
+    "n": [["Sea Notes", "Freesia", "Aloe Vera", "Daisy", "Chamomile"], ["Sweet Notes", "Plum Blossom"], ["Musk"]],
+    "fam": "aquatic", "acc": {"aquatic": 70, "floral": 60},
+    "p": "soft/moderate/intimate", "sea": "spring,summer", "tod": "day", "occ": "daily,summer",
+    "x": "desc,base notes"
+  },
+  "gentleman-society": {
+    "name": "Gentleman Society",
+    "desc": "<p>Gentleman Society is a refined woody fragrance for men. Nutmeg, peppermint and clary sage open crisply, a heart of coffee, orris and vetiver with French narcissus adds depth, and Madagascar vanilla, sandalwood and Himalayan cedar finish it smoothly.</p>",
+    "short": "A refined woody for men: nutmeg, peppermint and sage over coffee, orris and vetiver, on vanilla and sandalwood.",
+    "insp": "Gentleman Society Eau de Parfum Extrême by Givenchy.",
+    "wear": "Elegant and warm. For evenings, formal occasions and cooler months.",
+    "n": [["Nutmeg", "Peppermint", "Clary Sage"], ["Coffee", "Orris Root", "Madagascar Vetiver", "Haitian Vetiver", "Narcissus"], ["Madagascar Vanilla", "Australian Sandalwood", "Himalayan Cedar"]],
+    "fam": "woody", "acc": {"woody": 80, "spicy": 50, "amber": 50},
+    "p": "intense/long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening",
+    "x": "desc"
+  },
+  "3-piece-perfume-combo": {
+    "name": "3-Piece Perfume Combo",
+    "desc": "<p>Experience luxury in every spray with the Saudagar Perfumers Premium 3-Piece Perfume Combo. This exclusive collection includes three signature fragrances (Oud &amp; Lavender, Blue 7 and Magic), carefully crafted to suit every mood and occasion.</p><p>Formulated with 50% perfume oil concentration, these Extrait de Parfum fragrances deliver an intense, rich aroma with exceptional long-lasting performance. Whether you’re heading to work, a party or a special occasion, this premium collection keeps you feeling fresh and confident all day.</p><h3>Why you’ll love it</h3><ul><li>3 premium signature fragrances</li><li>50% perfume oil concentration</li><li>Long-lasting performance</li><li>Rich, luxurious fragrance experience</li></ul>",
+    "short": "Three Saudagar signature Extrait de Parfum fragrances (Oud & Lavender, Blue 7 and Magic) with 50% perfume oil.",
+    "insp": "Three Saudagar signatures in one box, so there is a scent for work, parties and special occasions.",
+    "wear": "Pick the bottle for the moment: Blue 7 for fresh daytime wear, Oud & Lavender for evenings, Magic for parties.",
+    "n": [["Lavender", "Fresh Notes"], ["Oud", "Aquatic Notes"], ["Amber", "Musk"]],
+    "fam": "oud", "acc": {"oud": 60, "aquatic": 50, "amber": 50},
+    "p": "intense/very-long/strong", "sea": "all", "tod": "day,night", "occ": "daily,evening,festival", "g": "unisex",
+    "conc": "extrait", "cn": "Extrait de Parfum · 50% perfume oil · 3 bottles",
+    "x": "notes,gender,family"
+  },
+  "red-tobacco": {
+    "name": "Red Tobacco",
+    "desc": "<p>Red Tobacco is a rich, smoky oriental. Cinnamon, saffron and incense open with green apple and white peach, patchouli and jasmine warm the heart, and it settles on tobacco, oud, amber, vanilla and sandalwood.</p>",
+    "short": "A rich smoky oriental: cinnamon, saffron and incense over patchouli and jasmine, on tobacco, oud and vanilla.",
+    "insp": "Red Tobacco by Mancera.",
+    "wear": "Bold and long lasting. For cold evenings and special occasions; one or two sprays.",
+    "n": [["Cinnamon", "Saffron", "Incense", "Green Apple", "White Peach"], ["Patchouli", "Jasmine"], ["Tobacco", "Oud", "Amber", "Vanilla", "Sandalwood", "White Musk"]],
+    "fam": "amber", "acc": {"amber": 80, "spicy": 70, "woody": 50, "oud": 40},
+    "p": "beastmode/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening", "g": "unisex",
+    "sizes": {"30 ml": 450, "50 ml": 700, "100 ml": 1200},
+    "x": "desc,notes,gender,insp,family,prices,sizes"
+  },
+  "burmi-oud-2": {
+    "name": "Burmi Oud",
+    "desc": "<p>Burmi Oud is a deep, traditional oud built around Burmese agarwood. Saffron and rose open warmly over the smoky, slightly sweet oud, and amber with sandalwood gives a long, rich finish.</p>",
+    "short": "A deep traditional oud: Burmese agarwood with saffron and rose, on amber and sandalwood.",
+    "insp": "Burmese oud, prized in Arabian perfumery for its smoky sweetness.",
+    "wear": "Rich and lasting. For evenings, prayers and festive occasions; a little goes a long way.",
+    "n": [["Saffron", "Rose"], ["Burmese Oud"], ["Amber", "Sandalwood", "Musk"]],
+    "fam": "oud", "acc": {"oud": 100, "woody": 60, "amber": 50},
+    "p": "beastmode/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,meditative,festival", "g": "unisex",
+    "x": "desc,notes,gender,insp,family"
+  },
+  "yal-y": {
+    "name": "Yal Y",
+    "desc": "<p>Yal Y is a fresh, confident aromatic fragrance for men. Crisp apple, ginger and bergamot open brightly, sage and juniper give a clean aromatic heart, and amber wood, tonka bean and cedar leave a smooth, modern trail.</p>",
+    "short": "A fresh aromatic for men: apple, ginger and bergamot, sage and juniper, on amber wood, tonka and cedar.",
+    "insp": "Y Eau de Parfum by Yves Saint Laurent.",
+    "wear": "Versatile and modern. For the office, daytime and evenings out.",
+    "n": [["Apple", "Ginger", "Bergamot"], ["Sage", "Juniper Berries", "Geranium"], ["Amber Wood", "Tonka Bean", "Cedarwood", "Vetiver", "Frankincense"]],
+    "fam": "fougere", "acc": {"citrus": 60, "woody": 60, "amber": 50, "spicy": 40},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "daily,evening", "g": "masculine",
+    "x": "desc,notes,gender,insp,family"
+  },
+  "jazeera-magic": {
+    "name": "Jazeera Magic",
+    "desc": "<p>Jazeera Magic is a sweet, enchanting oriental. Juicy fruits and saffron open over a soft floral heart of rose and jasmine, and warm amber, vanilla and musk give it a smooth, lingering trail.</p>",
+    "short": "A sweet, enchanting oriental: fruits and saffron over rose and jasmine, on amber, vanilla and musk.",
+    "insp": "Sweet Arabian floral-amber perfumery.",
+    "wear": "Warm and inviting. For evenings, celebrations and cooler months.",
+    "n": [["Fruity Notes", "Saffron"], ["Rose", "Jasmine"], ["Amber", "Vanilla", "Musk"]],
+    "fam": "amber", "acc": {"amber": 80, "floral": 60, "spicy": 30},
+    "p": "moderate/long/moderate", "sea": "autumn,winter", "tod": "night", "occ": "evening,festival", "g": "unisex",
+    "sizes": {"30 ml": 450, "50 ml": 700, "100 ml": 1200},
+    "x": "desc,notes,gender,insp,family,prices,sizes"
+  },
+  "ice-land": {
+    "name": "Ice Land",
+    "desc": "<p>Pure freshness, inspired by the Arctic. Experience the refreshing elegance of Ice Land, a clean and sophisticated fragrance crafted for those who appreciate freshness that lasts. Its crisp, airy notes create an invigorating scent journey that keeps you feeling confident throughout the day.</p><ul><li>Extrait de Parfum concentration</li><li>Clean and refreshing fragrance</li><li>Long lasting: up to 7 hours</li><li>Perfect for daily wear</li><li>Premium 50 ml bottle</li></ul><p>Feel the cool. Wear the freshness.</p>",
+    "short": "A clean, crisp Extrait de Parfum inspired by the Arctic, lasting up to 7 hours.",
+    "insp": "The Arctic: cold air, clean ice and endless freshness.",
+    "wear": "Perfect for daily wear. Spray on the neck and wrists in the morning; it lasts up to 7 hours.",
+    "n": [["Mint", "Bergamot", "Ice Accord"], ["Aquatic Notes", "Lavender"], ["White Musk", "Cedarwood"]],
+    "fam": "aquatic", "acc": {"aquatic": 90, "citrus": 50, "woody": 30},
+    "p": "moderate/long/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,summer", "g": "unisex",
+    "conc": "extrait",
+    "x": "notes,gender,family"
+  },
+  "fakhir-attar": {
+    "name": "Fakhir Attar",
+    "desc": "<p>Step into a world of timeless elegance with Fakhir Attar, a luxurious concentrated perfume oil crafted for those who appreciate sophistication, depth and lasting impressions. Inspired by the richness of traditional perfumery and blended with modern refinement, this premium attar delivers a smooth, captivating fragrance from the very first drop.</p><p>Opening with refreshing citrus and marine accords, the fragrance evolves into a warm floral heart before settling into a rich woody base that feels both powerful and elegant.</p><p>Formulated with a high oil concentration, Fakhir Attar lasts up to 7 hours. The bottle’s premium golden detailing reflects the royal essence of the fragrance within.</p><h3>Product highlights</h3><ul><li>Premium long-lasting attar oil, alcohol-free</li><li>Lasts up to 7 hours</li><li>Rich oriental and woody fragrance</li><li>For men and women</li><li>Ideal for daily wear and special occasions</li></ul>",
+    "short": "An alcohol-free attar: lemon and marine accords, saffron and rose, on deep sandalwood. Lasts up to 7 hours.",
+    "insp": "The richness of traditional attar perfumery, blended with modern refinement.",
+    "wear": "Apply a small amount on pulse points: neck, wrists and behind the ears. For best results, apply on moisturised skin. Perfect for daily wear, festive occasions and prayers.",
+    "n": [["Lemon", "Marine Notes"], ["Saffron", "Rose"], ["Sandalwood"]],
+    "fam": "woody", "acc": {"woody": 80, "citrus": 50, "floral": 50, "spicy": 40},
+    "p": "moderate/long/intimate", "sea": "all", "tod": "day,night", "occ": "daily,festival,meditative", "g": "unisex",
+    "conc": "attar", "cn": "Attar · alcohol-free perfume oil",
+    "x": "family"
+  },
+  "saudagar-20ml-x-4-piece-perfume-collection": {
+    "name": "Saudagar 4-Piece Perfume Collection",
+    "desc": "<p>Discover the perfect blend of elegance, freshness and long-lasting fragrance with the Saudagar Perfume Collection: 4 bottles of 20 ml (80 ml in all).</p><p>This premium set is crafted for those who love to carry multiple signature scents for different moods and occasions. Each bottle delivers a unique fragrance experience, from refreshing and energetic notes to deep, rich and luxurious oud-based aromas.</p><h3>Fragrances included</h3><ul><li>Savage: bold, fresh and confident</li><li>Hawas Ice: cool, clean and refreshing</li><li>AM Oud: warm, woody and royal</li><li>Purple Oud: rich, intense and long-lasting</li></ul>",
+    "short": "Four 20 ml Saudagar perfumes (Savage, Hawas Ice, AM Oud and Purple Oud): fresh to deep oud in one set.",
+    "insp": "Four signature moods in one set: two fresh, two oud.",
+    "wear": "Carry the set and switch by mood: Savage or Hawas Ice for fresh daytime wear, AM Oud or Purple Oud for evenings.",
+    "n": [["Bergamot", "Mint", "Apple"], ["Oud", "Saffron"], ["Ambroxan", "Amber", "Woody Notes"]],
+    "fam": "woody", "acc": {"woody": 60, "oud": 60, "citrus": 50, "aquatic": 40},
+    "p": "intense/long/strong", "sea": "all", "tod": "day,night", "occ": "daily,evening", "g": "unisex",
+    "conc": "set", "cn": "4 × 20 ml (80 ml)",
+    "x": "notes,gender,family"
+  },
+  "black-code-perfume": {
+    "name": "Black Code",
+    "desc": "<p><strong>Bold. Mysterious. Unforgettable.</strong></p><p>Saudagar Black Code is a deep, enigmatic fragrance crafted for evenings filled with confidence and charm. It opens with the fresh, natural feel of aromatic green leaves and a clean water accord, creating a cool and subtle first impression.</p><p>At the heart lies a warm, golden layer of amber, giving the scent a sensual glow that becomes richer as it settles on the skin. The fragrance finally rests on a dark, earthy base of aged wood, bark and tanned grasses, leaving behind a smooth, mysterious trail that lingers long after you’ve left the room.</p><p>Perfect for date nights, dinners, late outings and cool-weather evenings, Black Code performs beautifully in autumn and winter, where its warm amber tones shine through the cold air.</p><p>A fragrance made for those who want to be remembered, not just noticed.</p>",
+    "short": "A deep, enigmatic evening scent: green leaves and a clean water accord over golden amber, on aged wood and bark.",
+    "insp": "A Saudagar original, made for those who want to be remembered, not just noticed.",
+    "wear": "For date nights, dinners, late outings and cool-weather evenings. Two sprays on the neck and chest.",
+    "n": [["Aromatic Green Leaves", "Water Accord"], ["Amber"], ["Aged Wood", "Bark", "Tanned Grasses"]],
+    "fam": "amber", "acc": {"amber": 80, "woody": 70, "aquatic": 30},
+    "p": "intense/long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night", "g": "masculine",
+    "x": "gender,family"
+  },
+  "ocean-blue-perfume": {
+    "name": "Ocean Blue",
+    "desc": "<p>Saudagar Ocean Blue is a refreshing everyday fragrance designed for those who love staying clean, confident and full of energy. It opens with a bright splash of cool mint, crisp green apple and Sicilian bergamot, giving an instant wave of freshness.</p><p>As the scent settles, warm tonka bean, smooth ambroxan, geranium and musk create a modern, soft heart that feels both comforting and stylish. Finally, the fragrance dries down into a long-lasting blend of vanilla, vetiver, Virginian and Atlas cedar and oakmoss, leaving a warm and memorable trail.</p><p>Perfect for the office, college, outdoors or daily wear, Saudagar Ocean Blue is your go-to scent for every moment. Fresh, cool and versatile: a fragrance that moves with you.</p>",
+    "short": "A fresh everyday scent: cool mint, green apple and Sicilian bergamot over tonka and ambroxan, on vanilla and cedar.",
+    "insp": "A Saudagar original for those who love staying clean, confident and full of energy.",
+    "wear": "Your go-to for the office, college, outdoors and daily wear. Spray on the neck and wrists.",
+    "n": [["Mint", "Green Apple", "Sicilian Bergamot"], ["Tonka Bean", "Ambroxan", "Geranium", "Musk"], ["Vanilla", "Vetiver", "Virginian Cedar", "Atlas Cedar", "Oakmoss"]],
+    "fam": "aquatic", "acc": {"aquatic": 70, "citrus": 60, "amber": 50, "woody": 40},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day", "occ": "daily,summer", "g": "unisex",
+    "x": "gender,family"
+  },
+  "white-code-perfume": {
+    "name": "White Code",
+    "desc": "<p><strong>Soft. Elegant. Irresistibly feminine.</strong></p><p>Saudagar White Code is a captivating fruity-floral fragrance created for moments when you want to feel delicate, graceful and beautifully confident. It opens with the juicy sweetness of peach, the sparkle of raspberry and a soft touch of pink peppercorn, giving a bright and flirty first impression.</p><p>At its heart blooms an elegant bouquet of velvety rose, pure jasmine and golden mimosa, adding sophistication and timeless charm. As it settles, the fragrance melts into a warm, comforting base of creamy vanilla and rich honey, leaving a soft, luxurious trail that feels both romantic and soothing.</p><p>Perfect for special occasions, date nights, celebrations or any moment you want to feel your most elegant.</p><p>A fragrance made for those who love to shine with quiet luxury.</p>",
+    "short": "A graceful fruity floral: peach, raspberry and pink peppercorn over rose, jasmine and mimosa, on vanilla and honey.",
+    "insp": "A Saudagar original, made for those who love to shine with quiet luxury.",
+    "wear": "For special occasions, date nights and celebrations. Spray on the wrists and neck.",
+    "n": [["Peach", "Raspberry", "Pink Peppercorn"], ["Rose", "Jasmine", "Mimosa"], ["Creamy Vanilla", "Honey"]],
+    "fam": "floral", "acc": {"floral": 80, "amber": 60, "citrus": 30},
+    "p": "moderate/long/moderate", "sea": "spring,summer,autumn", "tod": "day,night", "occ": "date-night,festival,evening", "g": "feminine",
+    "x": "gender,family"
+  },
+  "blue-musk": {
+    "name": "Blue Musk",
+    "desc": "<p>Blue Musk is a clean, fresh musk with a cool blue twist. Bergamot and aquatic notes open brightly, soft lavender and white flowers form the heart, and a smooth base of white musk and light woods keeps it fresh all day.</p>",
+    "short": "A clean, fresh musk: bergamot and aquatic notes over lavender and white flowers, on white musk and light woods.",
+    "insp": "The fresh, clean feeling of blue musk.",
+    "wear": "Easy and everyday. Wear it to work, college and on warm days.",
+    "n": [["Bergamot", "Aquatic Notes"], ["Lavender", "White Flowers"], ["White Musk", "Light Woods"]],
+    "fam": "aquatic", "acc": {"aquatic": 70, "citrus": 50, "leather": 40},
+    "p": "moderate/long/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,summer", "g": "unisex",
+    "x": "desc,notes,gender,insp,family"
+  },
+  "forest-jasmine": {
+    "name": "Forest Jasmine",
+    "desc": "<p>Forest Jasmine is a lush floral perfume built around fresh jasmine blossoms. Green leaves give a dewy opening, a rich heart of jasmine sambac blooms, and soft sandalwood with musk keeps it warm and lasting.</p>",
+    "short": "Fresh jasmine blossoms with dewy green leaves, on soft sandalwood and musk.",
+    "insp": "Jasmine blooming in a green forest after rain.",
+    "wear": "Graceful and fresh. For daily wear, temple visits and festive mornings.",
+    "n": [["Green Leaves"], ["Jasmine Sambac"], ["Sandalwood", "Musk"]],
+    "fam": "floral", "acc": {"floral": 100, "woody": 30},
+    "p": "moderate/long/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,festival,meditative", "g": "unisex",
+    "x": "desc,notes,gender,insp,family"
+  },
+  "javadhu": {
+    "name": "Javadhu",
+    "desc": "<p>Javadhu is a traditional South Indian perfume, rich and powdery. Its warm, musky heart is blended with soft florals and creamy sandalwood, the scent long used in temples, weddings and festivals.</p>",
+    "short": "A traditional South Indian javadhu: warm, powdery musk with soft florals and creamy sandalwood.",
+    "insp": "Javadhu, the traditional musk of South Indian temples and festivals.",
+    "wear": "Apply a little to the wrists and neck. Perfect for pooja, temple visits, weddings and festivals.",
+    "n": [["Soft Florals"], ["Javadhu Musk", "Powdery Notes"], ["Sandalwood", "Amber"]],
+    "fam": "amber", "acc": {"amber": 70, "woody": 60, "floral": 40},
+    "p": "intense/very-long/moderate", "sea": "all", "tod": "day,night", "occ": "meditative,festival", "g": "unisex",
+    "x": "desc,notes,gender,insp,family"
+  },
+  "kewda": {
+    "name": "Kewda",
+    "desc": "<p>Kewda captures the sweet, green and honeyed scent of the screwpine flower, a classic of Indian perfumery. Fresh and floral at first, it settles on a soft, musky base.</p>",
+    "short": "The sweet, green, honeyed scent of the kewda (screwpine) flower, on soft musk.",
+    "insp": "Kewda, the screwpine flower treasured in Indian perfumery.",
+    "wear": "Fresh and traditional. For summer days, festivals and daily wear.",
+    "n": [["Green Notes"], ["Kewda"], ["Musk"]],
+    "fam": "floral", "acc": {"floral": 90, "citrus": 20},
+    "p": "moderate/moderate/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,festival", "g": "unisex",
+    "x": "desc,notes,gender,insp,family"
+  },
+  "paarijatham": {
+    "name": "Paarijatham",
+    "desc": "<p>Paarijatham captures the night-flowering jasmine, the delicate white-and-orange blossom offered in prayer. Honeyed and gently sweet, it rests on soft musk and sandalwood.</p>",
+    "short": "The honeyed, delicate scent of night-flowering jasmine (paarijatham), on soft musk and sandalwood.",
+    "insp": "The paarijatham blossom, offered in prayer at dawn.",
+    "wear": "Gentle and serene. For prayer, temple visits and calm days.",
+    "n": [["Green Notes"], ["Paarijatham", "Jasmine"], ["Musk", "Sandalwood"]],
+    "fam": "floral", "acc": {"floral": 90, "woody": 30},
+    "p": "soft/moderate/intimate", "sea": "all", "tod": "day,night", "occ": "meditative,daily", "g": "unisex",
+    "x": "desc,notes,gender,insp,family"
+  },
+  "pure-champa": {
+    "name": "Pure Champa",
+    "desc": "<p>Pure Champa celebrates the golden champaca flower: creamy, rich and gently fruity. Its warm floral heart sits on sandalwood and soft resins, the classic champa scent of Indian homes and temples.</p>",
+    "short": "The creamy, golden champaca flower on sandalwood and soft resins.",
+    "insp": "Champa, the golden champaca flower of Indian homes and temples.",
+    "wear": "Warm and soothing. For pooja, festivals and relaxed evenings.",
+    "n": [["Fruity Notes"], ["Champaca"], ["Sandalwood", "Resins"]],
+    "fam": "floral", "acc": {"floral": 90, "woody": 50, "amber": 30},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "meditative,festival", "g": "unisex",
+    "x": "desc,notes,gender,insp,family"
+  },
+  "pure-rose": {
+    "name": "Pure Rose",
+    "desc": "<p>Pure Rose is a true rose perfume: fresh petals at first, a rich and velvety rose heart, and a soft musky finish. Simple, classic and romantic.</p>",
+    "short": "A true, velvety rose from fresh petals to a soft musky finish.",
+    "insp": "The classic rose of Indian gardens and celebrations.",
+    "wear": "Romantic and classic. For weddings, festivals and everyday elegance.",
+    "n": [["Rose Petals"], ["Rose"], ["Musk"]],
+    "fam": "floral", "acc": {"floral": 100},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "festival,daily", "g": "unisex",
+    "x": "desc,notes,gender,insp,family"
+  },
+  "rajani-gandha": {
+    "name": "Rajani Gandha",
+    "desc": "<p>Rajani Gandha captures the tuberose, the night-blooming flower whose name means \"fragrance of the night\". Creamy, heady and intensely floral, it settles on soft musk and sandalwood.</p>",
+    "short": "Creamy, heady tuberose, the \"fragrance of the night\", on soft musk and sandalwood.",
+    "insp": "Rajanigandha, the night-blooming tuberose.",
+    "wear": "Rich and romantic. For evenings, weddings and festivals.",
+    "n": [["Green Notes"], ["Tuberose"], ["Musk", "Sandalwood"]],
+    "fam": "floral", "acc": {"floral": 100, "woody": 30},
+    "p": "intense/long/strong", "sea": "all", "tod": "night", "occ": "evening,festival", "g": "unisex",
+    "x": "desc,notes,gender,insp,family"
+  }
+}

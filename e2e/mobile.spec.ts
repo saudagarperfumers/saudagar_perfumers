@@ -10,7 +10,7 @@ const noSideScroll = async (page: import('@playwright/test').Page) => {
 test.describe('360 px phones', () => {
   test.use({ viewport: { width: 360, height: 760 } });
 
-  for (const path of ['/', '/shop', '/product/saudagar-deep-canopy', '/story', '/pages/shipping-policy', '/login', '/register']) {
+  for (const path of ['/', '/shop', '/product/kasturi', '/pages/contact', '/pages/shipping-policy', '/login', '/register']) {
     test(`storefront ${path} fits`, async ({ page }) => {
       await page.goto(path);
       await page.waitForLoadState('networkidle');

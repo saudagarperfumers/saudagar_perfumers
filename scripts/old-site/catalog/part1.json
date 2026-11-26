@@ -1,0 +1,320 @@
+{
+  "saudagar-premium-perfume-gift-set-5-x-20-ml-100-ml": {
+    "name": "Saudagar Premium Perfume Gift Set – 5 × 20 ml (100 ml)",
+    "desc": "<p>Discover the joy of fragrance with the Saudagar Premium Perfume Gift Set, featuring five distinctive fragrances in one elegant gift box. This exclusive collection brings together refreshing Green Musk, rich Oud, elegant fruity-floral White Code, mysterious Black Code and captivating Pink Bomb.</p><p>With three unisex fragrances and two specially selected women’s fragrances, this collection offers a scent for every mood and personality.</p><p>Beautifully presented in a premium gift box, it’s a thoughtful choice for birthdays, anniversaries, festivals and special celebrations.</p><h3>What’s inside</h3><ul><li>Green Musk: unisex</li><li>Oud: unisex</li><li>White Code: unisex</li><li>Black Code: men’s fragrance</li><li>Pink Bomb: women’s fragrance</li></ul><h3>Product details</h3><ul><li>Brand: Saudagar Perfumers</li><li>Total quantity: 100 ml</li><li>Includes: 5 perfumes × 20 ml each</li><li>Packaging: premium gift box</li></ul>",
+    "short": "Five Saudagar perfumes of 20 ml each (Green Musk, Oud, White Code, Black Code and Pink Bomb) in one premium gift box.",
+    "insp": "A gift box that brings together five Saudagar signatures: three unisex fragrances and two chosen for her, so there is a scent for every mood.",
+    "wear": "Try a different bottle each day to find your favourite, or match the scent to the moment: Green Musk and White Code for daytime, Oud and Black Code for evenings, Pink Bomb for celebrations.",
+    "n": [["Green Musk", "Fruity Florals"], ["Oud", "Amber"], ["Aged Woods", "Musk"]],
+    "fam": "amber", "acc": {"amber": 70, "woody": 60, "floral": 50, "oud": 40},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "festival,daily,evening", "g": "unisex",
+    "conc": "set", "cn": "Eau de Parfum · 5 × 20 ml",
+    "x": "notes,gender,family"
+  },
+  "kasturi": {
+    "name": "Kasturi",
+    "short": "A traditional Indian musk: spicy herbs and saffron over kasturi musk, sandalwood and powdery amber.",
+    "insp": "Kasturi, the natural musk of Indian perfumery.",
+    "wear": "Apply to the wrists and behind the ears. Its powdery musk sits close to the skin, so it suits prayer, festivals and quiet evenings.",
+    "n": [["Spicy Herbs", "Green Notes", "Saffron"], ["Kasturi Musk", "Sandalwood", "Soft Florals"], ["Powdery Musk", "Amber", "Leather"]],
+    "fam": "amber", "acc": {"amber": 80, "woody": 60, "spicy": 50, "leather": 40},
+    "p": "moderate/long/moderate", "sea": "autumn,winter", "tod": "night", "occ": "meditative,festival,evening"
+  },
+  "sabaya-by-al-rehab": {
+    "name": "Sabaya by Al-Rehab",
+    "short": "A bright floral-citrus with grapefruit, lemon and apple blossom over rose, jasmine and soft musk.",
+    "insp": "Sabaya by Al-Rehab.",
+    "wear": "A cheerful everyday scent. Spray on the pulse points in the morning; it is at its best in spring and summer.",
+    "n": [["Grapefruit", "Lemon", "Bergamot", "Apple Blossom"], ["Rose", "Jasmine", "White Florals", "Peach"], ["Musk", "Amber", "Sandalwood"]],
+    "fam": "floral", "acc": {"floral": 80, "citrus": 70, "amber": 40},
+    "p": "soft/moderate/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,summer"
+  },
+  "oud-sheikha": {
+    "name": "Oud Sheikha",
+    "short": "A graceful, clean oud: lemon, saffron and rose over a soft floral heart and warm agarwood with white musk.",
+    "insp": "Oud Sheikha by Al Waahid.",
+    "wear": "A gentle oud for those new to oud. Wear it day or night; two sprays on the neck are enough.",
+    "n": [["Lemon", "Saffron", "Rose", "Bergamot"], ["Lily of the Valley", "Geranium", "Jasmine"], ["Oud", "White Musk", "Amber", "Sandalwood"]],
+    "fam": "oud", "acc": {"oud": 80, "floral": 60, "amber": 50, "citrus": 30},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "daily,evening"
+  },
+  "the-moon": {
+    "name": "The Moon",
+    "short": "A rich berry-and-oud fragrance: raspberry, lychee and dark berries against Turkish rose, frankincense and leather.",
+    "insp": "The Moon by Frédéric Malle.",
+    "wear": "Opulent and long lasting. Keep it for evenings and celebrations; one or two sprays on the chest and neck.",
+    "n": [["Raspberry", "Lychee", "Saffron", "Blackberry", "Strawberry"], ["Turkish Rose", "Frankincense", "Red Currant", "Violet"], ["Oud", "Leather", "Amber", "Patchouli", "Sandalwood", "Cypriol", "Cedarwood"]],
+    "fam": "oud", "acc": {"oud": 80, "floral": 60, "leather": 50, "amber": 50},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,festival"
+  },
+  "raksha-bandhan-special-fragrance-combo": {
+    "name": "Raksha Bandhan Special Fragrance Combo",
+    "desc": "<p>Celebrate the beautiful bond of love, memories and togetherness with our Raksha Bandhan Special Fragrance Combo.</p><p>Make this Raksha Bandhan even more special with a thoughtfully curated fragrance combo, beautifully presented as a perfect festive gift for your loved ones.</p><p><strong>Special Raksha Bandhan offer: get 1 beautiful rakhi free with every combo.</strong></p><p>This exclusive combo is available in limited stock only. Once the available stock is sold out, this special Raksha Bandhan offer may no longer be available.</p><h3>Why you’ll love it</h3><ul><li>Premium Raksha Bandhan special fragrance combo</li><li>1 rakhi free with every combo</li><li>Perfect for festive gifting</li><li>Beautiful and memorable presentation</li><li>Limited stock available</li></ul><p>Celebrate the bond. Share the fragrance. Create beautiful memories.</p>",
+    "short": "A festive fragrance combo made for gifting on Raksha Bandhan, with one rakhi free with every combo.",
+    "insp": "Made to celebrate the bond between brothers and sisters: a ready festive gift of Saudagar fragrances.",
+    "wear": "Give it as a festive gift. Each perfume is worn on the pulse points; let the receiver pick a scent for each occasion.",
+    "n": [["Fresh Citrus"], ["Floral Notes"], ["Musk", "Woody Notes"]],
+    "fam": "floral", "acc": {"floral": 60, "woody": 50, "amber": 40},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "festival", "g": "unisex",
+    "conc": "set", "cn": "Fragrance combo",
+    "x": "notes,gender,family"
+  },
+  "gucci-flora": {
+    "name": "Gucci Flora",
+    "short": "A sophisticated floral: mandarin and pear over peony, rose and osmanthus, settling on musk, patchouli and leather.",
+    "insp": "Gucci Flora (Anniversary Edition) by Gucci.",
+    "wear": "Elegant for daytime, the office and formal occasions. Spray on the wrists and neck.",
+    "n": [["Mandarin Orange", "Pear", "Pink Pepper"], ["Peony", "Rose", "Osmanthus"], ["Musk", "Patchouli", "Cedarwood", "Leather"]],
+    "fam": "floral", "acc": {"floral": 90, "citrus": 50, "woody": 40, "leather": 30},
+    "p": "moderate/long/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,evening"
+  },
+  "bin-shaikh": {
+    "name": "Bin Shaikh",
+    "desc": "<p>Bin Shaikh is a rich oriental fragrance for men and women. Saffron, rose and lavender open over citrus and oakmoss, a sweet heart of sugar, bakhoor, jasmine and orchid follows, and it settles on agarwood, amber, patchouli and white musk.</p>",
+    "short": "A rich oriental: saffron and rose over sugar, bakhoor and jasmine, ending in agarwood, amber and white musk.",
+    "insp": "Bin Shaikh by Ahmed Al Maghribi.",
+    "wear": "A warm, sweet oud for evenings and festivals. Two sprays on the neck and chest; it lasts well into the night.",
+    "n": [["Saffron", "Rose", "Oakmoss", "Lavender", "Citrus"], ["Sugar", "Bakhoor", "Jasmine", "Orchid", "Violet"], ["Oud", "Amber", "Patchouli", "White Musk", "Ambroxan"]],
+    "fam": "amber", "acc": {"amber": 80, "oud": 70, "spicy": 50, "floral": 40},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,festival",
+    "x": "desc"
+  },
+  "bdc": {
+    "name": "BDC",
+    "desc": "<p>BDC is a woody aromatic fragrance for men. Lemon zest, bergamot and mint open with a clean sparkle, lavender, pineapple and geranium form the heart, and sandalwood, cedar and tonka bean give it a smooth, refined finish.</p>",
+    "short": "A woody aromatic for men: lemon, bergamot and mint over lavender, finishing on sandalwood, cedar and tonka.",
+    "insp": "Bleu de Chanel Parfum by Chanel.",
+    "wear": "A versatile signature for the office, dinners and everyday wear. Spray on the neck and chest.",
+    "n": [["Lemon Zest", "Bergamot", "Mint", "Artemisia"], ["Lavender", "Pineapple", "Geranium", "Green Notes"], ["Sandalwood", "Cedarwood", "Amber Wood", "Iso E Super", "Tonka Bean"]],
+    "fam": "woody", "acc": {"woody": 80, "citrus": 70, "amber": 40},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "daily,evening",
+    "x": "desc"
+  },
+  "wanted": {
+    "name": "Wanted",
+    "desc": "<p>Wanted is a woody spicy fragrance for men. Lemon, ginger and lavender give a lively start, apple, cardamom and juniper warm the heart, and tonka bean, amber wood and vetiver leave a confident trail.</p>",
+    "short": "A woody spicy for men: lemon, ginger and lavender, warmed by cardamom and apple, on tonka and vetiver.",
+    "insp": "Wanted by Azzaro.",
+    "wear": "Bold and warm. Wear it for evenings out and dates; two sprays are enough.",
+    "n": [["Lemon", "Ginger", "Lavender", "Mint"], ["Apple", "Cardamom", "Juniper", "Geranium"], ["Tonka Bean", "Amber Wood", "Vetiver"]],
+    "fam": "spicy", "acc": {"spicy": 80, "woody": 60, "amber": 50, "citrus": 30},
+    "p": "intense/long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night",
+    "x": "desc"
+  },
+  "shanaya-amber": {
+    "name": "Shanaya Amber",
+    "desc": "<p>Shanaya Amber is an oriental woody fragrance for men and women. Saffron, rose and pimento open warmly, a soft heart of florals, patchouli and caramel follows, and it rests on agarwood, incense, resins, amber and musk.</p>",
+    "short": "An oriental woody: saffron, rose and pimento over caramel and patchouli, resting on agarwood, incense and amber.",
+    "insp": "Shanaya by Adil Qadri.",
+    "wear": "Warm and sweet. Wear it in the evening and in cooler months; apply to the neck and wrists.",
+    "n": [["Saffron", "Rose", "Pimento"], ["Floral Notes", "Patchouli", "Caramel"], ["Oud", "Incense", "Resins", "Amber", "Musk"]],
+    "fam": "amber", "acc": {"amber": 80, "oud": 60, "spicy": 50, "woody": 40},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,festival",
+    "x": "desc"
+  },
+  "sauvage": {
+    "name": "Sauvage",
+    "short": "A fiercely fresh fougère: Calabrian bergamot and pepper over lavender and vetiver, on ambroxan, cedar and labdanum.",
+    "insp": "Sauvage by Dior.",
+    "wear": "A crowd-pleaser for any occasion, season or time of day. Two to three sprays on the neck and chest.",
+    "n": [["Calabrian Bergamot", "Pepper"], ["Sichuan Pepper", "Lavender", "Pink Pepper", "Vetiver", "Patchouli", "Geranium", "Elemi"], ["Ambroxan", "Cedarwood", "Labdanum"]],
+    "fam": "fougere", "acc": {"spicy": 80, "citrus": 70, "woody": 60, "amber": 50},
+    "p": "intense/long/strong", "sea": "all", "tod": "day,night", "occ": "daily,evening"
+  },
+  "rebel": {
+    "name": "9PM Rebel",
+    "short": "A playful aromatic-fruity: pineapple, green apple and mandarin over oakmoss and vanilla, with burnt caramel and musk.",
+    "insp": "9PM Rebel by Afnan.",
+    "wear": "Built for nightlife, parties and casual outings. Spray on the neck and chest before you head out.",
+    "n": [["Pineapple", "Green Apple", "Mandarin Orange"], ["Oakmoss", "Cedarwood", "Vanilla"], ["Dry Woods", "Ambergris", "Caramel", "Musk"]],
+    "fam": "amber", "acc": {"amber": 70, "woody": 60, "citrus": 50},
+    "p": "intense/long/strong", "sea": "autumn,winter,spring", "tod": "night", "occ": "evening,date-night"
+  },
+  "purple-oud": {
+    "name": "Purple Oud",
+    "short": "A radiant modern oud: juicy orange, pink pepper and saffron meet rich agarwood and warm spices.",
+    "insp": "Purple Oud by Dior.",
+    "wear": "A fresh take on oud that works day and night in every season. Two sprays on the neck.",
+    "n": [["Orange", "Pink Pepper", "Saffron"], ["Oud", "Warm Spices"], ["Oud", "Amber"]],
+    "fam": "oud", "acc": {"oud": 80, "spicy": 60, "citrus": 50, "woody": 50},
+    "p": "intense/long/strong", "sea": "all", "tod": "day,night", "occ": "daily,evening"
+  },
+  "oud": {
+    "name": "Oud Al Wahid",
+    "short": "A majestic traditional oud: smoky spices and resins, a deep agarwood heart, and dark amber with velvety musk.",
+    "insp": "Classic Middle Eastern artisanal oud.",
+    "wear": "Bold and dignified. Keep it for formal occasions, evenings and cold weather; one or two sprays are enough.",
+    "n": [["Aromatic Spices", "Resins"], ["Oud", "Dry Woods"], ["Amber", "Earthy Notes", "Musk"]],
+    "fam": "oud", "acc": {"oud": 90, "woody": 70, "amber": 60, "spicy": 40},
+    "p": "beastmode/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,meditative"
+  },
+  "marj": {
+    "name": "Marj",
+    "short": "An opulent oriental: honeyed oud and spices, a layered saffron-floral heart, and leather, amber and sandalwood.",
+    "insp": "Marj by Ahmed Al Maghribi.",
+    "wear": "Rich and complex. For grand celebrations, weddings and cold evenings; one or two sprays.",
+    "n": [["Oud", "Honey", "Elemi", "Pink Pepper", "Nutmeg", "Bergamot", "Mandarin Orange"], ["Cashmere Wood", "Saffron", "Orange Blossom", "Jasmine", "Cinnamon", "Patchouli", "Vetiver"], ["Leather", "Amber", "Raspberry", "Sandalwood", "Ambergris", "Musk", "Oakmoss", "Violet", "Pear"]],
+    "fam": "oud", "acc": {"oud": 80, "spicy": 70, "leather": 60, "amber": 60, "floral": 40},
+    "p": "beastmode/very-long/enormous", "sea": "autumn,winter", "tod": "night", "occ": "evening,festival"
+  },
+  "mafia-oud": {
+    "name": "Mafia Oud",
+    "short": "A bold masculine oud: smoky oud, oakmoss and patchouli, brightened by pineapple and rose, on vanilla and sandalwood.",
+    "insp": "Mafia Oud by Paradyse Perfumes.",
+    "wear": "Powerful and commanding. For evenings and nights out; two sprays on the neck.",
+    "n": [["Oakmoss", "Smoky Oud", "Musk", "Patchouli"], ["Pineapple", "Jasmine", "Rose"], ["Sandalwood", "Vetiver", "Vanilla"]],
+    "fam": "oud", "acc": {"oud": 80, "woody": 70, "amber": 40, "floral": 30},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening"
+  },
+  "leather": {
+    "name": "Leather",
+    "short": "A refined oriental leather: rich leather and suede with jasmine and smoky frankincense.",
+    "insp": "Leather by Ahmed Al Maghribi.",
+    "wear": "Warm and commanding. For formal occasions, evening outings and cold weather.",
+    "n": [["Leather", "Jasmine"], ["Suede", "Floral Notes"], ["Frankincense"]],
+    "fam": "leather", "acc": {"leather": 90, "amber": 60, "floral": 40},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening"
+  },
+  "khamarah": {
+    "name": "Khamarah",
+    "short": "A decadent spicy gourmand: cinnamon and nutmeg, dates and praline, on vanilla, tonka and amber.",
+    "insp": "Khamrah by Lattafa Perfumes.",
+    "wear": "Cozy and enchanting. Perfect for evenings, special occasions and cold weather.",
+    "n": [["Cinnamon", "Nutmeg", "Bergamot"], ["Dates", "Praline", "Tuberose", "Mahonial"], ["Vanilla", "Tonka Bean", "Amber Wood", "Myrrh", "Benzoin", "Akigalawood"]],
+    "fam": "amber", "acc": {"amber": 90, "spicy": 70, "woody": 40},
+    "p": "beastmode/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night,festival"
+  },
+  "imagination": {
+    "name": "Imagination Wow",
+    "short": "A luminous citrus-aromatic: citron, bergamot and orange, neroli and ginger, on black tea, guaiac wood and olibanum.",
+    "insp": "Imagination by Louis Vuitton.",
+    "wear": "Clean and refined. A signature for sunny days, the office and polished everyday wear.",
+    "n": [["Citron", "Calabrian Bergamot", "Sicilian Orange"], ["Neroli", "Ginger", "Cinnamon"], ["Black Tea", "Guaiac Wood", "Frankincense"]],
+    "fam": "citrus", "acc": {"citrus": 90, "spicy": 50, "woody": 50},
+    "p": "moderate/long/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,summer"
+  },
+  "fabhir": {
+    "name": "Fakhir",
+    "short": "A woody gourmand: bergamot, roasted chestnut and powdery iris over dark woods, amber and aged whisky.",
+    "insp": "Al Fakhir by Athoor Al Alam.",
+    "wear": "Rich and memorable. For formal evenings, cooler weather and special events.",
+    "n": [["Bergamot", "Chestnut", "Iris"], ["Roasted Chestnut", "Iris"], ["Dark Woods", "Amber", "Whisky"]],
+    "fam": "woody", "acc": {"woody": 80, "amber": 70, "floral": 30},
+    "p": "intense/long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening"
+  },
+  "erba-pura-2": {
+    "name": "Erba Pura",
+    "desc": "<p>Erba Pura is a radiant fruity oriental for men and women. Sicilian orange, Calabrian bergamot and Sicilian lemon burst open into a juicy heart of fruits, then settle on white musk, Madagascar vanilla and amber.</p>",
+    "short": "A radiant fruity oriental: Sicilian citrus and juicy fruits over white musk, vanilla and amber.",
+    "insp": "Erba Pura by Xerjoff.",
+    "wear": "Loud and joyful. Two sprays are enough for a whole day; great for daytime outings and parties.",
+    "n": [["Sicilian Orange", "Calabrian Bergamot", "Sicilian Lemon"], ["Fruity Notes"], ["White Musk", "Madagascar Vanilla", "Amber"]],
+    "fam": "amber", "acc": {"amber": 70, "citrus": 70, "floral": 30},
+    "p": "beastmode/very-long/enormous", "sea": "spring,summer", "tod": "day,night", "occ": "daily,summer,festival",
+    "x": "desc"
+  },
+  "cr7": {
+    "name": "CR7",
+    "short": "An energetic aromatic fougère: lavender, cardamom and bergamot over tobacco and cinnamon, on vanilla and amber.",
+    "insp": "CR7 by Cristiano Ronaldo.",
+    "wear": "For active days, casual outings and evenings. Spray on the neck and chest.",
+    "n": [["Lavender", "Cardamom", "Bergamot", "Artemisia"], ["Tobacco", "Cinnamon", "Cedarwood", "Iris"], ["Vanilla", "Musk", "Sandalwood", "Amber"]],
+    "fam": "fougere", "acc": {"spicy": 70, "woody": 60, "amber": 60, "citrus": 40},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "daily,evening"
+  },
+  "chocolate-musk": {
+    "name": "Chocolate Musk",
+    "short": "A sweet, cozy gourmand: rich chocolate and creamy vanilla wrapped in soft white musk.",
+    "insp": "The comfort of chocolate desserts, softened with clean musk.",
+    "wear": "Cozy and inviting. Ideal for cold weather and relaxed evenings; apply to the wrists and neck.",
+    "n": [["Cocoa", "Chocolate"], ["Creamy Vanilla"], ["White Musk"]],
+    "fam": "amber", "acc": {"amber": 90, "leather": 30},
+    "p": "moderate/long/moderate", "sea": "autumn,winter", "tod": "night", "occ": "date-night,evening", "g": "unisex",
+    "x": "gender,insp"
+  },
+  "br540": {
+    "name": "BR540",
+    "short": "A luminous amber floral: saffron and jasmine over amber wood and ambergris, on fir resin and cedar.",
+    "insp": "Baccarat Rouge 540 by Maison Francis Kurkdjian.",
+    "wear": "Magnetic and long lasting. A stunning signature for formal events, evenings and special occasions.",
+    "n": [["Saffron", "Jasmine"], ["Amber Wood", "Ambergris"], ["Fir Resin", "Cedarwood"]],
+    "fam": "amber", "acc": {"amber": 90, "woody": 60, "floral": 50, "spicy": 40},
+    "p": "intense/very-long/strong", "sea": "all", "tod": "day,night", "occ": "evening,festival"
+  },
+  "havana-ice": {
+    "name": "Hawas Ice",
+    "short": "An icy aquatic-fruity: frozen apple, lemon and mint, a sweet plum heart, on amber, driftwood and musk.",
+    "insp": "Hawas Ice by Rasasi.",
+    "wear": "Excels in hot weather, active days and parties. Spray generously on the neck and chest.",
+    "n": [["Frozen Apple", "Italian Lemon", "Sicilian Bergamot", "Star Anise", "Mint"], ["Plum", "Orange Blossom", "Cardamom", "Blackcurrant"], ["Amber", "Moss", "Driftwood", "Musk", "Sandalwood"]],
+    "fam": "aquatic", "acc": {"aquatic": 80, "citrus": 70, "amber": 50},
+    "p": "beastmode/long/enormous", "sea": "spring,summer", "tod": "day", "occ": "summer,daily"
+  },
+  "ultra-male": {
+    "name": "Ultra Male",
+    "desc": "<p>A seductive and powerful masculine fragrance inspired by Jean Paul Gaultier’s legendary Ultra Male, Ultra Male is crafted for the confident man who loves to stand out with an intense, captivating aura.</p>",
+    "short": "A seductive oriental fougère: pear, lavender and mint over cinnamon and sage, on black vanilla and amber.",
+    "insp": "Ultra Male by Jean Paul Gaultier.",
+    "wear": "Famous for projection. The ultimate choice for nightlife, parties and evening dates.",
+    "n": [["Pear", "Lavender", "Mint", "Bergamot", "Lemon"], ["Cinnamon", "Clary Sage", "Caraway"], ["Black Vanilla", "Amber", "Patchouli", "Cedarwood"]],
+    "fam": "fougere", "acc": {"amber": 80, "spicy": 60, "woody": 40, "citrus": 30},
+    "p": "beastmode/very-long/enormous", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night"
+  },
+  "althair": {
+    "name": "Althair",
+    "short": "An elegant oriental vanilla: cinnamon, orange blossom and cardamom over bourbon vanilla, on praline and tonka.",
+    "insp": "Althaïr by Parfums de Marly.",
+    "wear": "Luxurious and warm. For evenings, cold weather and special events.",
+    "n": [["Cinnamon", "Orange Blossom", "Cardamom", "Bergamot"], ["Bourbon Vanilla", "Elemi"], ["Praline", "Musk", "Ambroxan", "Guaiac Wood", "Tonka Bean", "Candied Almond"]],
+    "fam": "amber", "acc": {"amber": 90, "spicy": 60, "woody": 40},
+    "p": "intense/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night"
+  },
+  "guidance": {
+    "name": "Guidance",
+    "short": "A hypnotic floral-woody: hazelnut, pear and frankincense, osmanthus and rose, on sandalwood, vanilla and ambergris.",
+    "insp": "Guidance by Amouage.",
+    "wear": "Exceptional projection. For high-end occasions, signature evening wear and cold weather.",
+    "n": [["Hazelnut", "Pear", "Frankincense"], ["Osmanthus", "Rose", "Saffron", "Jasmine Sambac"], ["Sandalwood", "Vanilla", "Akigalawood", "Ambergris", "Labdanum"]],
+    "fam": "floral", "acc": {"floral": 70, "amber": 70, "woody": 60, "spicy": 30},
+    "p": "beastmode/very-long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,festival"
+  },
+  "silver-mountain-water": {
+    "name": "Silver Mountain Water",
+    "short": "A crisp alpine freshness: bergamot and mandarin, green tea and blackcurrant, on musk, petitgrain and sandalwood.",
+    "insp": "Silver Mountain Water by Creed.",
+    "wear": "For warm weather, daytime, the office and everyday casual wear.",
+    "n": [["Bergamot", "Mandarin Orange"], ["Green Tea", "Blackcurrant"], ["Musk", "Petitgrain", "Sandalwood", "Galbanum"]],
+    "fam": "citrus", "acc": {"citrus": 80, "aquatic": 60, "woody": 40},
+    "p": "moderate/moderate/moderate", "sea": "spring,summer", "tod": "day", "occ": "daily,summer"
+  },
+  "alluri": {
+    "name": "Allure",
+    "desc": "<p>A dynamic and sensual masculine fragrance inspired by Chanel’s iconic Allure Homme Sport Eau Extrême, Allure is designed for the modern man who thrives on intensity, passion, and effortless charm.</p>",
+    "short": "A fresh spicy woody: mandarin, mint and cypress over black pepper, on tonka, white musk and sandalwood.",
+    "insp": "Allure Homme Sport Eau Extrême by Chanel.",
+    "wear": "Highly versatile: daily wear, the gym, casual outings or evening dates.",
+    "n": [["Mandarin Orange", "Mint", "Cypress", "Clary Sage"], ["Black Pepper"], ["Tonka Bean", "White Musk", "Sandalwood", "Cedarwood"]],
+    "fam": "woody", "acc": {"woody": 70, "citrus": 60, "spicy": 50},
+    "p": "moderate/long/moderate", "sea": "all", "tod": "day,night", "occ": "daily,date-night"
+  },
+  "qahwa": {
+    "name": "Qahwa",
+    "desc": "<p>Qahwa is a warm Arabian coffee fragrance. Roasted coffee and cardamom open like a freshly poured cup of qahwa, saffron and a touch of rose warm the heart, and it settles on soft oud, amber and vanilla.</p>",
+    "short": "A warm Arabian coffee scent: roasted coffee and cardamom, saffron and rose, on soft oud, amber and vanilla.",
+    "insp": "Qahwa, the cardamom-spiced Arabic coffee served as a welcome.",
+    "wear": "Cozy and inviting. Wear it in the evening and in cooler months; two sprays on the neck.",
+    "n": [["Coffee", "Cardamom"], ["Saffron", "Rose"], ["Oud", "Amber", "Vanilla"]],
+    "fam": "amber", "acc": {"amber": 80, "spicy": 70, "oud": 40},
+    "p": "intense/long/strong", "sea": "autumn,winter", "tod": "night", "occ": "evening,date-night", "g": "unisex",
+    "x": "desc,notes,gender,insp,family"
+  },
+  "oud-wood": {
+    "name": "Oud Wood",
+    "short": "A rare woody oriental: oud and rosewood with cardamom and Sichuan pepper, on sandalwood, vanilla and amber.",
+    "insp": "Oud Wood by Tom Ford.",
+    "wear": "Distinctive and elegant. For evenings, formal occasions and cooler weather.",
+    "n": [["Oud", "Rosewood", "Cardamom", "Sichuan Pepper"], ["Exotic Woods", "Warm Spices"], ["Smoky Oud", "Amber", "Sandalwood", "Vanilla", "Tonka Bean", "Vetiver"]],
+    "fam": "oud", "acc": {"oud": 90, "woody": 80, "spicy": 50, "amber": 50},
+    "p": "intense/very-long/moderate", "sea": "autumn,winter", "tod": "night", "occ": "evening"
+  }
+}

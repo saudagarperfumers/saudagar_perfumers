@@ -49,20 +49,21 @@ test('admin home section edits reach the store', async ({ page }) => {
   await page.setViewportSize({ width: 1400, height: 950 });
   await adminLogin(page, '/admin/cms');
   await expect(page.getByLabel('Page', { exact: true })).toHaveValue('home');
-  // Hide the second ribbon, check it is gone, then show it again. The real home page is always restored.
+  // Hide the ribbon, check it is gone, then show it again. The real home page is always restored.
+  const RIBBON = 'Saudagar Perfumers ribbon';
   try {
-    await page.getByRole('button', { name: 'Hide Ribbon (reverse)' }).click();
-    await expect(page.getByRole('button', { name: 'Show Ribbon (reverse)' })).toBeVisible();
+    await page.getByRole('button', { name: `Hide ${RIBBON}` }).click();
+    await expect(page.getByRole('button', { name: `Show ${RIBBON}` })).toBeVisible();
     const store = await page.context().newPage();
     await store.goto('/');
-    await expect(store.getByText('HAUTE PARFUMERIE EXTRAITS').first()).toBeAttached({ timeout: 20_000 });
-    await expect(store.getByText('TIMELESS SIGNATURE')).toHaveCount(0);
-    await page.getByRole('button', { name: 'Show Ribbon (reverse)' }).click();
-    await expect(page.getByRole('button', { name: 'Hide Ribbon (reverse)' })).toBeVisible();
+    await expect(store.getByText('Our Signature Fragrance').first()).toBeAttached({ timeout: 20_000 });
+    await expect(store.getByText('SAUDAGAR PERFUMERS', { exact: true })).toHaveCount(0);
+    await page.getByRole('button', { name: `Show ${RIBBON}` }).click();
+    await expect(page.getByRole('button', { name: `Hide ${RIBBON}` })).toBeVisible();
     await store.reload();
-    await expect(store.getByText('TIMELESS SIGNATURE').first()).toBeAttached({ timeout: 20_000 });
+    await expect(store.getByText('SAUDAGAR PERFUMERS', { exact: true }).first()).toBeAttached({ timeout: 20_000 });
   } finally {
     const api = await adminApi();
-    await api.from('website_sections').update({ is_visible: true }).eq('label', 'Ribbon (reverse)');
+    await api.from('website_sections').update({ is_visible: true }).eq('label', RIBBON);
   }
 });

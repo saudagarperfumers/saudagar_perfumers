@@ -15,8 +15,8 @@ test('admin creates a product with two sizes and a note, it goes live, archiving
   // Under a full parallel run the first click can land while the list is still settling: retry until it sticks.
   await expect(async () => {
     await page.getByRole('combobox', { name: 'Main category' }).click();
-    await page.getByRole('combobox', { name: 'Main category' }).fill('Extrait de Parfum');
-    await page.getByRole('option', { name: 'Extrait de Parfum' }).click();
+    await page.getByRole('combobox', { name: 'Main category' }).fill('Inspired Perfumes');
+    await page.getByRole('option', { name: 'Inspired Perfumes' }).click();
     // The editor goes part by part: "Next" leads from the category to the name.
     await page.getByRole('button', { name: /^Next: Name and description/ }).click({ timeout: 3000 });
     await expect(page.getByLabel('Name', { exact: true })).toBeVisible({ timeout: 3000 });
@@ -73,7 +73,7 @@ test('admin catalog pages load', async ({ page }) => {
   await page.goto('/admin/scent-profile');
   await expect(page.getByRole('heading', { name: 'Fragrance families', exact: true })).toBeVisible();
   await page.goto('/admin/collections');
-  await expect(page.getByText('/collections/royal', { exact: false }).first()).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Collections' }).first()).toBeVisible();
   await page.goto('/admin/categories');
-  await expect(page.getByText('/categories/extrait-de-parfum')).toBeVisible();
+  await expect(page.getByText('/categories/inspired-perfumes')).toBeVisible();
 });
