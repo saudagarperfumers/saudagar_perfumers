@@ -179,7 +179,7 @@ export function ProductAccordions({ detail, selectedSize, openAccordion, onToggl
   const hasStory = story.length > 0 || hasText(detail.inspiration) || hasText(detail.how_to_wear);
 
   return (
-    <div className="divide-y divide-tk-accent/20 dark:divide-tk-gold/20 text-[12.5px]">
+    <div className="divide-y divide-tk-gold-line/50 dark:divide-tk-gold/40 text-[12.5px]">
       {profile.length > 0 && (
         <Accordion id="profile" title={page.profile_title || 'Scent Profile'} open={openAccordion === 'profile'} onToggle={onToggle}>
           <DefinitionList rows={profile.map((r) => ({ label: r.label, value: r.value }))} />

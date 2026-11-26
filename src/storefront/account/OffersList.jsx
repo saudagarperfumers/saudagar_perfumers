@@ -39,7 +39,7 @@ export default function OffersList() {
         const usable = !c.used && !expired && c.is_active && !upcoming;
         const value = c.discount_type === 'PERCENT' ? `${Number(c.value)}% off` : `${formatINR(Number(c.value))} off`;
         return (
-          <div key={c.id} className={`p-6 rounded-[2px] border ${usable ? 'border-tk-ink dark:border-tk-gold/40' : 'border-tk-accent/25 dark:border-tk-gold/25 opacity-70'}`}>
+          <div key={c.id} className={`p-6 rounded-[2px] border ${usable ? 'border-tk-ink dark:border-tk-gold/90' : 'border-tk-gold-line/60 dark:border-tk-gold/50 opacity-70'}`}>
             <p className="text-[12px] uppercase tracking-[0.2em] text-tk-accent-ink dark:text-tk-accent-night font-medium">
               {c.kind === 'welcome' ? 'Welcome gift' : c.kind === 'birthday' ? 'Birthday gift' : 'Just for you'}
             </p>
@@ -50,7 +50,7 @@ export default function OffersList() {
                 .filter(Boolean)
                 .join(' · ')}
             </p>
-            <div className="mt-4 pt-3 border-t border-tk-accent/25 dark:border-tk-gold/25 flex items-center justify-between gap-3">
+            <div className="mt-4 pt-3 border-t border-tk-gold-line/60 dark:border-tk-gold/50 flex items-center justify-between gap-3">
               <span className="font-mono text-[14px] tracking-wider">{c.code}</span>
               {usable ? (
                 <button

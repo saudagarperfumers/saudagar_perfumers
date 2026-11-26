@@ -6,7 +6,7 @@ import { INDIAN_STATES } from '../../lib/indianStates';
 import { toFriendlyError } from '../../lib/errors';
 
 const inputClass =
-  'w-full px-3 py-2 border border-tk-accent/25 dark:border-tk-gold/40 rounded-[2px] bg-transparent outline-none focus:border-tk-accent dark:focus:border-white';
+  'w-full px-3 py-2 border border-tk-gold-line/60 dark:border-tk-gold/90 rounded-[2px] bg-transparent outline-none focus:border-tk-accent dark:focus:border-white';
 const labelClass = 'block text-[12px] uppercase tracking-wider text-[#5F5F5F] mb-1';
 const errorClass = 'text-[12px] text-rose-600 dark:text-rose-400 mt-1';
 const EMPTY_ADDRESS = { label: 'Home', full_name: '', phone: '', line1: '', line2: '', landmark: '', city: '', state: '', pincode: '' };
@@ -60,9 +60,9 @@ export default function AddressModal({ open, address = null, onClose, onSaved })
             aria-modal="true"
             aria-labelledby="address-modal-title"
             data-lenis-prevent="true"
-            className="relative w-full max-w-md max-h-[90svh] overflow-y-auto bg-white dark:bg-[#141318] text-tk-ink dark:text-white p-7 rounded-[2px] border border-tk-accent/25 dark:border-tk-gold/25 shadow-xl space-y-5"
+            className="relative w-full max-w-md max-h-[90svh] overflow-y-auto bg-white dark:bg-[#141318] text-tk-ink dark:text-white p-7 rounded-[2px] border border-tk-gold-line/60 dark:border-tk-gold/50 shadow-xl space-y-5"
           >
-            <div className="flex items-center justify-between border-b border-tk-accent/25 dark:border-tk-gold/25 pb-3">
+            <div className="flex items-center justify-between border-b border-tk-gold-line/60 dark:border-tk-gold/50 pb-3">
               <h3 id="address-modal-title" className="text-[15px] font-medium tracking-tight">
                 {address ? 'Edit Address' : 'New Address'}
               </h3>
@@ -82,7 +82,7 @@ export default function AddressModal({ open, address = null, onClose, onSaved })
                       type="button"
                       onClick={() => setAddr((p) => ({ ...p, label: l }))}
                       className={`px-3 py-1.5 text-[12px] uppercase tracking-wider rounded-[2px] cursor-pointer ${
-                        addr.label === l ? 'bg-tk-ink text-white dark:bg-white dark:text-tk-night' : 'border border-tk-accent/25 dark:border-tk-gold/40 text-[#666666] dark:text-[#AAAAAA]'
+                        addr.label === l ? 'bg-tk-ink text-white dark:bg-white dark:text-tk-night' : 'border border-tk-gold-line/60 dark:border-tk-gold/90 text-[#666666] dark:text-[#AAAAAA]'
                       }`}
                     >
                       {l}
@@ -141,7 +141,7 @@ export default function AddressModal({ open, address = null, onClose, onSaved })
                 {errors.state && <p className={errorClass}>{errors.state}</p>}
               </div>
 
-              <div className="pt-3 border-t border-tk-accent/25 dark:border-tk-gold/25 flex items-center justify-end gap-3">
+              <div className="pt-3 border-t border-tk-gold-line/60 dark:border-tk-gold/50 flex items-center justify-end gap-3">
                 <button type="button" onClick={onClose} className="text-[12px] uppercase tracking-wider text-[#5F5F5F]">
                   Cancel
                 </button>

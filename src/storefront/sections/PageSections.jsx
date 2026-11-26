@@ -22,7 +22,7 @@ function SectionHeading({ eyebrow, heading }) {
 function ProductGrid({ eyebrow, heading, items, product }) {
   if (!items?.length) return null;
   return (
-    <div className="w-full px-6 sm:px-10 lg:px-16 py-16 border-t border-tk-accent/25 dark:border-tk-gold/25 bg-[#FFFFFF] dark:bg-tk-night transition-colors duration-300">
+    <div className="w-full px-6 sm:px-10 lg:px-16 py-16 border-t border-tk-gold-line/60 dark:border-tk-gold/50 bg-[#FFFFFF] dark:bg-tk-night transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         <SectionHeading eyebrow={eyebrow} heading={heading} />
         <StaggerContainer staggerDelay={0.06} className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
@@ -48,7 +48,7 @@ export function ProductCompositionSection({ config = {} }) {
   const { product } = useSectionContext();
   if (!product) return null;
   return (
-    <div className="w-full bg-[#FFFFFF] dark:bg-tk-night border-t border-tk-accent/25 dark:border-tk-gold/25 px-6 sm:px-10 lg:px-16 py-14 sm:py-16 transition-colors duration-300">
+    <div className="w-full bg-[#FFFFFF] dark:bg-tk-night border-t border-tk-gold-line/60 dark:border-tk-gold/50 px-6 sm:px-10 lg:px-16 py-14 sm:py-16 transition-colors duration-300">
       <div className="max-w-2xl mx-auto">
         {(config.eyebrow || config.heading) && (
           <div className="mb-6">

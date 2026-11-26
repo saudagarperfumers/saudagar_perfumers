@@ -380,7 +380,7 @@ function PDPView({
       <motion.div variants={monographItemVariants} className="flex items-center justify-between gap-2 mb-3">
         <div className="flex items-center gap-2 min-w-0">
           {(attr('family') || categoryPrefix) && (
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-[2px] bg-[#FBF3E4] dark:bg-tk-gold/15 text-tk-accent-ink dark:text-tk-accent-night text-[12px] font-medium tracking-wide border border-tk-accent/25 dark:border-tk-gold/30">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-[2px] bg-[#FBF3E4] dark:bg-tk-gold/15 text-tk-accent-ink dark:text-tk-accent-night text-[12px] font-medium tracking-wide border border-tk-gold-line/60 dark:border-tk-gold/65">
               {attr('family') || categoryPrefix}
             </span>
           )}
@@ -434,7 +434,7 @@ function PDPView({
 
       {/* 3. Key facts from the scent profile */}
       {keyFacts.length > 0 && (
-        <motion.dl variants={monographItemVariants} className="grid grid-cols-2 gap-px mb-6 bg-tk-accent/25 dark:bg-tk-gold/25 border border-tk-accent/25 dark:border-tk-gold/25 rounded-[2px] overflow-hidden">
+        <motion.dl variants={monographItemVariants} className="grid grid-cols-2 gap-px mb-6 bg-tk-gold-line/60 dark:bg-tk-gold/50 border border-tk-gold-line/60 dark:border-tk-gold/50 rounded-[2px] overflow-hidden">
           {keyFacts.map(([label, value]) => (
             <div key={label} className="bg-white dark:bg-tk-night px-3.5 py-2.5">
               <dt className="text-[11.5px] text-[#666666] dark:text-white/55">{label}</dt>
@@ -466,8 +466,8 @@ function PDPView({
                   aria-label={`${sz.label}, ${formatPrice(sz.price)}${soldOut ? ', sold out' : ''}`}
                   className={`min-w-[96px] px-3.5 py-2 rounded-[2px] text-left transition-all flex flex-col cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tk-accent ${
                     isSelected
-                      ? 'bg-tk-ink text-white border border-tk-accent shadow-[0_0_0_1px_rgb(var(--c-accent)/0.35)] dark:bg-tk-gold dark:text-tk-night dark:border-tk-gold dark:shadow-[0_0_0_1px_rgb(var(--c-gold)/0.45)]'
-                      : 'bg-white text-tk-ink border border-tk-accent/45 hover:border-tk-accent dark:bg-transparent dark:text-white dark:border-tk-gold/40 dark:hover:border-tk-gold'
+                      ? 'bg-tk-ink text-white border border-tk-gold-line shadow-[0_0_0_2px_rgb(var(--c-gold-line)/0.35)] dark:bg-tk-gold dark:text-tk-night dark:border-tk-gold dark:shadow-[0_0_0_2px_rgb(var(--c-gold)/0.4)]'
+                      : 'bg-white text-tk-ink border border-tk-gold-line hover:shadow-[0_0_0_1px_rgb(var(--c-gold-line))] dark:bg-transparent dark:text-white dark:border-tk-gold/90 dark:hover:border-tk-gold dark:hover:shadow-[0_0_0_1px_rgb(var(--c-gold))]'
                   }`}
                 >
                   <span className={`text-[13px] font-medium ${soldOut ? 'line-through opacity-60' : ''}`}>{sz.label}</span>
@@ -516,7 +516,7 @@ function PDPView({
         )}
 
         {/* Stepper Box */}
-        <div className="border border-tk-accent/45 dark:border-tk-gold/40 rounded-[2px] h-10 flex items-center px-0.5 bg-white dark:bg-transparent hover:border-tk-accent/40 dark:hover:border-tk-accent-night/40 transition-colors">
+        <div className="border border-tk-gold-line dark:border-tk-gold/90 rounded-[2px] h-10 flex items-center px-0.5 bg-white dark:bg-transparent hover:border-tk-accent/40 dark:hover:border-tk-accent-night/40 transition-colors">
           <button
             type="button"
             onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -550,12 +550,12 @@ function PDPView({
         <button
           onClick={handleAddToCartClick}
           disabled={!canBuy}
-          className="disabled:opacity-50 disabled:cursor-not-allowed flex-1 h-[46px] bg-tk-ink hover:bg-tk-accent text-white dark:bg-tk-gold dark:hover:bg-tk-accent-night dark:text-tk-night rounded-[2px] flex items-center shadow-[0_4px_16px_rgba(0,0,0,0.18)] hover:shadow-[0_6px_20px_rgba(196,130,63,0.3)] dark:shadow-[0_4px_16px_rgba(212,175,55,0.25)] active:scale-[0.99] transition-all cursor-pointer select-none group font-medium"
+          className="disabled:opacity-50 disabled:cursor-not-allowed flex-1 h-[46px] bg-tk-ink hover:bg-tk-accent text-white border border-tk-gold-line dark:border-tk-gold dark:bg-tk-gold dark:hover:bg-tk-accent-night dark:text-tk-night rounded-[2px] flex items-center shadow-[0_4px_16px_rgba(0,0,0,0.18)] hover:shadow-[0_6px_20px_rgba(196,130,63,0.3)] dark:shadow-[0_4px_16px_rgba(212,175,55,0.25)] active:scale-[0.99] transition-all cursor-pointer select-none group font-medium"
         >
           <span className="flex-1 text-center text-[12.5px] font-medium tracking-[0.03em]">
             {canBuy ? words.add_to_bag : words.sold_out}
           </span>
-          <span className="w-[1px] h-[20px] bg-white/20 dark:bg-black/20 shrink-0" />
+          <span className="w-[1px] h-[20px] bg-tk-gold-line dark:bg-black/25 shrink-0" />
           <span className="px-4 sm:px-5 text-center text-[12.5px] font-medium tracking-[0.02em] whitespace-nowrap text-[#FFF7ED] dark:text-tk-night">
             {formatPrice(currentPrice * Math.min(quantity, maxQty))}
           </span>
@@ -567,7 +567,7 @@ function PDPView({
           className={`w-[46px] h-[46px] shrink-0 rounded-[2px] border transition-all duration-300 flex items-center justify-center cursor-pointer ${
             isCurrentWishlisted
               ? 'border-tk-accent bg-[#FFF7ED] text-tk-accent dark:border-tk-accent-night dark:bg-tk-gold/15 dark:text-tk-accent-night shadow-xs'
-              : 'border-tk-accent/45 dark:border-tk-gold/40 bg-white dark:bg-transparent text-[#5F5F5F] dark:text-white/60 hover:border-tk-accent hover:text-tk-accent dark:hover:border-tk-accent-night dark:hover:text-tk-accent-night'
+              : 'border-tk-gold-line dark:border-tk-gold/90 bg-white dark:bg-transparent text-[#5F5F5F] dark:text-white/60 hover:border-tk-accent hover:text-tk-accent dark:hover:border-tk-accent-night dark:hover:text-tk-accent-night'
           }`}
           title={isCurrentWishlisted ? 'Remove from saved wishlist' : 'Save to private wishlist'}
           aria-label="Wishlist"
@@ -593,7 +593,7 @@ function PDPView({
       {/* 7. Delivery & Trust Micro-lines */}
       <motion.div
         variants={monographItemVariants}
-        className="mt-5 pt-4 border-t border-tk-accent/25 dark:border-tk-gold/25 space-y-2 text-[12.5px] text-[#4F4F4F] dark:text-[#A8A8A8] leading-relaxed"
+        className="mt-5 pt-4 border-t border-tk-gold-line/60 dark:border-tk-gold/50 space-y-2 text-[12.5px] text-[#4F4F4F] dark:text-[#A8A8A8] leading-relaxed"
       >
         <div className="flex items-start gap-2.5">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="mt-[3px] shrink-0 text-tk-accent-ink dark:text-tk-accent-night" aria-hidden>
@@ -636,7 +636,7 @@ function PDPView({
         >
           
           {/* Left Half: Pedestal with Parallax Vertical Images */}
-          <div className="bg-[#F8F8F8] dark:bg-[#141318] border-r border-tk-accent/25 dark:border-tk-gold/25 h-full relative overflow-hidden flex flex-col justify-between transition-colors duration-300">
+          <div className="bg-[#F8F8F8] dark:bg-[#141318] border-r border-tk-gold-line/60 dark:border-tk-gold/50 h-full relative overflow-hidden flex flex-col justify-between transition-colors duration-300">
             
             {/* Vertical Animated Flacon Stack (Driven by Desktop Scroll) */}
             <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none">
@@ -697,7 +697,7 @@ function PDPView({
                       className={`block h-1.5 rounded-full transition-all ${
                         activeImgIdx === idx
                           ? 'w-6 bg-tk-accent dark:bg-tk-accent-night'
-                          : 'w-1.5 bg-[#C9BFC1] dark:bg-white/40 group-hover/dot:bg-[#6B6B6B]'
+                          : 'w-1.5 bg-tk-gold-line/50 dark:bg-tk-gold/45 group-hover/dot:bg-tk-gold-line dark:group-hover/dot:bg-tk-gold'
                       }`}
                     />
                   </button>
@@ -722,7 +722,7 @@ function PDPView({
       <div className="block lg:hidden w-full">
         
         {/* Mobile Dedicated Flacon Vitrine (NEVER CROPPED, Full Bottle Visible) */}
-        <div className="relative w-full h-[46vh] min-h-[350px] max-h-[440px] bg-[#F8F8F8] dark:bg-[#141318] flex items-center justify-center overflow-hidden border-b border-tk-accent/25 dark:border-tk-gold/25 select-none">
+        <div className="relative w-full h-[46vh] min-h-[350px] max-h-[440px] bg-[#F8F8F8] dark:bg-[#141318] flex items-center justify-center overflow-hidden border-b border-tk-gold-line/60 dark:border-tk-gold/50 select-none">
           {/* Ambient Warm Studio Aura */}
           <div className="absolute w-56 h-56 rounded-full bg-amber-400/15 dark:bg-tk-accent-night/12 blur-3xl pointer-events-none" />
 
@@ -827,7 +827,7 @@ function PDPView({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 80, opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="lg:hidden fixed left-0 right-0 bottom-[64px] z-30 px-4 py-2.5 bg-white/95 dark:bg-[#0E0C10]/95 backdrop-blur-md border-t border-tk-accent/25 dark:border-tk-gold/25 flex items-center gap-3"
+            className="lg:hidden fixed left-0 right-0 bottom-[64px] z-30 px-4 py-2.5 bg-white/95 dark:bg-[#0E0C10]/95 backdrop-blur-md border-t border-tk-gold-line/60 dark:border-tk-gold/50 flex items-center gap-3"
           >
             <div className="min-w-0 flex-1">
               <p className="text-[12.5px] text-tk-ink dark:text-white truncate">{cleanTitle}</p>

@@ -24,7 +24,7 @@ export const RETURN_STATUS_LABEL = {
   REJECTED: 'Return declined',
 };
 
-const input = 'w-full px-3 py-2 border border-tk-accent/25 dark:border-tk-gold/40 rounded-[2px] bg-transparent outline-none focus:border-tk-accent dark:focus:border-white text-[12.5px]';
+const input = 'w-full px-3 py-2 border border-tk-gold-line/60 dark:border-tk-gold/90 rounded-[2px] bg-transparent outline-none focus:border-tk-accent dark:focus:border-white text-[12.5px]';
 
 /** Order page: ask for a return after delivery, then follow it. */
 export default function ReturnSection({ order }) {
@@ -57,7 +57,7 @@ export default function ReturnSection({ order }) {
 
   if (ret) {
     return (
-      <div className="p-5 border border-tk-accent/25 dark:border-tk-gold/25 space-y-2 text-[12.5px]">
+      <div className="p-5 border border-tk-gold-line/60 dark:border-tk-gold/50 space-y-2 text-[12.5px]">
         <p className="text-[12px] uppercase tracking-[0.2em] text-tk-accent-ink dark:text-tk-accent-night font-medium">Return</p>
         <p className="font-medium">{RETURN_STATUS_LABEL[ret.status] ?? ret.status}</p>
         {ret.customer_note && <p className="text-[#666666] dark:text-[#AAAAAA]">{ret.customer_note}</p>}
@@ -133,7 +133,7 @@ export default function ReturnSection({ order }) {
   };
 
   return (
-    <form onSubmit={submit} className="p-5 border border-tk-accent/25 dark:border-tk-gold/25 space-y-4 text-[12.5px]">
+    <form onSubmit={submit} className="p-5 border border-tk-gold-line/60 dark:border-tk-gold/50 space-y-4 text-[12.5px]">
       <p className="font-medium">Request a return</p>
       {policy && <p className="text-[#666666] dark:text-[#AAAAAA]">{policy}</p>}
       <div>
@@ -152,7 +152,7 @@ export default function ReturnSection({ order }) {
               aria-label={`How many ${i.product_name}`}
               value={qty[i.id] ?? 0}
               onChange={(e) => setQty({ ...qty, [i.id]: Number(e.target.value) })}
-              className="border border-tk-accent/25 dark:border-tk-gold/40 bg-transparent dark:bg-[#141318] px-2 py-1"
+              className="border border-tk-gold-line/60 dark:border-tk-gold/90 bg-transparent dark:bg-[#141318] px-2 py-1"
             >
               {Array.from({ length: i.qty + 1 }, (_, n) => (
                 <option key={n} value={n}>{n}</option>

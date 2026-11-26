@@ -47,7 +47,7 @@ export default function BluorngMobileBottomNav({
   return (
     <nav
       aria-label="Shop menu"
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#0E0C10]/95 backdrop-blur-xl border-t border-tk-accent/25 dark:border-tk-gold/25 px-2 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] transition-colors duration-300"
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-[#0E0C10]/95 backdrop-blur-xl border-t border-tk-gold-line/60 dark:border-tk-gold/50 px-2 pt-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] transition-colors duration-300"
     >
       <ul className="flex items-stretch justify-around">
         <Tab active={active} id="home" label="Home" onClick={onNavigateHome}>

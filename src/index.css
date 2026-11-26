@@ -10,6 +10,7 @@
     --c-accent-ink: 149 99 48; /* the accent as small text on light pages (src/cms/theme.ts accentInk) */
     --c-accent-night: 236 200 106;
     --c-gold: 212 175 55;
+    --c-gold-line: 174 143 45; /* the gold deepened to 3 : 1 on white, for lines on light pages (src/cms/theme.ts) */
     --c-ink: 17 17 17;
     --c-night: 11 10 13;
     --font-body: "Poppins";
@@ -77,10 +78,10 @@
   .sf-title::after {
     content: '';
     display: block;
-    width: 44px;
-    height: 2px;
-    margin-top: 12px;
-    background: rgb(var(--c-accent));
+    width: 56px;
+    height: 3px;
+    margin-top: 14px;
+    background: rgb(var(--c-gold-line));
   }
   .dark .sf-title::after {
     background: rgb(var(--c-gold));

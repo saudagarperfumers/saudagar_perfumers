@@ -52,11 +52,11 @@ export default function BluorngFooter({
   };
 
   return (
-    <footer className="relative w-full bg-white dark:bg-tk-night border-t border-tk-accent/25 dark:border-tk-gold/25 text-tk-ink dark:text-white select-none overflow-hidden pt-12 sm:pt-16 pb-24 lg:pb-14 transition-colors duration-300">
+    <footer className="relative w-full bg-white dark:bg-tk-night border-t border-tk-gold-line/60 dark:border-tk-gold/50 text-tk-ink dark:text-white select-none overflow-hidden pt-12 sm:pt-16 pb-24 lg:pb-14 transition-colors duration-300">
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
         
         {/* ================= 1. VIP INNER CIRCLE NEWSLETTER & CONCIERGE CARD ================= */}
-        <div className="bg-[#F8F7F4] dark:bg-white/[0.035] border border-tk-accent/25 dark:border-tk-gold/25 rounded-[2px] p-7 sm:p-10 lg:p-12 mb-14 sm:mb-16 transition-colors duration-300">
+        <div className="bg-[#F8F7F4] dark:bg-white/[0.035] border border-tk-gold-line/60 dark:border-tk-gold/50 rounded-[2px] p-7 sm:p-10 lg:p-12 mb-14 sm:mb-16 transition-colors duration-300">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* Left: Headline & Manifesto */}
@@ -77,7 +77,7 @@ export default function BluorngFooter({
                   aria-label="Email address"
                   disabled={subscribed}
                   required
-                  className="w-full h-14 bg-white border border-tk-accent/25 focus:border-tk-accent dark:border-tk-gold/25 dark:focus:border-tk-gold dark:bg-white/[0.07] dark:hover:bg-white/[0.10] dark:focus:bg-white/[0.12] text-tk-ink dark:text-white placeholder:text-[#888888] dark:placeholder:text-white/40 text-[13px] tracking-[0.02em] px-5 rounded-[2px] outline-none transition-all duration-300 pr-36"
+                  className="w-full h-14 bg-white border border-tk-gold-line/60 focus:border-tk-accent dark:border-tk-gold/50 dark:focus:border-tk-gold dark:bg-white/[0.07] dark:hover:bg-white/[0.10] dark:focus:bg-white/[0.12] text-tk-ink dark:text-white placeholder:text-[#888888] dark:placeholder:text-white/40 text-[13px] tracking-[0.02em] px-5 rounded-[2px] outline-none transition-all duration-300 pr-36"
                 />
                 <button
                   type="submit"
@@ -93,7 +93,7 @@ export default function BluorngFooter({
               {onToggleTheme && (
                 <div className="flex items-center gap-3 text-[12px] text-[#5F5F5F] dark:text-white/60">
                   <span className="text-[12px] uppercase tracking-[0.18em] text-[#666666] dark:text-white/50">Theme</span>
-                  <div className="inline-flex items-center p-0.5 rounded-[2px] border border-tk-accent/25 dark:border-tk-gold/25 bg-white dark:bg-white/[0.04] transition-colors">
+                  <div className="inline-flex items-center p-0.5 rounded-[2px] border border-tk-gold-line/60 dark:border-tk-gold/50 bg-white dark:bg-white/[0.04] transition-colors">
                     <button
                       type="button"
                       onClick={() => {
@@ -190,7 +190,7 @@ export default function BluorngFooter({
         </div>
 
         {/* ================= 4. BOTTOM COPYRIGHT & PRIVILEGE ASSURANCE ================= */}
-        <div className="pt-8 border-t border-tk-accent/25 dark:border-tk-gold/25 flex flex-col md:flex-row items-center md:items-start justify-between gap-4 text-[12px] text-[#5F5F5F] dark:text-white/60 tracking-wider uppercase">
+        <div className="pt-8 border-t border-tk-gold-line/60 dark:border-tk-gold/50 flex flex-col md:flex-row items-center md:items-start justify-between gap-4 text-[12px] text-[#5F5F5F] dark:text-white/60 tracking-wider uppercase">
           <div className="flex flex-col items-center md:items-start gap-2 text-center md:text-left">
             <p>{String(footer.copyright || '').replace('{year}', String(new Date().getFullYear()))}</p>
             {(footer.legal_links || []).length > 0 && (

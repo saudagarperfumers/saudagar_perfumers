@@ -62,7 +62,7 @@ export default function BluorngProductCard({
       className="group relative flex flex-col cursor-pointer transition-all duration-300 select-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tk-accent"
     >
       {/* ================= SOFT PEDESTAL FLACON STAGE (No harsh borders) ================= */}
-      <div className="relative w-full aspect-[4/5] rounded-[2px] flex items-center justify-center p-4 sm:p-5 overflow-hidden transition-all duration-500 select-none bg-[#F8F7F5] dark:bg-[#141318] group-hover:bg-[#F2EFEA] dark:group-hover:bg-[#1C1A22] border border-tk-accent/20 dark:border-tk-gold/20 group-hover:border-tk-accent/60 dark:group-hover:border-tk-gold/55">
+      <div className="relative w-full aspect-[4/5] rounded-[2px] flex items-center justify-center p-4 sm:p-5 overflow-hidden transition-all duration-500 select-none bg-[#F8F7F5] dark:bg-[#141318] group-hover:bg-[#F2EFEA] dark:group-hover:bg-[#1C1A22] border border-tk-gold-line/55 dark:border-tk-gold/45 group-hover:border-tk-gold-line dark:group-hover:border-tk-gold">
         {/* Soft Pedestal Ground Shadow */}
         <div className="absolute bottom-4 w-3/5 h-2.5 rounded-[100%] blur-[5px] transition-all duration-500 pointer-events-none z-0 bg-black/[0.06] dark:bg-black/40 group-hover:scale-110 group-hover:opacity-60" />
 
@@ -83,7 +83,7 @@ export default function BluorngProductCard({
 
         {/* Minimal Discrete Badge (Top-Left) */}
         {product.badge && (
-          <span className="absolute top-2.5 left-2.5 z-20 max-w-[calc(100%-3.75rem)] truncate px-2 py-0.5 text-[11.5px] uppercase tracking-wider font-medium rounded-[2px] bg-black/5 dark:bg-white/10 text-[#555555] dark:text-white/90">
+          <span className="absolute top-2.5 left-2.5 z-20 max-w-[calc(100%-3.75rem)] truncate px-2 py-0.5 text-[11.5px] uppercase tracking-wider font-medium rounded-[2px] bg-white/90 dark:bg-black/50 border border-tk-gold-line dark:border-tk-gold text-tk-accent-ink dark:text-tk-gold">
             {product.badge}
           </span>
         )}

@@ -147,7 +147,7 @@ export default function CheckoutPage({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
             {/* ================= LEFT: STEPS ================= */}
             <div className="lg:col-span-7 min-w-0">
-              <div className="flex items-center gap-3 text-[12px] uppercase tracking-[0.14em] font-medium mb-8 pb-4 border-b border-tk-accent/25 dark:border-tk-gold/25 overflow-x-auto scrollbar-none">
+              <div className="flex items-center gap-3 text-[12px] uppercase tracking-[0.14em] font-medium mb-8 pb-4 border-b border-tk-gold-line/60 dark:border-tk-gold/50 overflow-x-auto scrollbar-none">
                 {STEPS.map((st, i) => (
                   <React.Fragment key={st.id}>
                     {i > 0 && <span className="text-[#CCCCCC] dark:text-white/20">/</span>}
@@ -185,7 +185,7 @@ export default function CheckoutPage({
                         role="radio"
                         aria-checked={a.id === addressId}
                         onClick={() => setAddressId(a.id)}
-                        className={`text-left p-4 rounded-md border transition-colors cursor-pointer ${a.id === addressId ? 'border-tk-ink dark:border-white bg-[#FAF9F6] dark:bg-white/[0.04]' : 'border-tk-accent/25 dark:border-tk-gold/25 hover:border-tk-ink/50'}`}
+                        className={`text-left p-4 rounded-md border transition-colors cursor-pointer ${a.id === addressId ? 'border-tk-ink dark:border-white bg-[#FAF9F6] dark:bg-white/[0.04]' : 'border-tk-gold-line/60 dark:border-tk-gold/50 hover:border-tk-ink/50'}`}
                       >
                         <span className="flex items-center justify-between text-[12px] uppercase tracking-widest text-[#666666]">
                           {a.label}
@@ -203,7 +203,7 @@ export default function CheckoutPage({
                     <button
                       type="button"
                       onClick={() => setAddressModal({ address: null })}
-                      className="p-4 rounded-md border border-dashed border-tk-accent/45 dark:border-tk-gold/40 text-[12px] uppercase tracking-[0.14em] text-[#5F5F5F] hover:text-tk-ink hover:border-tk-ink dark:hover:text-white cursor-pointer min-h-[120px]"
+                      className="p-4 rounded-md border border-dashed border-tk-gold-line dark:border-tk-gold/90 text-[12px] uppercase tracking-[0.14em] text-[#5F5F5F] hover:text-tk-ink hover:border-tk-ink dark:hover:text-white cursor-pointer min-h-[120px]"
                     >
                       + Add a new address
                     </button>
@@ -235,7 +235,7 @@ export default function CheckoutPage({
                         aria-checked={payment === 'COD'}
                         disabled={!codAllowed}
                         onClick={() => setPayment('COD')}
-                        className={`w-full text-left p-4 rounded-md border transition-colors cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 ${payment === 'COD' && codAllowed ? 'border-tk-ink dark:border-white bg-[#FAF9F6] dark:bg-white/[0.04]' : 'border-tk-accent/25 dark:border-tk-gold/25'}`}
+                        className={`w-full text-left p-4 rounded-md border transition-colors cursor-pointer disabled:cursor-not-allowed disabled:opacity-60 ${payment === 'COD' && codAllowed ? 'border-tk-ink dark:border-white bg-[#FAF9F6] dark:bg-white/[0.04]' : 'border-tk-gold-line/60 dark:border-tk-gold/50'}`}
                       >
                         <span className="block text-[13px] font-medium">Cash on delivery</span>
                         <span className="block text-[12px] text-[#5F5F5F] dark:text-[#A09D96] mt-0.5">
@@ -248,7 +248,7 @@ export default function CheckoutPage({
                           role="radio"
                           aria-checked={payment === 'ONLINE'}
                           onClick={() => setPayment('ONLINE')}
-                          className={`w-full text-left p-4 rounded-md border transition-colors cursor-pointer ${payment === 'ONLINE' ? 'border-tk-ink dark:border-white bg-[#FAF9F6] dark:bg-white/[0.04]' : 'border-tk-accent/25 dark:border-tk-gold/25'}`}
+                          className={`w-full text-left p-4 rounded-md border transition-colors cursor-pointer ${payment === 'ONLINE' ? 'border-tk-ink dark:border-white bg-[#FAF9F6] dark:bg-white/[0.04]' : 'border-tk-gold-line/60 dark:border-tk-gold/50'}`}
                         >
                           <span className="block text-[13px] font-medium">Pay online</span>
                           <span className="block text-[12px] text-[#5F5F5F] dark:text-[#A09D96] mt-0.5">UPI, cards and net banking.</span>
@@ -266,7 +266,7 @@ export default function CheckoutPage({
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-6">
                   <h2 className={h2}>Review and place order</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[12.5px]">
-                    <div className="p-4 rounded-md border border-tk-accent/25 dark:border-tk-gold/25">
+                    <div className="p-4 rounded-md border border-tk-gold-line/60 dark:border-tk-gold/50">
                       <p className="flex items-center justify-between text-[12px] uppercase tracking-widest text-[#666666]">
                         Delivering to
                         <button type="button" onClick={() => setStep('address')} className="underline underline-offset-4">Change</button>
@@ -281,7 +281,7 @@ export default function CheckoutPage({
                         </p>
                       )}
                     </div>
-                    <div className="p-4 rounded-md border border-tk-accent/25 dark:border-tk-gold/25">
+                    <div className="p-4 rounded-md border border-tk-gold-line/60 dark:border-tk-gold/50">
                       <p className="flex items-center justify-between text-[12px] uppercase tracking-widest text-[#666666]">
                         Payment
                         <button type="button" onClick={() => setStep('payment')} className="underline underline-offset-4">Change</button>
@@ -305,7 +305,7 @@ export default function CheckoutPage({
                       maxLength={500}
                       value={note}
                       onChange={(e) => onNoteChange && onNoteChange(e.target.value)}
-                      className="w-full px-3.5 py-2.5 rounded-md border border-tk-accent/45 dark:border-tk-gold/25 bg-white dark:bg-[#141318] text-[12.5px] text-tk-ink dark:text-white outline-none focus:border-tk-accent dark:focus:border-tk-gold transition-colors"
+                      className="w-full px-3.5 py-2.5 rounded-md border border-tk-gold-line dark:border-tk-gold/50 bg-white dark:bg-[#141318] text-[12.5px] text-tk-ink dark:text-white outline-none focus:border-tk-accent dark:focus:border-tk-gold transition-colors"
                     />
                   </div>
 
@@ -326,18 +326,18 @@ export default function CheckoutPage({
 
             {/* ================= RIGHT: SUMMARY (server quote) ================= */}
             <div className="lg:col-span-5">
-              <div className="lg:sticky lg:top-24 rounded-2xl bg-[#F8F7F5] dark:bg-[#141318] p-6 sm:p-7 border border-tk-accent/25 dark:border-tk-gold/25 transition-colors">
-                <div className="flex items-center justify-between pb-4 border-b border-tk-accent/25 dark:border-tk-gold/25">
+              <div className="lg:sticky lg:top-24 rounded-2xl bg-[#F8F7F5] dark:bg-[#141318] p-6 sm:p-7 border border-tk-gold-line/60 dark:border-tk-gold/50 transition-colors">
+                <div className="flex items-center justify-between pb-4 border-b border-tk-gold-line/60 dark:border-tk-gold/50">
                   <h3 className="text-[14px] font-medium uppercase tracking-[0.08em] text-tk-ink dark:text-white">Order Summary</h3>
                   <button type="button" onClick={onOpenBag} className="text-[12px] uppercase tracking-wider text-[#5F5F5F] underline underline-offset-4">Edit bag</button>
                 </div>
 
                 {quoteError && <p className="text-[12px] text-rose-600 mt-3">We couldn't load prices. Check your connection.</p>}
 
-                <div className="divide-y divide-tk-accent/20 dark:divide-tk-gold/20 my-2">
+                <div className="divide-y divide-tk-gold-line/50 dark:divide-tk-gold/40 my-2">
                   {items.map((item) => (
                     <div key={item.key || item.variant_id} className="py-3 flex items-center gap-3">
-                      <div className="w-14 h-14 rounded-md bg-white dark:bg-[#1A1820] flex items-center justify-center p-1.5 shrink-0 border border-tk-accent/25 dark:border-tk-gold/25">
+                      <div className="w-14 h-14 rounded-md bg-white dark:bg-[#1A1820] flex items-center justify-center p-1.5 shrink-0 border border-tk-gold-line/60 dark:border-tk-gold/50">
                         <img src={item.image || PLACEHOLDER_IMAGE} alt={item.name} className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1 min-w-0 text-[12px]">
@@ -369,7 +369,7 @@ export default function CheckoutPage({
                   <CouponRow quote={quote} couponCode={couponCode} cart={cart} onApply={(c) => onCouponChange && onCouponChange(c)} onRemove={() => onCouponChange && onCouponChange('')} />
                   {couponBlocked && <p className="mt-1.5 text-[12px] text-rose-600">Remove the code to place your order.</p>}
                 </div>
-                <div className={`pt-3 border-t border-tk-accent/25 dark:border-tk-gold/25 space-y-2 text-[12px] transition-opacity ${isFetching ? 'opacity-60' : ''}`}>
+                <div className={`pt-3 border-t border-tk-gold-line/60 dark:border-tk-gold/50 space-y-2 text-[12px] transition-opacity ${isFetching ? 'opacity-60' : ''}`}>
                   <div className="flex justify-between text-[#666666] dark:text-[#A09D96]">
                     <span>Subtotal</span>
                     <span className="text-tk-ink dark:text-white font-medium">{quote ? formatPrice(quote.subtotal) : '—'}</span>
@@ -386,7 +386,7 @@ export default function CheckoutPage({
                       {quote ? (quote.shipping === 0 ? 'FREE' : formatPrice(quote.shipping)) : '—'}
                     </span>
                   </div>
-                  <div className="flex justify-between text-[14px] font-medium text-tk-ink dark:text-white pt-2 border-t border-tk-accent/25 dark:border-tk-gold/25">
+                  <div className="flex justify-between text-[14px] font-medium text-tk-ink dark:text-white pt-2 border-t border-tk-gold-line/60 dark:border-tk-gold/50">
                     <span className="uppercase tracking-wider">Total</span>
                     <span className="font-semibold text-tk-ink dark:text-tk-accent-night tabular-nums">{quote ? formatPrice(quote.total) : '—'}</span>
                   </div>

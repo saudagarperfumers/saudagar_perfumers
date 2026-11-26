@@ -62,11 +62,11 @@ export default function BluorngProductReviews({ productSlug, productName }) {
   return (
     <section
       id="reviews-section"
-      className="w-full bg-[#FFFFFF] dark:bg-tk-night border-t border-tk-accent/25 dark:border-tk-gold/25 px-6 sm:px-10 lg:px-16 py-12 sm:py-16 transition-colors duration-300"
+      className="w-full bg-[#FFFFFF] dark:bg-tk-night border-t border-tk-gold-line/60 dark:border-tk-gold/50 px-6 sm:px-10 lg:px-16 py-12 sm:py-16 transition-colors duration-300"
       aria-label="Customer reviews"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-tk-accent/25 dark:border-tk-gold/25">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-tk-gold-line/60 dark:border-tk-gold/50">
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="inline-block w-2 h-2 rounded-full bg-tk-accent dark:bg-tk-accent-night" />
@@ -127,14 +127,14 @@ export default function BluorngProductReviews({ productSlug, productName }) {
             <div className="lg:col-span-8">
               <div className="flex items-center justify-between mb-4">
                 <p className="text-[12px] uppercase tracking-[0.16em] text-[#666666]">{count} review{count === 1 ? '' : 's'}</p>
-                <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort reviews" className="text-[12.5px] border border-tk-accent/25 dark:border-tk-gold/40 bg-transparent dark:bg-tk-night px-2 py-1">
+                <select value={sort} onChange={(e) => setSort(e.target.value)} aria-label="Sort reviews" className="text-[12.5px] border border-tk-gold-line/60 dark:border-tk-gold/90 bg-transparent dark:bg-tk-night px-2 py-1">
                   {SORTS.map(([v, l]) => (
                     <option key={v} value={v}>{l}</option>
                   ))}
                 </select>
               </div>
               {error && <p className="text-[12px] text-rose-600 mb-3">{error}</p>}
-              <ul className="divide-y divide-tk-accent/20 dark:divide-tk-gold/20">
+              <ul className="divide-y divide-tk-gold-line/50 dark:divide-tk-gold/40">
                 {reviews.map((r) => (
                   <li key={r.id} className="py-6 space-y-2">
                     <div className="flex items-center gap-3">

@@ -81,7 +81,7 @@ function QuickBuyModalContent({
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.94, y: 16 }}
         transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.32 }}
-        className="relative w-full max-w-[420px] sm:max-w-[680px] lg:max-w-[720px] bg-[#FFFFFF] dark:bg-[#121117] rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.32)] dark:shadow-[0_0_80px_rgba(212,175,55,0.06)] border border-tk-accent/25 dark:border-tk-gold/25 overflow-hidden text-tk-ink dark:text-white"
+        className="relative w-full max-w-[420px] sm:max-w-[680px] lg:max-w-[720px] bg-[#FFFFFF] dark:bg-[#121117] rounded-3xl shadow-[0_32px_80px_rgba(0,0,0,0.32)] dark:shadow-[0_0_80px_rgba(212,175,55,0.06)] border border-tk-gold-line/60 dark:border-tk-gold/50 overflow-hidden text-tk-ink dark:text-white"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Minimal Circle Close Button */}
@@ -100,13 +100,13 @@ function QuickBuyModalContent({
         <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 sm:gap-7 items-center p-5 sm:p-7">
           
           {/* ================= LEFT: FLACON ATELIER VITRINE (5 COLS) ================= */}
-          <div className="sm:col-span-5 relative w-full h-[210px] sm:h-[320px] rounded-2xl bg-gradient-to-b from-[#F7F6F2] to-[#ECEAE3] dark:from-[#18171E] dark:to-[#121116] flex items-center justify-center p-4 overflow-hidden border border-tk-accent/25 dark:border-tk-gold/25">
+          <div className="sm:col-span-5 relative w-full h-[210px] sm:h-[320px] rounded-2xl bg-gradient-to-b from-[#F7F6F2] to-[#ECEAE3] dark:from-[#18171E] dark:to-[#121116] flex items-center justify-center p-4 overflow-hidden border border-tk-gold-line/60 dark:border-tk-gold/50">
             {/* Ambient Warm Studio Light Aura */}
             <div className="absolute w-44 h-44 rounded-full bg-amber-400/15 dark:bg-tk-accent-night/10 blur-2xl pointer-events-none" />
 
             {/* Optional Badge */}
             {product.badge && (
-              <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-[2px] text-[11.5px] uppercase tracking-[0.16em] font-semibold bg-white/95 dark:bg-tk-night/95 text-tk-ink dark:text-tk-accent-night shadow-xs border border-black/5 dark:border-tk-gold/25 z-10">
+              <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-[2px] text-[11.5px] uppercase tracking-[0.16em] font-semibold bg-white/95 dark:bg-tk-night/95 text-tk-ink dark:text-tk-accent-night shadow-xs border border-black/5 dark:border-tk-gold/50 z-10">
                 {product.badge}
               </span>
             )}
@@ -221,7 +221,7 @@ function QuickBuyModalContent({
                       className={`py-2 px-2.5 rounded-xl border text-center transition-all duration-200 cursor-pointer ${sz.stock <= 0 ? 'opacity-50 line-through ' : ''}${
                         isSelected
                           ? 'border-tk-ink bg-tk-ink text-white dark:border-tk-accent-night dark:bg-tk-gold dark:text-tk-night shadow-sm font-medium'
-                          : 'border-tk-accent/25 dark:border-tk-gold/25 bg-[#FAF9F6] dark:bg-[#18171E] text-[#666666] dark:text-[#A09D96] hover:border-tk-accent/45 dark:hover:border-tk-gold/40'
+                          : 'border-tk-gold-line/60 dark:border-tk-gold/50 bg-[#FAF9F6] dark:bg-[#18171E] text-[#666666] dark:text-[#A09D96] hover:border-tk-gold-line dark:hover:border-tk-gold/90'
                       }`}
                     >
                       <div className="text-[12px] uppercase tracking-wider font-semibold">
@@ -239,7 +239,7 @@ function QuickBuyModalContent({
             {/* Action Row: Stepper & Add to Bag CTA */}
             <div className="pt-1 flex items-center gap-3">
               {/* Refined Rounded Stepper */}
-              <div className="flex items-center gap-1.5 bg-[#F4F3F0] dark:bg-[#18171E] border border-tk-accent/25 dark:border-tk-gold/25 px-2.5 py-1.5 rounded-[2px] text-tk-ink dark:text-white shrink-0">
+              <div className="flex items-center gap-1.5 bg-[#F4F3F0] dark:bg-[#18171E] border border-tk-gold-line/60 dark:border-tk-gold/50 px-2.5 py-1.5 rounded-[2px] text-tk-ink dark:text-white shrink-0">
                 <button
                   type="button"
                   onClick={() => setQuantity((q) => Math.max(1, q - 1))}
@@ -276,7 +276,7 @@ function QuickBuyModalContent({
             </div>
 
             {/* Atelier Privilege & Monograph Navigation Footer */}
-            <div className="pt-2 border-t border-tk-accent/25 dark:border-tk-gold/25 flex items-center justify-between text-[12px]">
+            <div className="pt-2 border-t border-tk-gold-line/60 dark:border-tk-gold/50 flex items-center justify-between text-[12px]">
               <span className="text-[#666666] dark:text-[#88857F] flex items-center gap-1 font-normal">
                 <span className="text-tk-accent-ink dark:text-tk-accent-night">✦</span>
                 <span>Free samples with every 50 ml</span>
