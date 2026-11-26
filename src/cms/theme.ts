@@ -48,6 +48,8 @@ export function themeVariables(theme: Record<string, unknown> | null | undefined
     if (channels) out[cssVar] = channels;
   }
   if (out['--c-accent']) out['--c-accent-ink'] = accentInk(out['--c-accent']);
+  // Gold lines on light pages: the gold, deepened to 3 : 1 on white so borders and controls are clearly visible.
+  if (out['--c-gold']) out['--c-gold-line'] = accentInk(out['--c-gold'], 3);
   const safeFont = (v: unknown) => (typeof v === 'string' && /^[A-Za-z0-9 ]{2,40}$/.test(v) ? `"${v}"` : null);
   const body = safeFont(theme.font_body);
   const display = safeFont(theme.font_display);

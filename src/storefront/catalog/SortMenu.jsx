@@ -33,7 +33,7 @@ export default function SortMenu({ value, onChange, align = 'right' }) {
         onClick={() => setOpen(!open)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="inline-flex items-center gap-2 h-10 px-3.5 whitespace-nowrap border border-tk-accent/45 dark:border-tk-gold/40 bg-white dark:bg-[#141318] text-[13px] text-tk-ink dark:text-white hover:border-tk-ink dark:hover:border-white rounded-[2px] transition-colors cursor-pointer"
+        className="inline-flex items-center gap-2 h-10 px-3.5 whitespace-nowrap border border-tk-gold-line dark:border-tk-gold/90 bg-white dark:bg-[#141318] text-[13px] text-tk-ink dark:text-white hover:border-tk-ink dark:hover:border-white rounded-[2px] transition-colors cursor-pointer"
       >
         <span className="text-[#5F5F5F] dark:text-white/60">Sort by:</span>
         <span className="font-semibold">{current}</span>
@@ -45,7 +45,7 @@ export default function SortMenu({ value, onChange, align = 'right' }) {
         <ul
           role="listbox"
           aria-label="Sort by"
-          className={`absolute z-40 mt-1.5 min-w-[220px] py-1.5 bg-white dark:bg-[#141318] border border-tk-accent/45 dark:border-tk-gold/25 shadow-[0_12px_32px_rgba(0,0,0,0.12)] rounded-[2px] ${align === 'right' ? 'right-0' : 'left-0'}`}
+          className={`absolute z-40 mt-1.5 min-w-[220px] py-1.5 bg-white dark:bg-[#141318] border border-tk-gold-line dark:border-tk-gold/50 shadow-[0_12px_32px_rgba(0,0,0,0.12)] rounded-[2px] ${align === 'right' ? 'right-0' : 'left-0'}`}
         >
           {SORT_OPTIONS.map(([v, label]) => {
             const on = v === value;

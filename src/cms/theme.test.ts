@@ -18,6 +18,15 @@ describe('themeVariables', () => {
   });
 });
 
+describe('gold lines on light pages', () => {
+  it('derives a deeper gold from the theme gold, at 3 : 1 on white', () => {
+    const vars = themeVariables({ gold: '#D4AF37' });
+    expect(vars['--c-gold']).toBe('212 175 55');
+    expect(vars['--c-gold-line']).toBe(accentInk('212 175 55', 3));
+    expect(vars['--c-gold-line']).toBe('174 143 45'); // the default in index.css
+  });
+});
+
 describe('readable accent for small text', () => {
   const contrastOnWhite = (channels: string) => {
     const [r, g, b] = channels.split(' ').map(Number).map((v) => {

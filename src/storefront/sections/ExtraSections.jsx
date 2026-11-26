@@ -24,12 +24,12 @@ export function PromiseStrip({ config = {} }) {
   const items = (config.items || []).filter((i) => i && i.title);
   if (items.length === 0) return null;
   return (
-    <section className="py-14 sm:py-16 bg-[#141418] text-[#F7F5F0] border-b border-tk-gold/20">
+    <section className="py-14 sm:py-16 bg-[#141418] text-[#F7F5F0] border-b border-tk-gold/45">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className={`grid grid-cols-1 ${items.length >= 4 ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-tk-gold/20`}>
+        <div className={`grid grid-cols-1 ${items.length >= 4 ? 'md:grid-cols-4' : 'md:grid-cols-3'} gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-tk-gold/40`}>
           {items.map((item, idx) => (
             <div key={idx} className="flex flex-col items-center px-4 pt-6 md:pt-0">
-              <div className="w-14 h-14 rounded-full bg-[#0A0A0C] border border-tk-gold/40 text-tk-gold flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(212,175,55,0.15)]">
+              <div className="w-14 h-14 rounded-full bg-[#0A0A0C] border border-tk-gold/90 text-tk-gold flex items-center justify-center mb-4 shadow-[0_0_15px_rgba(212,175,55,0.15)]">
                 <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   {ICONS[item.icon] || ICONS.authentic}
                 </svg>
@@ -49,7 +49,7 @@ export function PromoBanner({ config = {} }) {
   const go = useGo();
   if (!config.heading && !config.image) return null;
   return (
-    <section className="relative w-full py-28 sm:py-36 overflow-hidden bg-[#0A0A0C] text-white border-b border-tk-gold/25">
+    <section className="relative w-full py-28 sm:py-36 overflow-hidden bg-[#0A0A0C] text-white border-b border-tk-gold/50">
       {config.image && (
         <div className="absolute inset-0">
           <img src={config.image} alt="" className="w-full h-full object-cover object-center" loading="lazy" />
@@ -120,7 +120,7 @@ export function FaqSection({ config = {} }) {
   return (
     <section className="max-w-3xl mx-auto px-6 sm:px-10 py-14 sm:py-20">
       {config.heading && <h2 className="text-[22px] sm:text-[28px] font-normal tracking-[-0.01em] text-tk-ink dark:text-white mb-6">{config.heading}</h2>}
-      <div className="divide-y divide-tk-accent/20 dark:divide-tk-gold/20 border-y border-tk-accent/25 dark:border-tk-gold/25">
+      <div className="divide-y divide-tk-gold-line/50 dark:divide-tk-gold/40 border-y border-tk-gold-line/60 dark:border-tk-gold/50">
         {items.map((f) => (
           <div key={f.id} className="py-4">
             <button
@@ -158,7 +158,7 @@ export function RichTextSection({ config = {} }) {
       {config.heading && <h2 className="text-[24px] sm:text-[32px] font-normal tracking-[-0.015em] mb-5">{config.heading}</h2>}
       {hasText(config.body) && (
         <div
-          className="text-[14px] leading-relaxed text-[#444444] dark:text-[#CCCCCC] [&_p]:mb-3 [&_h2]:text-[20px] [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:pb-2 [&_h2]:border-b [&_h2]:border-tk-accent/30 dark:[&_h2]:border-tk-gold/30 [&_h3]:text-[16px] [&_h3]:mt-4 [&_h3]:mb-1 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_a]:underline [&_a]:text-tk-accent-ink dark:[&_a]:text-tk-accent-night"
+          className="text-[14px] leading-relaxed text-[#444444] dark:text-[#CCCCCC] [&_p]:mb-3 [&_h2]:text-[20px] [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:pb-2 [&_h2]:border-b [&_h2]:border-tk-gold-line/80 dark:[&_h2]:border-tk-gold/65 [&_h3]:text-[16px] [&_h3]:mt-4 [&_h3]:mb-1 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_a]:underline [&_a]:text-tk-accent-ink dark:[&_a]:text-tk-accent-night"
           dangerouslySetInnerHTML={{ __html: sanitizeHtml(config.body) }}
         />
       )}
@@ -191,7 +191,7 @@ export function NewsletterSection({ config = {} }) {
               onChange={(e) => setEmail(e.target.value)}
               placeholder={config.placeholder}
               aria-label="Email address"
-              className="flex-1 min-w-0 px-4 py-3 border border-tk-accent/45 dark:border-tk-gold/25 bg-white dark:bg-[#141318] text-[13px] outline-none focus:border-tk-accent dark:focus:border-tk-accent-night"
+              className="flex-1 min-w-0 px-4 py-3 border border-tk-gold-line dark:border-tk-gold/50 bg-white dark:bg-[#141318] text-[13px] outline-none focus:border-tk-accent dark:focus:border-tk-accent-night"
             />
             <button type="submit" className="px-6 bg-tk-ink dark:bg-tk-gold text-white dark:text-tk-night text-[12px] uppercase tracking-[0.16em]">
               {config.button_label || 'Subscribe'}

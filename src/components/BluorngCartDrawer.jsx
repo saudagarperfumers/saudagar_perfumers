@@ -105,7 +105,7 @@ export default function BluorngCartDrawer({
             >
           
           {/* ================= HEADER ================= */}
-          <div className="shrink-0 p-4 sm:p-5 flex items-center justify-between border-b border-tk-accent/25 dark:border-white/[0.08] text-tk-ink dark:text-white">
+          <div className="shrink-0 p-4 sm:p-5 flex items-center justify-between border-b border-tk-gold-line/60 dark:border-white/[0.08] text-tk-ink dark:text-white">
             <div className="flex items-center gap-2">
               <h2 className="text-[14px] font-bold tracking-[0.04em] uppercase text-tk-ink dark:text-white">
                 {words.bag_title}
@@ -129,7 +129,7 @@ export default function BluorngCartDrawer({
 
           {/* ================= FREE SHIPPING PROGRESS BAR ================= */}
           {cart.length > 0 && threshold && quote && (
-          <div className="shrink-0 bg-[#FAF9F6] dark:bg-[#141318] p-3.5 text-[12px] text-tk-ink dark:text-white border-b border-tk-accent/25 dark:border-white/[0.08] transition-colors">
+          <div className="shrink-0 bg-[#FAF9F6] dark:bg-[#141318] p-3.5 text-[12px] text-tk-ink dark:text-white border-b border-tk-gold-line/60 dark:border-white/[0.08] transition-colors">
             <div className="flex items-center justify-between font-semibold tracking-wider uppercase mb-1.5">
               {remaining > 0 ? (
                 <span>Add {formatPrice(remaining)} more for free delivery</span>
@@ -273,7 +273,7 @@ export default function BluorngCartDrawer({
 
           {/* ================= FOOTER / PROMO / CHECKOUT ================= */}
           {cart.length > 0 && (
-            <div className="shrink-0 p-4 sm:p-5 bg-white dark:bg-[#0E0C10] border-t border-tk-accent/25 dark:border-white/[0.08] text-tk-ink dark:text-white space-y-3.5 shadow-[0_-8px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_-8px_20px_rgba(0,0,0,0.3)] transition-colors">
+            <div className="shrink-0 p-4 sm:p-5 bg-white dark:bg-[#0E0C10] border-t border-tk-gold-line/60 dark:border-white/[0.08] text-tk-ink dark:text-white space-y-3.5 shadow-[0_-8px_20px_rgba(0,0,0,0.04)] dark:shadow-[0_-8px_20px_rgba(0,0,0,0.3)] transition-colors">
               
               {/* Order Note Toggle */}
               <div>

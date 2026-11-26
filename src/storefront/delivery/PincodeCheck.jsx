@@ -51,7 +51,7 @@ export default function PincodeCheck({ surface = false }) {
           onChange={(e) => setInput(e.target.value.replace(/\D/g, ''))}
           placeholder="Enter pincode"
           aria-label="Delivery pincode"
-          className="w-32 px-3 py-1.5 border border-tk-accent/25 dark:border-tk-gold/40 bg-transparent text-[12.5px] outline-none focus:border-tk-accent dark:focus:border-white"
+          className="w-32 px-3 py-1.5 border border-tk-gold-line/60 dark:border-tk-gold/90 bg-transparent text-[12.5px] outline-none focus:border-tk-accent dark:focus:border-white"
         />
         <button type="submit" className="px-3 py-1.5 text-[12px] uppercase tracking-wider border border-tk-ink dark:border-white">
           {isFetching ? 'Checking…' : 'Check'}

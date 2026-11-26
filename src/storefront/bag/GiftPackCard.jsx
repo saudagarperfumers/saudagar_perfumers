@@ -15,7 +15,7 @@ export default function GiftPackCard({ cart, onNavigate }) {
   const text = fillPackText(block?.bag_text || 'Your own selection of our perfumes, in one gift box.', opts);
   const button = fillPackText(block?.bag_button || 'Build your pack', opts);
   return (
-    <div className="rounded-[2px] border border-tk-ink/15 dark:border-tk-gold/25 bg-[#FAF9F6] dark:bg-[#141318] p-4">
+    <div className="rounded-[2px] border border-tk-ink/15 dark:border-tk-gold/50 bg-[#FAF9F6] dark:bg-[#141318] p-4">
       <div className="flex gap-3 items-start">
         {block?.image && <img src={block.image} alt="" className="w-14 h-14 object-cover shrink-0" />}
         <div className="flex-1 min-w-0">

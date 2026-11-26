@@ -31,7 +31,7 @@ export default function OrdersList() {
 
   return (
     <div>
-    <div className="divide-y divide-tk-accent/20 dark:divide-tk-gold/20">
+    <div className="divide-y divide-tk-gold-line/50 dark:divide-tk-gold/40">
       {paged.rows.map((o) => {
         const items = o.order_items.filter((i) => i.line_type === 'item');
         const count = items.reduce((n, i) => n + i.qty, 0);

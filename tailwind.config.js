@@ -26,6 +26,7 @@ export default {
         'tk-accent-ink': 'rgb(var(--c-accent-ink) / <alpha-value>)',
         'tk-accent-night': 'rgb(var(--c-accent-night) / <alpha-value>)',
         'tk-gold': 'rgb(var(--c-gold) / <alpha-value>)',
+        'tk-gold-line': 'rgb(var(--c-gold-line) / <alpha-value>)',
         'tk-ink': 'rgb(var(--c-ink) / <alpha-value>)',
         'tk-night': 'rgb(var(--c-night) / <alpha-value>)',
         'brand-black': '#111111',

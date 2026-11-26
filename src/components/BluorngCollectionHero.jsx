@@ -174,7 +174,7 @@ export default function BluorngCollectionHero({
       </div>
 
       {/* ================= 2. ULTRA-MINIMAL COLLECTION TAB SWITCHER (Borderless) ================= */}
-      <div className="w-full bg-white dark:bg-tk-night border-b border-tk-accent/25 dark:border-white/[0.08] transition-colors duration-300">
+      <div className="w-full bg-white dark:bg-tk-night border-b border-tk-gold-line/60 dark:border-white/[0.08] transition-colors duration-300">
         <div 
           ref={tabsContainerRef}
           data-lenis-prevent="true"

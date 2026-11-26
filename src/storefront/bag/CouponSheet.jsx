@@ -27,7 +27,7 @@ export function CouponRow({ quote, couponCode, onApply, onRemove, cart }) {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="w-full flex items-center justify-between px-3 py-2.5 border border-dashed border-black/20 dark:border-tk-gold/40 rounded-xs font-semibold uppercase tracking-wider hover:border-tk-accent dark:hover:border-tk-gold transition-colors cursor-pointer"
+          className="w-full flex items-center justify-between px-3 py-2.5 border border-dashed border-black/20 dark:border-tk-gold/90 rounded-xs font-semibold uppercase tracking-wider hover:border-tk-accent dark:hover:border-tk-gold transition-colors cursor-pointer"
         >
           <span>Apply a coupon</span>
           <span className="text-tk-accent-ink dark:text-tk-accent-night">→</span>
@@ -58,9 +58,9 @@ function CouponSheet({ open, onClose, cart, current, onApply }) {
           role="dialog"
           aria-modal="true"
           aria-label="Apply a coupon"
-          className="fixed inset-x-0 bottom-0 sm:inset-auto sm:right-0 sm:top-0 sm:bottom-0 sm:w-[28rem] z-[70] bg-white dark:bg-[#0E0C10] text-tk-ink dark:text-white flex flex-col max-h-[85svh] sm:max-h-none border-t sm:border-t-0 sm:border-l border-tk-accent/25 dark:border-tk-gold/25 shadow-2xl"
+          className="fixed inset-x-0 bottom-0 sm:inset-auto sm:right-0 sm:top-0 sm:bottom-0 sm:w-[28rem] z-[70] bg-white dark:bg-[#0E0C10] text-tk-ink dark:text-white flex flex-col max-h-[85svh] sm:max-h-none border-t sm:border-t-0 sm:border-l border-tk-gold-line/60 dark:border-tk-gold/50 shadow-2xl"
         >
-          <div className="flex items-center justify-between p-4 border-b border-tk-accent/25 dark:border-white/[0.08]">
+          <div className="flex items-center justify-between p-4 border-b border-tk-gold-line/60 dark:border-white/[0.08]">
             <p className="text-[12.5px] font-bold uppercase tracking-wider">Apply a coupon</p>
             <button type="button" onClick={onClose} aria-label="Close" className="p-1">✕</button>
           </div>
@@ -82,7 +82,7 @@ function CouponSheet({ open, onClose, cart, current, onApply }) {
             {isLoading && <p className="text-[12px] text-[#5F5F5F]">Looking for offers…</p>}
             {!isLoading && offers.length === 0 && <p className="text-[12px] text-[#5F5F5F] dark:text-white/60">No offers for this bag right now. Have a code? Type it above.</p>}
             {offers.map((o) => (
-              <div key={o.id} className={`p-3 border rounded-xs ${o.ok ? 'border-black/10 dark:border-tk-gold/25' : 'border-tk-accent/25 dark:border-tk-gold/25 opacity-70'}`}>
+              <div key={o.id} className={`p-3 border rounded-xs ${o.ok ? 'border-black/10 dark:border-tk-gold/50' : 'border-tk-gold-line/60 dark:border-tk-gold/50 opacity-70'}`}>
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="text-[12.5px] font-bold uppercase tracking-wider">

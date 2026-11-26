@@ -5,7 +5,7 @@ import { useBlock } from '../cms/useSite';
 export default function MinimalHeader({ backLabel = 'Continue shopping', onBack, onLogo }) {
   const brand = useBlock('brand') || {};
   return (
-    <header className="w-full border-b border-tk-accent/25 dark:border-tk-gold/25 bg-white/95 dark:bg-tk-night/95 backdrop-blur-md sticky top-0 z-30 transition-colors">
+    <header className="w-full border-b border-tk-gold-line/60 dark:border-tk-gold/50 bg-white/95 dark:bg-tk-night/95 backdrop-blur-md sticky top-0 z-30 transition-colors">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 grid grid-cols-[1fr_auto_1fr] items-center gap-3">
         <button
           type="button"
