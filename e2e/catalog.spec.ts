@@ -15,7 +15,7 @@ test('product page shows the note pyramid, real sizes and no fake reviews', asyn
   await expect(page.getByText('Top Notes')).toBeVisible();
   // Notes without a photo show their first letter, so the link is found by where it goes.
   await expect(page.locator('a[href="/notes/saffron"]').first()).toContainText('Saffron');
-  await expect(page.getByRole('button', { name: '50 ml', exact: true }).first()).toBeVisible();
+  await expect(page.getByRole('button', { name: /^50 ml/ }).first()).toBeVisible();
   await page.getByRole('button', { name: 'Details & Compliance' }).click();
   await expect(page.getByText('3303')).toBeVisible();
 });
