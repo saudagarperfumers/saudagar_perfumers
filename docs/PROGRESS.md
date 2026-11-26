@@ -339,6 +339,18 @@
 - [x] Old links (products, categories, policy pages, blog) redirect to the new pages once the domain moves
 - [x] Not copied (template filler on the old site): Glozin About Us, 12 fashion blog posts, FAQ with blanks, Special Offers, Coming Soon; not copied (features): AI chat, Request a callback, Compare
 
+## Phase 29: Shop polish ✅
+- [x] Add to bag: the bottle of the size picked flies into the bag; gift sets and combos fly the premium 100 ml bottle (set in Site content → Product page)
+- [x] Picking a size moves the gallery to that size's bottle (desktop and phones); the quick-add popup shows and flies the picked size too
+- [x] Plain bottle photos trimmed so 30, 50 and 100 ml show at the same scale; the 100 ml no longer sits low under the page dots
+- [x] Glow behind every photo; the gallery works for any number of photos (the gift set has five)
+- [x] Product page: Back button and breadcrumb; "Inspired by …" line; key facts (concentration, how long it lasts, projection, gender); sizes show their price; price per ml; stock with a coloured dot; notes at a glance
+- [x] Product cards: category, name, sizes, "From" price, MRP and % off; quick add always visible on phones
+- [x] Home rows: 12 products a page with page numbers; "How many" can now go up to 120
+- [x] Home sections back with real content: Ocean Blue campaign banner, For him / For her / Unisex tabs, three picture tiles, a second ribbon, the Saudagar brand block and the brand text with popular searches; testimonials and reels added but switched off until there are real ones
+- [x] Fixed: products that loaded after their row came into view (or a new page of them) stayed invisible
+- [x] Light theme: links on text pages are now readable; menu and category tiles use real photos; menu button no longer reads "Shop Shop all"
+
 ## Owner to-do before going live (see docs/SETUP.md and docs/SUPABASE.md)
 - [ ] Run `npm run hook:secret` (automatic refunds); delete the unused Singapore Supabase project
 - [ ] Supabase Pro, SMTP, domain
