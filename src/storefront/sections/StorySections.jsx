@@ -27,7 +27,7 @@ export function StoryHero({ config = {} }) {
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mt-14 relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-[2px] overflow-hidden bg-[#FAFAFA] dark:bg-white/5 border border-[#F0F0F0] dark:border-white/10"
+          className="mt-14 relative w-full aspect-[16/9] sm:aspect-[21/9] rounded-[2px] overflow-hidden bg-[#FAFAFA] dark:bg-white/5 border border-tk-accent/25 dark:border-tk-gold/25"
         >
           <img src={config.image} alt={config.image_kicker || ''} className="w-full h-full object-cover object-center filter brightness-[0.92] dark:brightness-[0.85]" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
@@ -44,7 +44,7 @@ export function StoryHero({ config = {} }) {
 export function StoryTenets({ config = {} }) {
   const items = config.items || [];
   return (
-    <section className="max-w-5xl mx-auto px-6 sm:px-10 py-16 border-t border-[#F0F0F0] dark:border-white/10">
+    <section className="max-w-5xl mx-auto px-6 sm:px-10 py-16 border-t border-tk-accent/25 dark:border-tk-gold/25">
       <div className="mb-12">
         {config.eyebrow && <span className="sf-eyebrow">{config.eyebrow}</span>}
         {config.heading && <h2 className="sf-title">{config.heading}</h2>}
@@ -65,7 +65,7 @@ export function StoryTenets({ config = {} }) {
 export function StoryTimeline({ config = {} }) {
   const chapters = config.chapters || [];
   return (
-    <section className="max-w-5xl mx-auto px-6 sm:px-10 py-16 border-t border-[#F0F0F0] dark:border-white/10">
+    <section className="max-w-5xl mx-auto px-6 sm:px-10 py-16 border-t border-tk-accent/25 dark:border-tk-gold/25">
       <div className="mb-14">
         {config.eyebrow && <span className="sf-eyebrow">{config.eyebrow}</span>}
         {config.heading && <h2 className="sf-title">{config.heading}</h2>}
@@ -90,10 +90,10 @@ export function StoryTimeline({ config = {} }) {
 
 export function StorySplit({ config = {} }) {
   return (
-    <section className="max-w-5xl mx-auto px-6 sm:px-10 py-16 border-t border-[#F0F0F0] dark:border-white/10">
+    <section className="max-w-5xl mx-auto px-6 sm:px-10 py-16 border-t border-tk-accent/25 dark:border-tk-gold/25">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {config.image && (
-          <div className="relative aspect-[4/3] rounded-[2px] overflow-hidden bg-[#FAFAFA] dark:bg-white/5 border border-[#F0F0F0] dark:border-white/10">
+          <div className="relative aspect-[4/3] rounded-[2px] overflow-hidden bg-[#FAFAFA] dark:bg-white/5 border border-tk-accent/25 dark:border-tk-gold/25">
             <img src={config.image} alt={config.image_caption || ''} className="w-full h-full object-cover filter brightness-[0.95] dark:brightness-[0.9]" />
             {config.image_caption && (
               <div className="absolute bottom-3 left-3 text-[12px] uppercase tracking-wider text-white/90 bg-black/60 px-2 py-0.5 rounded-[1px] backdrop-blur-xs">

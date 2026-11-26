@@ -106,7 +106,7 @@ export default function GiftPackPage({ onAddToCart, onNavigateCollection }) {
       <div className="px-4 sm:px-8 lg:px-12 py-8 sm:py-10 space-y-8">
         <ul className="flex flex-wrap gap-2" aria-label="What you get">
           {packFacts(opts).map((f) => (
-            <li key={f} className="px-3 py-1.5 border border-tk-ink/15 dark:border-white/20 bg-[#FAF9F6] dark:bg-white/[0.06] text-[12.5px] font-medium">
+            <li key={f} className="px-3 py-1.5 border border-tk-ink/15 dark:border-tk-gold/40 bg-[#FAF9F6] dark:bg-white/[0.06] text-[12.5px] font-medium">
               {f}
             </li>
           ))}
@@ -129,7 +129,7 @@ export default function GiftPackPage({ onAddToCart, onNavigateCollection }) {
             {Array.from({ length: count }, (_, i) => {
               const p = byId.get(picks[i]);
               return (
-                <li key={i} className={`flex items-center gap-2.5 p-2.5 border min-h-[64px] ${p ? 'border-tk-ink/30 dark:border-white/25' : 'border-dashed border-[#C9C6BE] dark:border-white/20'}`}>
+                <li key={i} className={`flex items-center gap-2.5 p-2.5 border min-h-[64px] ${p ? 'border-tk-ink/30 dark:border-tk-gold/40' : 'border-dashed border-tk-accent/45 dark:border-tk-gold/40'}`}>
                   <span className="text-[12px] text-[#5F5F5F] dark:text-white/50 w-4 shrink-0">{i + 1}</span>
                   {p ? (
                     <>
@@ -160,7 +160,7 @@ export default function GiftPackPage({ onAddToCart, onNavigateCollection }) {
               onChange={(e) => setTerm(e.target.value)}
               placeholder="Search perfumes"
               aria-label="Search perfumes"
-              className="w-full sm:w-72 px-4 py-2.5 border border-[#D5D3CC] dark:border-white/15 bg-white dark:bg-[#141318] text-[13px] outline-none focus:border-tk-ink dark:focus:border-tk-accent-night"
+              className="w-full sm:w-72 px-4 py-2.5 border border-tk-accent/45 dark:border-tk-gold/25 bg-white dark:bg-[#141318] text-[13px] outline-none focus:border-tk-accent dark:focus:border-tk-accent-night"
             />
           </div>
           {opts.perfumes.length === 0 && (
@@ -173,7 +173,7 @@ export default function GiftPackPage({ onAddToCart, onNavigateCollection }) {
               const ok = canPick(opts, picks, p.product_id);
               const soldOut = p.max_picks <= n && !full;
               return (
-                <li key={p.product_id} className={`flex flex-col border ${n ? 'border-tk-ink dark:border-white' : 'border-[#E6E4DF] dark:border-white/10'}`}>
+                <li key={p.product_id} className={`flex flex-col border ${n ? 'border-tk-ink dark:border-white' : 'border-tk-accent/25 dark:border-tk-gold/25'}`}>
                   <Link to={`/product/${p.slug}`} className="block aspect-[4/5] bg-[#F7F7F6] dark:bg-[#18171C] p-3">
                     <img src={p.image || PLACEHOLDER_IMAGE} alt={p.name} className="w-full h-full object-contain" loading="lazy" />
                   </Link>
@@ -184,7 +184,7 @@ export default function GiftPackPage({ onAddToCart, onNavigateCollection }) {
                     </p>
                     <div className="mt-auto flex items-center gap-2">
                       {n > 0 && (
-                        <button type="button" onClick={() => removeOne(p.product_id)} aria-label={`One less ${p.name}`} className="w-9 h-9 border border-[#C9C6BE] dark:border-white/25 text-[15px]">
+                        <button type="button" onClick={() => removeOne(p.product_id)} aria-label={`One less ${p.name}`} className="w-9 h-9 border border-tk-accent/45 dark:border-tk-gold/40 text-[15px]">
                           −
                         </button>
                       )}
@@ -208,7 +208,7 @@ export default function GiftPackPage({ onAddToCart, onNavigateCollection }) {
       </div>
 
       {/* Summary bar: stays in view while choosing, and stops above the footer instead of covering it */}
-      <div className="sticky bottom-[64px] lg:bottom-0 z-30 mt-10 bg-white/95 dark:bg-[#0E0C10]/95 backdrop-blur-md border-t border-[#E6E4DF] dark:border-white/10 px-4 sm:px-8 lg:px-12 py-3">
+      <div className="sticky bottom-[64px] lg:bottom-0 z-30 mt-10 bg-white/95 dark:bg-[#0E0C10]/95 backdrop-blur-md border-t border-tk-accent/25 dark:border-tk-gold/25 px-4 sm:px-8 lg:px-12 py-3">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="text-[12.5px]">
             <p className="font-semibold">

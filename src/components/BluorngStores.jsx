@@ -11,7 +11,7 @@ export default function BluorngStores({ config = {} }) {
   }));
   if (BOUTIQUE_STORES.length === 0) return null;
   return (
-    <section id="stores-section" className="relative w-full bg-white dark:bg-tk-night py-14 sm:py-20 border-b border-[#ECE5D8] dark:border-white/5 overflow-hidden transition-colors duration-300">
+    <section id="stores-section" className="relative w-full bg-white dark:bg-tk-night py-14 sm:py-20 border-b border-tk-accent/25 dark:border-tk-gold/25 overflow-hidden transition-colors duration-300">
       {/* Background Layer 3: Tactile Film Grain */}
       <div className="absolute inset-0 luxury-noise pointer-events-none z-0 opacity-70" />
 
@@ -25,7 +25,7 @@ export default function BluorngStores({ config = {} }) {
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* ================= SECTION HEADER ================= */}
-        <ScrollReveal variant="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12 pb-4 border-b border-tk-ink/12 dark:border-white/10">
+        <ScrollReveal variant="fade-up" className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-12 pb-4 border-b border-tk-ink/12 dark:border-tk-gold/25">
           <div>
             <div className="flex items-center gap-2 mb-1.5">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
@@ -57,7 +57,7 @@ export default function BluorngStores({ config = {} }) {
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="bg-[#FFFFFF] dark:bg-[#141318] border border-[#E3DDD1] dark:border-white/10 hover:border-tk-ink dark:hover:border-tk-gold rounded-xs transition-all duration-400 overflow-hidden flex flex-col justify-between group shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] will-change-transform h-full"
+                className="bg-[#FFFFFF] dark:bg-[#141318] border border-tk-accent/25 dark:border-tk-gold/25 hover:border-tk-ink dark:hover:border-tk-gold rounded-xs transition-all duration-400 overflow-hidden flex flex-col justify-between group shadow-[0_4px_16px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.12)] will-change-transform h-full"
               >
                 {/* Boutique Image with "Open now" Tag */}
                 <div className="relative w-full aspect-[16/10] overflow-hidden bg-[#ECEBE6] dark:bg-[#1C1A22]">
@@ -97,7 +97,7 @@ export default function BluorngStores({ config = {} }) {
                   </div>
 
                   {/* Bottom Row: Directions & Phone */}
-                  <div className="mt-5 pt-3.5 border-t border-[#F0ECE1] dark:border-white/10 flex items-center justify-between text-[12px]">
+                  <div className="mt-5 pt-3.5 border-t border-tk-accent/25 dark:border-tk-gold/25 flex items-center justify-between text-[12px]">
                     {store.mapUrl ? <a
                       href={store.mapUrl}
                       target="_blank"

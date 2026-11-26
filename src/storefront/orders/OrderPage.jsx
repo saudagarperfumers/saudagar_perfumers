@@ -59,7 +59,7 @@ export default function OrderPage({ orderId }) {
     body = (
       <div className="space-y-10">
         {justPlaced && (
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="text-center space-y-3 pb-8 border-b border-[#F0F0F0] dark:border-white/10">
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="text-center space-y-3 pb-8 border-b border-tk-accent/25 dark:border-tk-gold/25">
             <div className="w-14 h-14 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center mx-auto text-xl font-bold border border-emerald-200 dark:border-emerald-800/40">
               ✓
             </div>
@@ -125,7 +125,7 @@ export default function OrderPage({ orderId }) {
               maxLength={200}
               value={reason}
               onChange={(e) => setReason(e.target.value)}
-              className="w-full px-3 py-2 border border-[#E0E0E0] dark:border-white/20 rounded-[2px] bg-white dark:bg-transparent outline-none"
+              className="w-full px-3 py-2 border border-tk-accent/25 dark:border-tk-gold/40 rounded-[2px] bg-white dark:bg-transparent outline-none"
             />
             {cancelError && <p className="text-rose-600 text-[12px]">{cancelError}</p>}
             <div className="flex gap-4">
@@ -151,7 +151,7 @@ export default function OrderPage({ orderId }) {
         )}
 
         {stopped ? (
-          <p className="px-4 py-3 text-[12.5px] border border-[#EEEEEE] dark:border-white/10 text-[#666666] dark:text-[#AAAAAA]">
+          <p className="px-4 py-3 text-[12.5px] border border-tk-accent/25 dark:border-tk-gold/25 text-[#666666] dark:text-[#AAAAAA]">
             {order.status === 'CANCELLED'
               ? `This order was cancelled on ${formatOrderDate(order.cancelled_at)}${order.cancel_reason ? ` — ${order.cancel_reason}` : ''}.`
               : 'This parcel came back to us. We will be in touch.'}
@@ -186,7 +186,7 @@ export default function OrderPage({ orderId }) {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2 space-y-6">
-            <div className="divide-y divide-[#F0F0F0] dark:divide-white/10 border-y border-[#F0F0F0] dark:border-white/10">
+            <div className="divide-y divide-tk-accent/20 dark:divide-tk-gold/20 border-y border-tk-accent/25 dark:border-tk-gold/25">
               {items.map((i) => (
                 <div key={i.id} className="flex items-center gap-4 py-4">
                   <img src={i.image_url || PLACEHOLDER_IMAGE} alt="" className="w-16 h-16 object-contain bg-[#F7F7F6] dark:bg-[#18171C] rounded-[2px]" />
@@ -243,7 +243,7 @@ export default function OrderPage({ orderId }) {
                 {a.phone && formatIndianPhone(a.phone)}
               </p>
             </div>
-            <div className="space-y-1.5 pt-4 border-t border-[#F0F0F0] dark:border-white/10">
+            <div className="space-y-1.5 pt-4 border-t border-tk-accent/25 dark:border-tk-gold/25">
               <div className="flex justify-between text-[#5F5F5F]"><span>Subtotal</span><span>{formatINR(Number(order.subtotal))}</span></div>
               {Number(order.discount) > 0 && (
                 <div className="flex justify-between text-emerald-700 dark:text-emerald-400">
@@ -252,11 +252,11 @@ export default function OrderPage({ orderId }) {
                 </div>
               )}
               <div className="flex justify-between text-[#5F5F5F]"><span>Delivery</span><span>{Number(order.shipping_fee) === 0 ? 'FREE' : formatINR(Number(order.shipping_fee))}</span></div>
-              <div className="flex justify-between text-[14px] font-medium pt-2 border-t border-[#F0F0F0] dark:border-white/10"><span>Total</span><span>{formatINR(Number(order.total))}</span></div>
+              <div className="flex justify-between text-[14px] font-medium pt-2 border-t border-tk-accent/25 dark:border-tk-gold/25"><span>Total</span><span>{formatINR(Number(order.total))}</span></div>
               <p className="text-[12px] text-[#666666]">{paymentLabel(order)}</p>
             </div>
             {order.order_events?.length > 0 && (
-              <div className="pt-4 border-t border-[#F0F0F0] dark:border-white/10">
+              <div className="pt-4 border-t border-tk-accent/25 dark:border-tk-gold/25">
                 <p className="text-[12px] uppercase tracking-[0.2em] text-[#666666] mb-2 font-medium">History</p>
                 <ul className="space-y-1.5 text-[12px] text-[#666666] dark:text-[#AAAAAA]">
                   {order.order_events

@@ -86,7 +86,7 @@ export default function BluorngWishlistPage({
             <button
               type="button"
               onClick={() => onNavigateCollection('all')}
-              className="text-[12px] uppercase tracking-[0.16em] font-medium text-tk-ink dark:text-white border-b border-tk-ink/30 dark:border-white/30 pb-1 hover:text-tk-accent dark:hover:text-tk-accent-night hover:border-tk-accent dark:hover:border-tk-accent-night transition-colors cursor-pointer"
+              className="text-[12px] uppercase tracking-[0.16em] font-medium text-tk-ink dark:text-white border-b border-tk-ink/30 dark:border-tk-gold/40 pb-1 hover:text-tk-accent dark:hover:text-tk-accent-night hover:border-tk-accent dark:hover:border-tk-accent-night transition-colors cursor-pointer"
             >
               Continue Exploring
             </button>

@@ -6,7 +6,7 @@ import { useAuth } from '../../lib/auth';
 import { toFriendlyError } from '../../lib/errors';
 import { uploadPrivate } from '../../lib/media/privateUpload';
 
-const input = 'w-full px-3 py-2 border border-[#E0E0E0] dark:border-white/20 rounded-[2px] bg-transparent outline-none focus:border-tk-ink dark:focus:border-white text-[12.5px]';
+const input = 'w-full px-3 py-2 border border-tk-accent/25 dark:border-tk-gold/40 rounded-[2px] bg-transparent outline-none focus:border-tk-accent dark:focus:border-white text-[12.5px]';
 
 /** Delivered orders: "Write a review" for each fragrance the customer hasn't reviewed yet. */
 export default function ReviewPrompt({ order }) {
@@ -78,7 +78,7 @@ export default function ReviewPrompt({ order }) {
   };
 
   return (
-    <div className="p-5 border border-[#EEEEEE] dark:border-white/10 space-y-3 text-[12.5px]">
+    <div className="p-5 border border-tk-accent/25 dark:border-tk-gold/25 space-y-3 text-[12.5px]">
       <p className="text-[12px] uppercase tracking-[0.2em] text-tk-accent-ink dark:text-tk-accent-night font-medium">Your reviews</p>
       {thanks && <p className="text-emerald-700 dark:text-emerald-400">Thank you! Your review will appear once we've checked it.</p>}
       {mine.map((i) => (
@@ -100,7 +100,7 @@ export default function ReviewPrompt({ order }) {
               aria-modal="true"
               aria-label={`Review ${open.product_name}`}
               data-lenis-prevent="true"
-              className="w-full max-w-md max-h-[90svh] overflow-y-auto bg-white dark:bg-[#141318] text-tk-ink dark:text-white p-6 rounded-[2px] border border-[#EAEAEA] dark:border-white/10 space-y-4"
+              className="w-full max-w-md max-h-[90svh] overflow-y-auto bg-white dark:bg-[#141318] text-tk-ink dark:text-white p-6 rounded-[2px] border border-tk-accent/25 dark:border-tk-gold/25 space-y-4"
             >
               <div className="flex items-center justify-between">
                 <p className="text-[15px] font-medium">Review {open.product_name}</p>

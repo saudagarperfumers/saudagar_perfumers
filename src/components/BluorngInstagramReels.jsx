@@ -170,7 +170,7 @@ export default function BluorngInstagramReels({
               type="button"
               onClick={() => setIsPaused((prev) => !prev)}
               aria-pressed={isPaused}
-              className="inline-flex items-center justify-center gap-2 h-10 px-4 rounded-[2px] border border-[#D5D2CA] dark:border-white/20 text-tk-ink dark:text-white/85 hover:border-tk-ink dark:hover:border-white text-[12px] font-medium uppercase tracking-wider transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 h-10 px-4 rounded-[2px] border border-tk-accent/45 dark:border-tk-gold/40 text-tk-ink dark:text-white/85 hover:border-tk-ink dark:hover:border-white text-[12px] font-medium uppercase tracking-wider transition-colors cursor-pointer"
             >
               {isPaused ? (
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" aria-hidden><polygon points="6 4 20 12 6 20 6 4" /></svg>

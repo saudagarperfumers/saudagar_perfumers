@@ -6,7 +6,7 @@ export function AuthLayout({ eyebrow, title, children, footer }: { eyebrow: stri
   const brand = useBlock<Record<string, string>>('brand') || {};
   return (
     <div className="min-h-[100svh] w-full bg-white dark:bg-tk-night text-tk-ink dark:text-white flex flex-col">
-      <header className="h-16 px-4 sm:px-8 grid grid-cols-[1fr_auto_1fr] items-center gap-3 border-b border-[#EAEAEA] dark:border-white/10">
+      <header className="h-16 px-4 sm:px-8 grid grid-cols-[1fr_auto_1fr] items-center gap-3 border-b border-tk-accent/25 dark:border-tk-gold/25">
         <Link to="/" className="justify-self-start inline-flex items-center gap-2 h-10 min-w-10 -ml-2 px-2 text-[12px] uppercase tracking-[0.18em] text-[#5F5F5F] dark:text-white/60 hover:text-tk-ink dark:hover:text-white">
           <span aria-hidden>←</span>
           <span className="hidden sm:inline">Continue shopping</span>
@@ -28,7 +28,7 @@ export function AuthLayout({ eyebrow, title, children, footer }: { eyebrow: stri
           <p className="sf-eyebrow">{eyebrow}</p>
           <h1 className="text-[24px] sm:text-[28px] font-normal tracking-[-0.015em] mb-8">{title}</h1>
           {children}
-          {footer && <div className="mt-8 pt-6 border-t border-[#EAEAEA] dark:border-white/10 text-[12.5px] text-[#666666] dark:text-white/60">{footer}</div>}
+          {footer && <div className="mt-8 pt-6 border-t border-tk-accent/25 dark:border-tk-gold/25 text-[12.5px] text-[#666666] dark:text-white/60">{footer}</div>}
         </div>
       </main>
     </div>
@@ -49,7 +49,7 @@ export function AuthField({ label, error, hint, id, ...input }: FieldProps) {
         {...input}
         aria-invalid={error ? true : undefined}
         className={`w-full px-3.5 py-3 border bg-white dark:bg-[#141318] text-[14px] text-tk-ink dark:text-white outline-none transition-colors rounded-none ${
-          error ? 'border-rose-500' : 'border-[#D5D3CC] dark:border-white/15 focus:border-tk-ink dark:focus:border-tk-accent-night'
+          error ? 'border-rose-500' : 'border-tk-accent/45 dark:border-tk-gold/25 focus:border-tk-accent dark:focus:border-tk-accent-night'
         }`}
       />
       {error ? (

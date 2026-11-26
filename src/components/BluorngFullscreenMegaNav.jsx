@@ -279,7 +279,7 @@ export default function BluorngFullscreenMegaNav({
 
                 {/* ================= OLFACTORY NOTES DIRECT ACCESS ================= */}
                 {(nav.accords || []).length > 0 && (
-                  <div className="mt-5 pt-4 border-t border-black/[0.08] dark:border-white/[0.08]">
+                  <div className="mt-5 pt-4 border-t border-tk-accent/25 dark:border-white/[0.08]">
                     {nav.accords_heading && (
                       <p className="text-[11.5px] uppercase tracking-[0.2em] font-medium text-tk-accent-ink dark:text-tk-accent-night mb-2.5">
                         {nav.accords_heading}
@@ -290,7 +290,7 @@ export default function BluorngFullscreenMegaNav({
                         <button
                           key={`${note.label}-${i}`}
                           onClick={() => handleSelect(note.link)}
-                          className="px-2.5 py-1 rounded-md bg-black/[0.04] hover:bg-tk-accent dark:bg-white/[0.06] dark:hover:bg-tk-accent-night text-[12px] text-[#444444] hover:text-white dark:text-white/80 dark:hover:text-tk-night transition-all cursor-pointer border border-black/[0.04] dark:border-white/[0.06]"
+                          className="px-2.5 py-1 rounded-md bg-black/[0.04] hover:bg-tk-accent dark:bg-white/[0.06] dark:hover:bg-tk-accent-night text-[12px] text-[#444444] hover:text-white dark:text-white/80 dark:hover:text-tk-night transition-all cursor-pointer border border-tk-accent/25 dark:border-white/[0.06]"
                         >
                           {note.label}
                         </button>
@@ -306,7 +306,7 @@ export default function BluorngFullscreenMegaNav({
                       <div
                         key={`${card.title}-${i}`}
                         onClick={() => handleSelect(card.link)}
-                        className="p-2.5 rounded-md bg-black/[0.02] dark:bg-white/[0.03] hover:bg-black/[0.05] dark:hover:bg-white/[0.07] border border-black/[0.06] dark:border-white/[0.08] cursor-pointer transition-all group"
+                        className="p-2.5 rounded-md bg-black/[0.02] dark:bg-white/[0.03] hover:bg-black/[0.05] dark:hover:bg-white/[0.07] border border-tk-accent/25 dark:border-white/[0.08] cursor-pointer transition-all group"
                       >
                         <div className="flex items-center justify-between text-tk-accent-ink dark:text-tk-accent-night text-[11.5px] font-mono uppercase">
                           <span>{card.kicker}</span>
@@ -348,7 +348,7 @@ export default function BluorngFullscreenMegaNav({
                 {/* PRIMARY BENTO: ZERO-GLITCH CROSSFADE VIDEO STAGE (7 COLS) */}
                 <div
                   onClick={() => handleSelect(activeItem.link)}
-                  className="col-span-7 h-[530px] rounded-md overflow-hidden relative group cursor-pointer shadow-[0_15px_40px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-black/[0.08] dark:border-white/10 bg-tk-night"
+                  className="col-span-7 h-[530px] rounded-md overflow-hidden relative group cursor-pointer shadow-[0_15px_40px_rgba(0,0,0,0.2)] dark:shadow-[0_20px_50px_rgba(0,0,0,0.85)] border border-tk-accent/25 dark:border-tk-gold/25 bg-tk-night"
                 >
                   {/* Persistent video layers: never unmount, never black-flash, butter-smooth crossfade */}
                   {FULLSCREEN_NAV_CATEGORIES.map((cat, idx) => {
@@ -453,7 +453,7 @@ export default function BluorngFullscreenMegaNav({
                     <div
                       key={`${cell.title}-${i}`}
                       onClick={() => handleSelect(cell.link)}
-                      className="h-[256.5px] rounded-md overflow-hidden relative group cursor-pointer shadow-[0_12px_28px_rgba(0,0,0,0.16)] dark:shadow-[0_15px_35px_rgba(0,0,0,0.65)] border border-black/[0.08] dark:border-white/10 bg-tk-night"
+                      className="h-[256.5px] rounded-md overflow-hidden relative group cursor-pointer shadow-[0_12px_28px_rgba(0,0,0,0.16)] dark:shadow-[0_15px_35px_rgba(0,0,0,0.65)] border border-tk-accent/25 dark:border-tk-gold/25 bg-tk-night"
                     >
                       {cell.video ? (
                         <video

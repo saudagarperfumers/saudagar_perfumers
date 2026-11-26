@@ -73,6 +73,22 @@
   .sf-title {
     @apply text-[22px] sm:text-[28px] font-normal uppercase tracking-[0.03em] leading-tight text-tk-ink dark:text-white;
   }
+  /* A short brand-gold rule under every section title (accent in light, gold in dark; both from Admin → Theme) */
+  .sf-title::after {
+    content: '';
+    display: block;
+    width: 44px;
+    height: 2px;
+    margin-top: 12px;
+    background: rgb(var(--c-accent));
+  }
+  .dark .sf-title::after {
+    background: rgb(var(--c-gold));
+  }
+  .text-center .sf-title::after,
+  .sf-title.text-center::after {
+    margin-inline: auto;
+  }
   .sf-lead {
     @apply mt-2 max-w-xl text-[14px] leading-relaxed font-normal text-[#555555] dark:text-white/70;
   }

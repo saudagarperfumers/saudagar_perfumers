@@ -33,7 +33,7 @@ export default function NotifyMe({ variantId, label }) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Your email"
           aria-label="Email for the back-in-stock alert"
-          className="flex-1 min-w-[160px] px-3 py-2 border border-[#E0E0E0] dark:border-white/20 bg-transparent outline-none focus:border-tk-ink dark:focus:border-white"
+          className="flex-1 min-w-[160px] px-3 py-2 border border-tk-accent/25 dark:border-tk-gold/40 bg-transparent outline-none focus:border-tk-accent dark:focus:border-white"
         />
       )}
       <button type="submit" disabled={state === 'busy'} className="px-4 py-2 border border-tk-ink dark:border-white uppercase tracking-wider text-[12px] disabled:opacity-60">

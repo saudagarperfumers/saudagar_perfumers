@@ -75,7 +75,7 @@ export default function BluorngSearchModal({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -35, scale: 0.985 }}
             transition={{ duration: 0.38, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full bg-[#FFFFFF] dark:bg-[#0E0C10] shadow-[0_20px_60px_rgba(0,0,0,0.35)] border-b border-[#EAEAEA] dark:border-white/10 p-5 sm:p-8 lg:p-10 transition-colors duration-300"
+            className="w-full bg-[#FFFFFF] dark:bg-[#0E0C10] shadow-[0_20px_60px_rgba(0,0,0,0.35)] border-b border-tk-accent/25 dark:border-tk-gold/25 p-5 sm:p-8 lg:p-10 transition-colors duration-300"
           >
             <div className="max-w-[1060px] mx-auto space-y-6">
               
@@ -230,7 +230,7 @@ export default function BluorngSearchModal({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  className="pt-3 border-t border-[#EEEEEE] dark:border-white/10"
+                  className="pt-3 border-t border-tk-accent/25 dark:border-tk-gold/25"
                 >
                   <div className="flex items-center justify-between mb-4 text-[12px] text-[#5F5F5F] dark:text-[#A09D96] font-semibold uppercase tracking-wider">
                     <span className="flex items-center gap-2">
@@ -248,7 +248,7 @@ export default function BluorngSearchModal({
                           key={n.slug}
                           type="button"
                           onClick={() => goTo(`/notes/${n.slug}`)}
-                          className="px-3 py-1 rounded-[2px] border border-[#E0DDD5] dark:border-white/15 hover:border-tk-accent dark:hover:border-tk-accent-night text-[#444444] dark:text-[#CCCCCC]"
+                          className="px-3 py-1 rounded-[2px] border border-tk-accent/25 dark:border-tk-gold/25 hover:border-tk-accent dark:hover:border-tk-accent-night text-[#444444] dark:text-[#CCCCCC]"
                         >
                           Note: {n.name}
                         </button>
@@ -336,7 +336,7 @@ export default function BluorngSearchModal({
                               onClose();
                               onSelectProduct(product.id);
                             }}
-                            className="group cursor-pointer border border-[#EEEEEE] dark:border-white/10 p-3 rounded-lg hover:border-tk-accent dark:hover:border-tk-gold transition-all duration-300 bg-[#FFFFFF] dark:bg-[#141318] hover:shadow-[0_12px_28px_rgba(0,0,0,0.07)] dark:hover:shadow-[0_12px_30px_rgba(212,175,55,0.12)] flex flex-col justify-between"
+                            className="group cursor-pointer border border-tk-accent/25 dark:border-tk-gold/25 p-3 rounded-lg hover:border-tk-accent dark:hover:border-tk-gold transition-all duration-300 bg-[#FFFFFF] dark:bg-[#141318] hover:shadow-[0_12px_28px_rgba(0,0,0,0.07)] dark:hover:shadow-[0_12px_30px_rgba(212,175,55,0.12)] flex flex-col justify-between"
                           >
                             <div>
                               {/* Flacon Pedestal with Image Zoom */}
@@ -390,7 +390,7 @@ export default function BluorngSearchModal({
                             </div>
 
                             {/* Price & View Arrow Row */}
-                            <div className="mt-2.5 pt-2 border-t border-[#F0F0F0] dark:border-white/5 flex items-center justify-between">
+                            <div className="mt-2.5 pt-2 border-t border-tk-accent/25 dark:border-tk-gold/25 flex items-center justify-between">
                               <span className="text-[12.5px] sm:text-[12.5px] font-bold text-tk-ink dark:text-white">
                                 {formatPrice(product.price)}
                               </span>

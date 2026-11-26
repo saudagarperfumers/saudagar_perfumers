@@ -5,7 +5,7 @@ export default function ListingHeader({ eyebrow, title, description, image, sear
   const [term, setTerm] = useState(search ?? '');
   useEffect(() => setTerm(search ?? ''), [search]);
   return (
-    <section className="w-full border-b border-[#EAEAEA] dark:border-white/10 bg-[#FAF9F6] dark:bg-[#0E0C10]">
+    <section className="w-full border-b border-tk-accent/25 dark:border-tk-gold/25 bg-[#FAF9F6] dark:bg-[#0E0C10]">
       <div className="px-4 sm:px-8 lg:px-12 pt-10 sm:pt-14 pb-8 sm:pb-10 flex flex-col sm:flex-row sm:items-end gap-6">
         {image && (
           <img src={image} alt="" className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-[2px] bg-white dark:bg-white/5 shrink-0" loading="lazy" />
@@ -29,7 +29,7 @@ export default function ListingHeader({ eyebrow, title, description, image, sear
                 onChange={(e) => setTerm(e.target.value)}
                 placeholder="Search by name, note or collection"
                 aria-label="Search fragrances"
-                className="flex-1 min-w-0 px-4 py-2.5 border border-[#D5D3CC] dark:border-white/15 bg-white dark:bg-[#141318] text-[13px] outline-none focus:border-tk-ink dark:focus:border-tk-accent-night"
+                className="flex-1 min-w-0 px-4 py-2.5 border border-tk-accent/45 dark:border-tk-gold/25 bg-white dark:bg-[#141318] text-[13px] outline-none focus:border-tk-accent dark:focus:border-tk-accent-night"
               />
               <button type="submit" className="px-5 bg-tk-ink hover:bg-tk-accent dark:bg-tk-gold text-white dark:text-tk-night text-[12px] uppercase tracking-[0.16em] transition-colors">
                 Search
