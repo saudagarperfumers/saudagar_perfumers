@@ -95,8 +95,13 @@ export function StaggerContainer({ children, staggerDelay = 0.08, className = ''
     }
   };
 
+  // The reveal fires once, when the grid comes into view. Items that arrive later (products still loading, another
+  // page of results) would stay invisible, so the grid starts its reveal again whenever its set of items changes.
+  const itemsKey = React.Children.toArray(children).map((c) => c?.key ?? '').join('|');
+
   return (
     <motion.div
+      key={itemsKey}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
