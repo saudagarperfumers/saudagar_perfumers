@@ -325,13 +325,29 @@
 - [x] Upload the filled .xlsx straight back (no "save as CSV"); the preview lists problems in plain words, things worth a look, products already in the store (left alone) and everything that will be created; nothing is saved until Import
 - [x] Missing categories, collections, notes and scent choices are created on import
 
+## Phase 28: Content moved from saudagarperfumers.in ✅
+- [x] All 107 listings from the old WooCommerce shop brought over as 102 products (Hudson Valley ×2, Guidance, Khamra → Khamarah, SRK → SSRK and Aventus → Creed Aventus merged; Fakhir and Fakhir Attar kept apart)
+- [x] Every product filled in like one added in the editor: sizes, prices and MRP, notes pyramid, scent family, accords, concentration, gender, intensity, longevity, sillage, season, day / night, occasion, short and full description, inspiration, how to wear, compliance defaults, parcel weights, Google text
+- [x] Details the old site didn't have were filled in; each product's internal note lists exactly which ones, so they can be checked
+- [x] Stock: 1 L for every in-stock perfume, 0 for the out-of-stock ones (Red Tobacco, Jazeera Magic, Ice Land); combos counted in boxes
+- [x] Every in-stock perfume offered as a free sample
+- [x] Photos: the plain Saudagar bottle for each size (30, 50, 100 ml); Ocean Blue, White Code and Black Code have their own photos; the combo photo is on the 5 × 20 ml Gift Set; all Drive photos and all old-site photos are in the Media library (as WebP)
+- [x] Categories: Men, Women, Unisex, Inspired Perfumes, Floral Perfumes, New Perfumes, plus Signature Fragrances and New Collections from the old home page
+- [x] Home page rebuilt in the old site's order: hero with a new picture, Saudagar Perfumers ribbon, Our Signature Fragrance, New Collections, categories, Floral Perfumes, Inspired Perfumes
+- [x] Shipping, Refund and Returns, Privacy and Terms pages now carry the old site's words; Contact Us has their address and email plus our phone and WhatsApp
+- [x] Menu, mobile menu, footer, search suggestions and Google text rewritten from the old site; our sample products, stories, reels, testimonials, announcements, boutiques, collections and story page text removed
+- [x] Old links (products, categories, policy pages, blog) redirect to the new pages once the domain moves
+- [x] Not copied (template filler on the old site): Glozin About Us, 12 fashion blog posts, FAQ with blanks, Special Offers, Coming Soon; not copied (features): AI chat, Request a callback, Compare
+
 ## Owner to-do before going live (see docs/SETUP.md and docs/SUPABASE.md)
 - [ ] Run `npm run hook:secret` (automatic refunds); delete the unused Singapore Supabase project
 - [ ] Supabase Pro, SMTP, domain
 - [ ] After SMTP: turn on email confirmation (`CONFIRM_EMAIL=on`, docs/SETUP.md §5); with Pro: leaked-password check; optionally a Turnstile CAPTCHA on sign-up
 - [ ] Send Razorpay, Delhivery and India Post details (see docs/INTEGRATIONS.md); GA4 / Meta Pixel IDs
 - [ ] Courier confirmation for shipping perfume; Delhivery token (optional)
-- [ ] Replace sample products, policy text, GSTIN and business details
+- [x] Replace sample products and policy text (phase 28)
+- [ ] GSTIN and business details
+- [ ] Check the filled-in product details (each product's internal note) and enter real stock
 - [ ] Change the test admin password
 
 ---
