@@ -13,8 +13,8 @@ test('product page shows the note pyramid, real sizes and no fake reviews', asyn
   await expect(page.getByRole('heading', { level: 1 }).first()).toContainText(/kasturi/i);
   await expect(page.getByText('No reviews yet').first()).toBeVisible();
   await expect(page.getByText('Top Notes')).toBeVisible();
-  const noteLink = page.getByRole('link', { name: 'Saffron', exact: true }).first();
-  await expect(noteLink).toHaveAttribute('href', '/notes/saffron');
+  // Notes without a photo show their first letter, so the link is found by where it goes.
+  await expect(page.locator('a[href="/notes/saffron"]').first()).toContainText('Saffron');
   await expect(page.getByRole('button', { name: '50 ml', exact: true }).first()).toBeVisible();
   await page.getByRole('button', { name: 'Details & Compliance' }).click();
   await expect(page.getByText('3303')).toBeVisible();
