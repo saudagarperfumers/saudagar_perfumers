@@ -1,25 +1,379 @@
 {
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/product/saudagar-premium-perfume-gift-set-5-x-20-ml-100-ml",
+      "destination": "/product/saudagar-premium-perfume-gift-set",
+      "permanent": true
+    },
+    {
+      "source": "/product/rebel",
+      "destination": "/product/9pm-rebel",
+      "permanent": true
+    },
+    {
+      "source": "/product/oud",
+      "destination": "/product/oud-al-wahid",
+      "permanent": true
+    },
+    {
+      "source": "/product/khamra",
+      "destination": "/product/khamarah",
+      "permanent": true
+    },
+    {
+      "source": "/product/imagination",
+      "destination": "/product/imagination-wow",
+      "permanent": true
+    },
+    {
+      "source": "/product/fabhir",
+      "destination": "/product/fakhir",
+      "permanent": true
+    },
+    {
+      "source": "/product/erba-pura-2",
+      "destination": "/product/erba-pura",
+      "permanent": true
+    },
+    {
+      "source": "/product/havana-ice",
+      "destination": "/product/hawas-ice",
+      "permanent": true
+    },
+    {
+      "source": "/product/guidance-2",
+      "destination": "/product/guidance",
+      "permanent": true
+    },
+    {
+      "source": "/product/alluri",
+      "destination": "/product/allure",
+      "permanent": true
+    },
+    {
+      "source": "/product/srk",
+      "destination": "/product/ssrk",
+      "permanent": true
+    },
+    {
+      "source": "/product/a-blue",
+      "destination": "/product/ajmal-blue",
+      "permanent": true
+    },
+    {
+      "source": "/product/bomb-shell",
+      "destination": "/product/bombshell",
+      "permanent": true
+    },
+    {
+      "source": "/product/ameer-al-oud-al-oud",
+      "destination": "/product/ameer-al-oud",
+      "permanent": true
+    },
+    {
+      "source": "/product/aventus",
+      "destination": "/product/creed-aventus",
+      "permanent": true
+    },
+    {
+      "source": "/product/intrude-men",
+      "destination": "/product/interludee-men",
+      "permanent": true
+    },
+    {
+      "source": "/product/arabian-toka",
+      "destination": "/product/arabian-tonka",
+      "permanent": true
+    },
+    {
+      "source": "/product/hudson-valley-copy",
+      "destination": "/product/hudson-valley",
+      "permanent": true
+    },
+    {
+      "source": "/product/burmi-oud-2",
+      "destination": "/product/burmi-oud",
+      "permanent": true
+    },
+    {
+      "source": "/product/saudagar-20ml-x-4-piece-perfume-collection",
+      "destination": "/product/saudagar-4-piece-perfume-collection",
+      "permanent": true
+    },
+    {
+      "source": "/product/black-code-perfume",
+      "destination": "/product/black-code",
+      "permanent": true
+    },
+    {
+      "source": "/product/ocean-blue-perfume",
+      "destination": "/product/ocean-blue",
+      "permanent": true
+    },
+    {
+      "source": "/product/white-code-perfume",
+      "destination": "/product/white-code",
+      "permanent": true
+    },
+    {
+      "source": "/product-category/mens",
+      "destination": "/categories/men",
+      "permanent": true
+    },
+    {
+      "source": "/product-category/womens",
+      "destination": "/categories/women",
+      "permanent": true
+    },
+    {
+      "source": "/product-category/unisex",
+      "destination": "/categories/unisex",
+      "permanent": true
+    },
+    {
+      "source": "/product-category/inspired-perfumes",
+      "destination": "/categories/inspired-perfumes",
+      "permanent": true
+    },
+    {
+      "source": "/product-category/floral-perfumes",
+      "destination": "/categories/floral-perfumes",
+      "permanent": true
+    },
+    {
+      "source": "/product-category/new-perfumes",
+      "destination": "/categories/new-perfumes",
+      "permanent": true
+    },
+    {
+      "source": "/product-category/uncategorized",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/shipping-policy",
+      "destination": "/pages/shipping-policy",
+      "permanent": true
+    },
+    {
+      "source": "/refund_returns",
+      "destination": "/pages/returns-policy",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy-2",
+      "destination": "/pages/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/pages/privacy-policy",
+      "permanent": true
+    },
+    {
+      "source": "/terms-of-use",
+      "destination": "/pages/terms",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/pages/contact",
+      "permanent": true
+    },
+    {
+      "source": "/my-account",
+      "destination": "/account",
+      "permanent": true
+    },
+    {
+      "source": "/my-account/:path*",
+      "destination": "/account",
+      "permanent": true
+    },
+    {
+      "source": "/track-order",
+      "destination": "/account",
+      "permanent": true
+    },
+    {
+      "source": "/shopping-cart",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/cart",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/checkouts",
+      "destination": "/checkout",
+      "permanent": true
+    },
+    {
+      "source": "/wishlist-2",
+      "destination": "/wishlist",
+      "permanent": true
+    },
+    {
+      "source": "/categories",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/special-offers",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/recently-view-products",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/compare-2",
+      "destination": "/shop",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/coming-soon",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/summer-travel-fashion-2024",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/latest-swimsuit-model-this-year",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/the-history-of-patterned-dresses",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/the-shirt-makes-your-style",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/tips-for-wearing-loose-t-shirts",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/top-5-picnic-fashion-of-girls",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/swimsuits-for-the-whole-family",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/top-10-trends-of-autumn-2024",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/the-best-clothing-for-this-summer",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/a-chic-journey-through-fashion-trends",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/top-5-stylish-outfits-t-shirt-for-you",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/unique-autumn-fashion-ideas",
+      "destination": "/",
+      "permanent": true
+    }
+  ],
   "rewrites": [
-    { "source": "/sitemap.xml", "destination": "https://ijwbzjwpqscekkqgiuzq.supabase.co/functions/v1/sitemap" },
-    { "source": "/((?!assets/|images/|videos/|robots.txt|theme-init.js|favicon).*)", "destination": "/index.html" }
+    {
+      "source": "/sitemap.xml",
+      "destination": "https://ijwbzjwpqscekkqgiuzq.supabase.co/functions/v1/sitemap"
+    },
+    {
+      "source": "/((?!assets/|images/|videos/|robots.txt|theme-init.js|favicon).*)",
+      "destination": "/index.html"
+    }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/(images|videos)/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800, stale-while-revalidate=86400"
+        }
+      ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Strict-Transport-Security", "value": "max-age=63072000; includeSubDomains; preload" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), payment=(self \"https://api.razorpay.com\")" },
+        {
+          "key": "Strict-Transport-Security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(self \"https://api.razorpay.com\")"
+        },
         {
           "key": "Content-Security-Policy",
           "value": "default-src 'self'; script-src 'self' https://checkout.razorpay.com https://www.googletagmanager.com https://connect.facebook.net; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.razorpay.com https://lumberjack.razorpay.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://www.facebook.com https://connect.facebook.net; img-src 'self' data: blob: https://*.supabase.co https://*.razorpay.com https://www.googletagmanager.com https://*.google-analytics.com https://www.facebook.com; media-src 'self' blob: https://*.supabase.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; frame-src https://api.razorpay.com https://checkout.razorpay.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'"
