@@ -158,7 +158,7 @@ export function RichTextSection({ config = {} }) {
       {config.heading && <h2 className="text-[24px] sm:text-[32px] font-normal tracking-[-0.015em] mb-5">{config.heading}</h2>}
       {hasText(config.body) && (
         <div
-          className="text-[14px] leading-relaxed text-[#444444] dark:text-[#CCCCCC] [&_p]:mb-3 [&_h2]:text-[20px] [&_h2]:mt-6 [&_h2]:mb-2 [&_h3]:text-[16px] [&_h3]:mt-4 [&_h3]:mb-1 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_a]:underline [&_a]:text-tk-accent"
+          className="text-[14px] leading-relaxed text-[#444444] dark:text-[#CCCCCC] [&_p]:mb-3 [&_h2]:text-[20px] [&_h2]:mt-6 [&_h2]:mb-2 [&_h3]:text-[16px] [&_h3]:mt-4 [&_h3]:mb-1 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_a]:underline [&_a]:text-tk-accent-ink dark:[&_a]:text-tk-accent-night"
           dangerouslySetInnerHTML={{ __html: sanitizeHtml(config.body) }}
         />
       )}
