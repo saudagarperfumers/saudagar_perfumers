@@ -62,7 +62,7 @@ export default function BluorngProductCard({
       className="group relative flex flex-col cursor-pointer transition-all duration-300 select-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tk-accent"
     >
       {/* ================= SOFT PEDESTAL FLACON STAGE (No harsh borders) ================= */}
-      <div className="relative w-full aspect-[4/5] rounded-[2px] flex items-center justify-center p-4 sm:p-5 overflow-hidden transition-all duration-500 select-none bg-[#F8F7F5] dark:bg-[#141318] group-hover:bg-[#F2EFEA] dark:group-hover:bg-[#1C1A22]">
+      <div className="relative w-full aspect-[4/5] rounded-[2px] flex items-center justify-center p-4 sm:p-5 overflow-hidden transition-all duration-500 select-none bg-[#F8F7F5] dark:bg-[#141318] group-hover:bg-[#F2EFEA] dark:group-hover:bg-[#1C1A22] border border-tk-accent/20 dark:border-tk-gold/20 group-hover:border-tk-accent/60 dark:group-hover:border-tk-gold/55">
         {/* Soft Pedestal Ground Shadow */}
         <div className="absolute bottom-4 w-3/5 h-2.5 rounded-[100%] blur-[5px] transition-all duration-500 pointer-events-none z-0 bg-black/[0.06] dark:bg-black/40 group-hover:scale-110 group-hover:opacity-60" />
 

@@ -120,7 +120,7 @@ export function FaqSection({ config = {} }) {
   return (
     <section className="max-w-3xl mx-auto px-6 sm:px-10 py-14 sm:py-20">
       {config.heading && <h2 className="text-[22px] sm:text-[28px] font-normal tracking-[-0.01em] text-tk-ink dark:text-white mb-6">{config.heading}</h2>}
-      <div className="divide-y divide-[#EAEAEA] dark:divide-white/10 border-y border-[#EAEAEA] dark:border-white/10">
+      <div className="divide-y divide-tk-accent/20 dark:divide-tk-gold/20 border-y border-tk-accent/25 dark:border-tk-gold/25">
         {items.map((f) => (
           <div key={f.id} className="py-4">
             <button
@@ -158,7 +158,7 @@ export function RichTextSection({ config = {} }) {
       {config.heading && <h2 className="text-[24px] sm:text-[32px] font-normal tracking-[-0.015em] mb-5">{config.heading}</h2>}
       {hasText(config.body) && (
         <div
-          className="text-[14px] leading-relaxed text-[#444444] dark:text-[#CCCCCC] [&_p]:mb-3 [&_h2]:text-[20px] [&_h2]:mt-6 [&_h2]:mb-2 [&_h3]:text-[16px] [&_h3]:mt-4 [&_h3]:mb-1 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_a]:underline [&_a]:text-tk-accent-ink dark:[&_a]:text-tk-accent-night"
+          className="text-[14px] leading-relaxed text-[#444444] dark:text-[#CCCCCC] [&_p]:mb-3 [&_h2]:text-[20px] [&_h2]:mt-6 [&_h2]:mb-3 [&_h2]:pb-2 [&_h2]:border-b [&_h2]:border-tk-accent/30 dark:[&_h2]:border-tk-gold/30 [&_h3]:text-[16px] [&_h3]:mt-4 [&_h3]:mb-1 [&_ul]:list-disc [&_ul]:pl-5 [&_ol]:list-decimal [&_ol]:pl-5 [&_a]:underline [&_a]:text-tk-accent-ink dark:[&_a]:text-tk-accent-night"
           dangerouslySetInnerHTML={{ __html: sanitizeHtml(config.body) }}
         />
       )}
@@ -191,7 +191,7 @@ export function NewsletterSection({ config = {} }) {
               onChange={(e) => setEmail(e.target.value)}
               placeholder={config.placeholder}
               aria-label="Email address"
-              className="flex-1 min-w-0 px-4 py-3 border border-[#D5D3CC] dark:border-white/15 bg-white dark:bg-[#141318] text-[13px] outline-none focus:border-tk-ink dark:focus:border-tk-accent-night"
+              className="flex-1 min-w-0 px-4 py-3 border border-tk-accent/45 dark:border-tk-gold/25 bg-white dark:bg-[#141318] text-[13px] outline-none focus:border-tk-accent dark:focus:border-tk-accent-night"
             />
             <button type="submit" className="px-6 bg-tk-ink dark:bg-tk-gold text-white dark:text-tk-night text-[12px] uppercase tracking-[0.16em]">
               {config.button_label || 'Subscribe'}

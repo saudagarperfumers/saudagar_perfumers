@@ -11,7 +11,7 @@ import { toFriendlyError } from '../lib/errors';
 import { useAuth } from '../lib/auth';
 
 const inputClass =
-  'w-full px-3 py-2 border border-[#E0E0E0] dark:border-white/20 rounded-[2px] bg-transparent outline-none focus:border-tk-ink dark:focus:border-white';
+  'w-full px-3 py-2 border border-tk-accent/25 dark:border-tk-gold/40 rounded-[2px] bg-transparent outline-none focus:border-tk-accent dark:focus:border-white';
 const labelClass = 'block text-[12px] uppercase tracking-wider text-[#5F5F5F] mb-1';
 const errorClass = 'text-[12px] text-rose-600 dark:text-rose-400 mt-1';
 
@@ -120,7 +120,7 @@ export default function BluorngAccountPage({ onNavigateHome }) {
 
       {/* ================= 2. CLEAN EDITORIAL HERO ==================== */}
       <section className="max-w-5xl mx-auto px-6 sm:px-10 pt-12 sm:pt-16 pb-10">
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-6 pb-10 border-b border-[#F0F0F0] dark:border-white/10">
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-6 pb-10 border-b border-tk-accent/25 dark:border-tk-gold/25">
           <div className="min-w-0">
             <span className="sf-eyebrow">Your account</span>
             <h1 className="text-[28px] sm:text-[36px] font-normal tracking-[-0.015em] text-tk-ink dark:text-white leading-tight break-words">{displayName}</h1>
@@ -157,7 +157,7 @@ export default function BluorngAccountPage({ onNavigateHome }) {
         </div>
 
         {/* Minimal Underline Tabs */}
-        <nav className="flex flex-wrap items-center gap-x-6 sm:gap-x-8 text-[12px] pt-4 border-b border-[#F0F0F0] dark:border-white/10">
+        <nav className="flex flex-wrap items-center gap-x-6 sm:gap-x-8 text-[12px] pt-4 border-b border-tk-accent/25 dark:border-tk-gold/25">
           {[
             { id: 'orders', label: 'Orders' },
             { id: 'offers', label: 'Offers' },
@@ -192,7 +192,7 @@ export default function BluorngAccountPage({ onNavigateHome }) {
         {/* TAB 2: ADDRESSES */}
         {activeTab === 'addresses' && (
           <div className="space-y-8">
-            <div className="flex items-center justify-between pb-3 border-b border-[#F0F0F0] dark:border-white/10">
+            <div className="flex items-center justify-between pb-3 border-b border-tk-accent/25 dark:border-tk-gold/25">
               <span className="text-[12px] uppercase tracking-[0.16em] text-[#666666] font-medium">Saved Addresses ({addressList.length})</span>
               <button onClick={openNewAddress} className="text-[12px] uppercase tracking-[0.16em] text-tk-ink dark:text-white hover:underline cursor-pointer font-medium">
                 + Add Address
@@ -209,7 +209,7 @@ export default function BluorngAccountPage({ onNavigateHome }) {
               {addressList.map((a) => (
                 <div
                   key={a.id}
-                  className={`p-6 rounded-[2px] border transition-colors ${a.is_default ? 'border-tk-ink dark:border-white/30' : 'border-[#EEEEEE] dark:border-white/10'}`}
+                  className={`p-6 rounded-[2px] border transition-colors ${a.is_default ? 'border-tk-ink dark:border-tk-gold/40' : 'border-tk-accent/25 dark:border-tk-gold/25'}`}
                 >
                   <div className="flex items-center justify-between mb-3 text-[12px]">
                     <span className="uppercase tracking-widest text-[#666666] font-medium">{a.label}</span>
@@ -230,7 +230,7 @@ export default function BluorngAccountPage({ onNavigateHome }) {
                   </p>
                   <p className="text-[12px] text-[#666666] mt-2 font-mono">{formatIndianPhone(a.phone)}</p>
 
-                  <div className="mt-4 pt-3 border-t border-[#F0F0F0] dark:border-white/10 flex flex-wrap gap-4">
+                  <div className="mt-4 pt-3 border-t border-tk-accent/25 dark:border-tk-gold/25 flex flex-wrap gap-4">
                     <button onClick={() => openEditAddress(a)} className="text-[12px] uppercase tracking-wider text-[#5F5F5F] hover:text-tk-ink dark:hover:text-white cursor-pointer">
                       Edit
                     </button>
@@ -290,7 +290,7 @@ export default function BluorngAccountPage({ onNavigateHome }) {
                 <label htmlFor="pd-dob" className={labelClass}>Birthday</label>
                 {profile?.dob_locked ? (
                   <>
-                    <p id="pd-dob" className="px-3 py-2 border border-[#F0F0F0] dark:border-white/10 rounded-[2px] text-tk-ink dark:text-white">
+                    <p id="pd-dob" className="px-3 py-2 border border-tk-accent/25 dark:border-tk-gold/25 rounded-[2px] text-tk-ink dark:text-white">
                       {formatBirthday(profile.date_of_birth)}
                     </p>
                     <p className="text-[12px] text-[#666666] mt-1">Your birthday is saved. Contact us if it needs correcting.</p>

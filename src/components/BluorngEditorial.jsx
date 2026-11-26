@@ -146,7 +146,7 @@ export default function BluorngEditorial({ config = {} }) {
 
         {/* ============ 3. COLLECTION ENTRY POINTS ============ */}
         <div className="mt-20 sm:mt-28">
-          <div className="flex items-end justify-between gap-6 border-b border-black/10 dark:border-white/10 pb-5">
+          <div className="flex items-end justify-between gap-6 border-b border-black/10 dark:border-tk-gold/25 pb-5">
             <h3 className="font-serif italic text-[30px] sm:text-[44px] leading-none">{config.entries_heading}</h3>
             {config.view_all_label && <button
               type="button"

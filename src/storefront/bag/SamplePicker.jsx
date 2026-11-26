@@ -78,7 +78,7 @@ export default function SamplePicker({ samples: s, picks = [], onChange, avoid =
                 key={i}
                 type="button"
                 onClick={() => setSlot(i)}
-                className="w-full flex items-center justify-between gap-2 px-3 py-2 bg-white dark:bg-white/[0.06] border border-black/[0.06] dark:border-white/10 rounded-xs text-left hover:border-tk-accent dark:hover:border-tk-gold transition-colors cursor-pointer"
+                className="w-full flex items-center justify-between gap-2 px-3 py-2 bg-white dark:bg-white/[0.06] border border-tk-accent/25 dark:border-tk-gold/25 rounded-xs text-left hover:border-tk-accent dark:hover:border-tk-gold transition-colors cursor-pointer"
               >
                 <span className="truncate">
                   <span className="text-[#6B6B6B] dark:text-white/60 mr-1.5">{i + 1}.</span>
@@ -111,9 +111,9 @@ export default function SamplePicker({ samples: s, picks = [], onChange, avoid =
             role="dialog"
             aria-modal="true"
             aria-label={`Choose free sample ${slot + 1}`}
-            className="fixed inset-x-0 bottom-0 sm:absolute sm:inset-0 z-[60] bg-white dark:bg-[#0E0C10] flex flex-col max-h-[85svh] sm:max-h-none border-t border-black/[0.08] dark:border-white/10"
+            className="fixed inset-x-0 bottom-0 sm:absolute sm:inset-0 z-[60] bg-white dark:bg-[#0E0C10] flex flex-col max-h-[85svh] sm:max-h-none border-t border-tk-accent/25 dark:border-tk-gold/25"
           >
-            <div className="flex items-center justify-between p-4 border-b border-black/[0.06] dark:border-white/[0.08]">
+            <div className="flex items-center justify-between p-4 border-b border-tk-accent/25 dark:border-white/[0.08]">
               <p className="text-[12.5px] font-bold uppercase tracking-wider">Free sample {slot + 1}</p>
               <button type="button" onClick={() => { setSlot(null); setTerm(''); }} aria-label="Close" className="p-1 text-tk-ink dark:text-white">✕</button>
             </div>
@@ -125,14 +125,14 @@ export default function SamplePicker({ samples: s, picks = [], onChange, avoid =
                 placeholder="Search scents"
                 aria-label="Search scents"
                 autoFocus
-                className="w-full px-3 py-2.5 border border-black/[0.12] dark:border-white/15 bg-white dark:bg-[#141318] text-[12.5px] text-tk-ink dark:text-white placeholder:text-[#777777] dark:placeholder:text-white/40 outline-none focus:border-tk-ink dark:focus:border-white rounded-xs"
+                className="w-full px-3 py-2.5 border border-black/[0.12] dark:border-tk-gold/25 bg-white dark:bg-[#141318] text-[12.5px] text-tk-ink dark:text-white placeholder:text-[#777777] dark:placeholder:text-white/40 outline-none focus:border-tk-accent dark:focus:border-white rounded-xs"
               />
             </div>
             <div data-lenis-prevent="true" className="flex-1 overflow-y-auto p-4 space-y-2">
               <button
                 type="button"
                 onClick={() => choose(slot, null)}
-                className={`w-full flex items-center gap-3 p-2.5 border rounded-xs text-left cursor-pointer ${picks[slot] === SURPRISE ? 'border-tk-ink dark:border-white' : 'border-black/[0.08] dark:border-white/10'}`}
+                className={`w-full flex items-center gap-3 p-2.5 border rounded-xs text-left cursor-pointer ${picks[slot] === SURPRISE ? 'border-tk-ink dark:border-white' : 'border-tk-accent/25 dark:border-tk-gold/25'}`}
               >
                 <span className="w-12 h-12 flex items-center justify-center bg-[#F5F2EC] dark:bg-white/10 text-tk-accent-ink dark:text-tk-accent-night text-lg">✦</span>
                 <span>
@@ -150,7 +150,7 @@ export default function SamplePicker({ samples: s, picks = [], onChange, avoid =
                     type="button"
                     disabled={taken}
                     onClick={() => choose(slot, p.variant_id)}
-                    className={`w-full flex items-center gap-3 p-2.5 border rounded-xs text-left cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed ${picks[slot] === p.variant_id ? 'border-tk-ink dark:border-white' : 'border-black/[0.08] dark:border-white/10'}`}
+                    className={`w-full flex items-center gap-3 p-2.5 border rounded-xs text-left cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed ${picks[slot] === p.variant_id ? 'border-tk-ink dark:border-white' : 'border-tk-accent/25 dark:border-tk-gold/25'}`}
                   >
                     <img src={p.image || PLACEHOLDER_IMAGE} alt="" className="w-12 h-12 object-contain bg-[#F7F7F6] dark:bg-[#18171C]" />
                     <span className="min-w-0">

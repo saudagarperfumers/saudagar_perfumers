@@ -20,7 +20,7 @@ function Check({ on }) {
   return (
     <span
       className={`mt-[1px] w-[18px] h-[18px] shrink-0 flex items-center justify-center border rounded-[2px] transition-colors ${
-        on ? 'bg-tk-ink dark:bg-tk-gold border-tk-ink dark:border-tk-gold text-white dark:text-tk-night' : 'bg-white dark:bg-transparent border-[#A8A49B] dark:border-white/35 group-hover:border-tk-ink dark:group-hover:border-white'
+        on ? 'bg-tk-ink dark:bg-tk-gold border-tk-ink dark:border-tk-gold text-white dark:text-tk-night' : 'bg-white dark:bg-transparent border-tk-accent/60 dark:border-white/35 group-hover:border-tk-ink dark:group-hover:border-white'
       }`}
       aria-hidden
     >
@@ -46,7 +46,7 @@ function PriceRange({ min, max, span, onApply }) {
     setHi(max ?? '');
   }, [min, max]);
   const apply = () => onApply(lo === '' ? undefined : Number(lo), hi === '' ? undefined : Number(hi));
-  const field = 'w-full h-10 pl-6 pr-2 border border-[#D5D2CA] dark:border-white/20 bg-white dark:bg-[#141318] text-[13.5px] text-tk-ink dark:text-white rounded-[2px] outline-none focus:border-tk-ink dark:focus:border-white';
+  const field = 'w-full h-10 pl-6 pr-2 border border-tk-accent/45 dark:border-tk-gold/40 bg-white dark:bg-[#141318] text-[13.5px] text-tk-ink dark:text-white rounded-[2px] outline-none focus:border-tk-accent dark:focus:border-white';
   return (
     <form
       className="mt-3 flex items-center gap-2"
@@ -123,7 +123,7 @@ function Section({ section, chosen, counts, onToggle, startOpen, extra }) {
                   onChange={(e) => setTerm(e.target.value)}
                   placeholder={`Search ${section.title.toLowerCase()}`}
                   aria-label={`Search ${section.title.toLowerCase()}`}
-                  className="w-full h-9 mb-3 px-3 border border-[#D5D2CA] dark:border-white/20 bg-white dark:bg-[#141318] text-[13px] text-tk-ink dark:text-white placeholder:text-[#7A7A7A] rounded-[2px] outline-none focus:border-tk-ink dark:focus:border-white"
+                  className="w-full h-9 mb-3 px-3 border border-tk-accent/45 dark:border-tk-gold/40 bg-white dark:bg-[#141318] text-[13px] text-tk-ink dark:text-white placeholder:text-[#7A7A7A] rounded-[2px] outline-none focus:border-tk-accent dark:focus:border-white"
                 />
               )}
 
@@ -141,7 +141,7 @@ function Section({ section, chosen, counts, onToggle, startOpen, extra }) {
                         className={`inline-flex items-center gap-1.5 h-9 px-3 text-[13px] border rounded-[2px] cursor-pointer transition-colors ${
                           on
                             ? 'bg-tk-ink dark:bg-tk-gold border-tk-ink dark:border-tk-gold text-white dark:text-tk-night font-medium'
-                            : 'bg-white dark:bg-transparent border-[#D5D2CA] dark:border-white/20 text-[#2A2A2A] dark:text-white/85 hover:border-tk-ink dark:hover:border-white'
+                            : 'bg-white dark:bg-transparent border-tk-accent/45 dark:border-tk-gold/40 text-[#2A2A2A] dark:text-white/85 hover:border-tk-ink dark:hover:border-white'
                         }`}
                       >
                         {o.label}
@@ -207,7 +207,7 @@ export default function BluorngFilterSidebar({
 
   return (
     <div className={`flex flex-col ${isMobileDrawer ? 'h-full bg-white dark:bg-tk-night' : 'w-full'}`}>
-      <div className={`flex items-center justify-between gap-3 border-b border-[#E3E0D8] dark:border-white/10 ${isMobileDrawer ? 'px-5 py-4' : 'pb-4'}`}>
+      <div className={`flex items-center justify-between gap-3 border-b border-tk-accent/25 dark:border-tk-gold/25 ${isMobileDrawer ? 'px-5 py-4' : 'pb-4'}`}>
         <div className="flex items-center gap-2">
           <span className="text-[15px] font-semibold text-tk-ink dark:text-white">Filters</span>
           {activeCount > 0 && <span className="min-w-[22px] h-[22px] px-1.5 flex items-center justify-center text-[12.5px] font-bold rounded-[2px] bg-tk-ink dark:bg-tk-gold text-white dark:text-tk-night">{activeCount}</span>}
@@ -229,7 +229,7 @@ export default function BluorngFilterSidebar({
         </div>
       </div>
 
-      <div className={`divide-y divide-[#E3E0D8] dark:divide-white/10 ${isMobileDrawer ? 'flex-1 overflow-y-auto px-5' : ''}`}>
+      <div className={`divide-y divide-[#E3E0D8] dark:divide-tk-gold/20 ${isMobileDrawer ? 'flex-1 overflow-y-auto px-5' : ''}`}>
         {sections.map((section) => (
           <Section
             key={section.id}
@@ -244,7 +244,7 @@ export default function BluorngFilterSidebar({
       </div>
 
       {isMobileDrawer && (
-        <div className="p-4 border-t border-[#E3E0D8] dark:border-white/10 bg-white dark:bg-tk-night sticky bottom-0">
+        <div className="p-4 border-t border-tk-accent/25 dark:border-tk-gold/25 bg-white dark:bg-tk-night sticky bottom-0">
           <button
             type="button"
             onClick={onCloseMobileDrawer}

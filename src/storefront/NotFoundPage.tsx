@@ -30,7 +30,7 @@ export default function NotFoundPage({
           <button
             type="button"
             onClick={() => onNavigateCollection('signature')}
-            className="px-6 py-3 border border-tk-ink dark:border-white/30 text-[12px] font-semibold uppercase tracking-[0.18em] hover:border-tk-accent hover:text-tk-accent transition-colors"
+            className="px-6 py-3 border border-tk-ink dark:border-tk-gold/40 text-[12px] font-semibold uppercase tracking-[0.18em] hover:border-tk-accent hover:text-tk-accent transition-colors"
           >
             {words.notfound_shop}
           </button>

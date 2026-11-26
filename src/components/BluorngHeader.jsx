@@ -85,7 +85,7 @@ export default function BluorngHeader({
       className={`sticky top-0 z-50 w-full select-none transition-all duration-300 relative ${
         isTransparent
           ? 'bg-transparent text-white'
-          : 'bg-white/95 dark:bg-tk-night/95 backdrop-blur-md shadow-xs text-tk-ink dark:text-white'
+          : 'bg-white/95 dark:bg-tk-night/95 backdrop-blur-md shadow-xs border-b border-tk-accent/30 dark:border-tk-gold/30 text-tk-ink dark:text-white'
       }`}
     >
       <BluorngAnnouncementBar />
