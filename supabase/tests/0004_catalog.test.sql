@@ -109,14 +109,14 @@ declare fam uuid; acc uuid;
 begin
   insert into public.attribute_options (kind, label, slug) values ('note_family', 'Woods', 'woods') returning id into fam;
   insert into public.attribute_options (kind, label, slug) values ('accord', 'Smoky', 'smoky') returning id into acc;
-  insert into public.notes (name, slug, family_option_id) values ('Oud', 'oud', fam);
+  insert into public.notes (name, slug, family_option_id) values ('Quazoud', 'quazoud', fam);
   begin
-    insert into public.notes (name, slug) values ('oud', 'oud-2');
+    insert into public.notes (name, slug) values ('quazoud', 'quazoud-2');
     raise exception 'TEST_FAIL: duplicate note name allowed';
   exception when unique_violation then null;
   end;
   begin
-    insert into public.notes (name, slug, family_option_id) values ('Vetiver', 'vetiver', acc);
+    insert into public.notes (name, slug, family_option_id) values ('Quazvetiver', 'quazvetiver', acc);
     raise exception 'TEST_FAIL: accord used as note family';
   exception when others then
     if sqlerrm not like 'NOTE_FAMILY%' then raise exception 'expected NOTE_FAMILY, got %', sqlerrm; end if;
@@ -141,11 +141,11 @@ end $$;
 do $$
 declare pid uuid; nid uuid;
 begin
-  select id into nid from public.notes where slug = 'oud';
+  select id into nid from public.notes where slug = 'quazoud';
   pid := public.save_product(jsonb_build_object('slug','smoke-test','name','Smoke Test','base_price',100,'is_active',true,
     'variants', jsonb_build_array(jsonb_build_object('sku','SMK-10','kind','retail','size_ml',10,'label','10 ml')),
     'notes', jsonb_build_array(jsonb_build_object('note_id', nid, 'tier', 'base'))));
-  assert (select search_vector @@ to_tsquery('simple', 'oud') from public.products where id = pid), 'note names are searchable';
+  assert (select search_vector @@ to_tsquery('simple', 'quazoud') from public.products where id = pid), 'note names are searchable';
 end $$;
 
 -- ===== customer =====

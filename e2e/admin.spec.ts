@@ -40,8 +40,8 @@ test('admin search opens what you pick, and every page explains itself', async (
 
   // Ctrl+K → type → Enter opens the product.
   await page.keyboard.press('Control+k');
-  await page.getByRole('combobox', { name: 'Search the admin' }).fill('deep canopy');
-  await expect(page.getByRole('option', { name: /Deep Canopy/i }).first()).toBeVisible();
+  await page.getByRole('combobox', { name: 'Search the admin' }).fill('kasturi');
+  await expect(page.getByRole('option', { name: /Kasturi/i }).first()).toBeVisible();
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/\/admin\/products\/[0-9a-f-]{36}$/);
 
